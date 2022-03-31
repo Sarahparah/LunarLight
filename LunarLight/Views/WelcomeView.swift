@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct WelcomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -32,11 +32,11 @@ struct ContentView: View {
             
             if tabIndex == 0 {
                 
-                LoginTab()
+               LoginView()
                 
             }else{
                 
-                RegisterTab()
+               RegisterView()
             }
             Spacer()
             
@@ -103,60 +103,7 @@ struct TabButtons: View {
     
 }
 
-struct LoginTab: View {
-    
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
-    var body: some View {
-        VStack {
-            
-            TextField("Email", text: $email)
-            
-            TextField("Password", text: $password)
-            
-            Spacer()
-            
-            Button {
-                print("login")
-            } label: {
-                Text("Login")
-            }
-        }
-    }
-    
-}
 
-struct RegisterTab: View {
-    
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var passwordCheck: String = ""
-    @State private var username: String = ""
-    
-    var body: some View{
-        
-        VStack{
-            TextField("username", text: $username)
-            
-            TextField("Email", text: $email)
-            
-            TextField("Password", text: $password)
-            
-            TextField("Re-enter password", text: $passwordCheck)
-            
-            Button {
-                print("register")
-            } label: {
-                Text("Register")
-            }
-            
-            
-        }
-        
-    }
-    
-}
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -167,6 +114,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WelcomeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
