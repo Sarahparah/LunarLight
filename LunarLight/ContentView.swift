@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  LunarLight
 //
-//  Created by Daniel Falkedal on 2022-03-31.
+//  Created by Daniel, Karol, Sarah, Hampus on 2022-03-31.
 //
 
 import SwiftUI
@@ -10,43 +10,44 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
+    @State private var tabIndex = 0
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        
+        
+        
+        VStack{
+            
+            TabButtons(tabIndex: $tabIndex)
+            
+            Divider()
+            
+            Spacer()
+            
+            if tabIndex == 0 {
+                
+                LoginTab()
+                
+            }else{
+                
+                RegisterTab()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
+            Spacer()
+            
+        }.padding()
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -57,11 +58,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -72,6 +73,89 @@ struct ContentView: View {
             }
         }
     }
+}
+
+struct TabButtons: View {
+    
+    @Binding var tabIndex: Int
+    
+    var body: some View {
+        
+        HStack {
+            
+            Button {
+                tabIndex = 0
+            } label: {
+                Text("login")
+            }
+            
+            Divider()
+                .frame(height: UIScreen.main.bounds.size.height * 0.03)
+            
+            Button {
+                tabIndex = 1
+            } label: {
+                Text("Register")
+            }
+        }
+        
+    }
+    
+}
+
+struct LoginTab: View {
+    
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
+    var body: some View {
+        VStack {
+            
+            TextField("Email", text: $email)
+            
+            TextField("Password", text: $password)
+            
+            Spacer()
+            
+            Button {
+                print("login")
+            } label: {
+                Text("Login")
+            }
+        }
+    }
+    
+}
+
+struct RegisterTab: View {
+    
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var passwordCheck: String = ""
+    @State private var username: String = ""
+    
+    var body: some View{
+        
+        VStack{
+            TextField("username", text: $username)
+            
+            TextField("Email", text: $email)
+            
+            TextField("Password", text: $password)
+            
+            TextField("Re-enter password", text: $passwordCheck)
+            
+            Button {
+                print("register")
+            } label: {
+                Text("Register")
+            }
+            
+            
+        }
+        
+    }
+    
 }
 
 private let itemFormatter: DateFormatter = {
