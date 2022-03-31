@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */; };
-		33AE6E0627F5A63C00EEC7E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0527F5A63C00EEC7E3 /* ContentView.swift */; };
+		33AE6E0627F5A63C00EEC7E3 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0527F5A63C00EEC7E3 /* WelcomeView.swift */; };
 		33AE6E0827F5A63E00EEC7E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE6E0727F5A63E00EEC7E3 /* Assets.xcassets */; };
 		33AE6E0B27F5A63E00EEC7E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE6E0A27F5A63E00EEC7E3 /* Preview Assets.xcassets */; };
 		33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */; };
 		33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */; };
+		41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
+		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33AE6E0027F5A63C00EEC7E3 /* LunarLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLightApp.swift; sourceTree = "<group>"; };
-		33AE6E0527F5A63C00EEC7E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		33AE6E0527F5A63C00EEC7E3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		33AE6E0727F5A63E00EEC7E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33AE6E0A27F5A63E00EEC7E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		33AE6E0F27F5A63E00EEC7E3 /* LunarLight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LunarLight.xcdatamodel; sourceTree = "<group>"; };
+		41B977CE27F5AC2C00455E86 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */,
-				33AE6E0527F5A63C00EEC7E3 /* ContentView.swift */,
+				41B977CD27F5ABF000455E86 /* Model */,
+				41B977CC27F5ABE700455E86 /* Views */,
+				41B977CB27F5ABDB00455E86 /* Components */,
 				33AE6E0727F5A63E00EEC7E3 /* Assets.xcassets */,
 				33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */,
 				33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */,
@@ -71,6 +77,30 @@
 				33AE6E0A27F5A63E00EEC7E3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41B977CB27F5ABDB00455E86 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		41B977CC27F5ABE700455E86 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33AE6E0527F5A63C00EEC7E3 /* WelcomeView.swift */,
+				41B977D027F5B44500455E86 /* LoginView.swift */,
+				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		41B977CD27F5ABF000455E86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +173,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B977D127F5B44500455E86 /* LoginView.swift in Sources */,
 				33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
-				33AE6E0627F5A63C00EEC7E3 /* ContentView.swift in Sources */,
+				41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */,
+				33AE6E0627F5A63C00EEC7E3 /* WelcomeView.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
