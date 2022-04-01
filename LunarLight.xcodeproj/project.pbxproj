@@ -17,6 +17,7 @@
 		33D386F127F6F23C00D338B2 /* RegisterQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */; };
 		33E7A90427F6FFF70091502E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90327F6FFF70091502E /* ContentView.swift */; };
 		33E7A90627F703340091502E /* AppIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90527F703340091502E /* AppIndexManager.swift */; };
+		33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90927F727410091502E /* CoredataUserModel.swift */; };
 		41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 		41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D227F70CBC00455E86 /* LobbyView.swift */; };
@@ -38,6 +39,7 @@
 		33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterQuestionsView.swift; sourceTree = "<group>"; };
 		33E7A90327F6FFF70091502E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		33E7A90527F703340091502E /* AppIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIndexManager.swift; sourceTree = "<group>"; };
+		33E7A90927F727410091502E /* CoredataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataUserModel.swift; sourceTree = "<group>"; };
 		41B977CE27F5AC2C00455E86 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		41B977D227F70CBC00455E86 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				41B977DA27F72DB300455E86 /* ChatEntry.swift */,
 				41B977DC27F72E5000455E86 /* Chat.swift */,
+				33E7A90927F727410091502E /* CoredataUserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				41B977D127F5B44500455E86 /* LoginView.swift in Sources */,
 				33D386F127F6F23C00D338B2 /* RegisterQuestionsView.swift in Sources */,
 				33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */,
+				33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */,
 				41B977D527F7123700455E86 /* ChatView.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
 				41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */,

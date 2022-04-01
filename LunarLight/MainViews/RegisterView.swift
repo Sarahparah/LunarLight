@@ -18,12 +18,15 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var passwordCheck: String = ""
     @State private var username: String = ""
+    @State private var age: String = ""
     
     var body: some View {
         
         VStack{
             
-            TextField("username", text: $username)
+            TextField("Username", text: $username)
+            
+            TextField("Age", text: $age)
             
             TextField("Email", text: $email)
             
@@ -66,6 +69,8 @@ struct RegisterView: View {
                 
                 if processRegister() {
                     AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
+                    let coredataUserModel = CoredataUserModel()
+                    coredataUserModel.saveUser(username: username, password: password, age: Int(age)!, email: email)
                 }
                 
             } label: {
@@ -77,6 +82,12 @@ struct RegisterView: View {
     }
     
     private func processRegister() -> Bool {
+        
+        let userAge = Int(age) ?? 11
+        if userAge < 12 {
+            print("Wrong age input")
+            return false
+        }
         
         if password != passwordTwo {
             print("Password not the same buga buga")

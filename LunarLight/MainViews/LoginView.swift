@@ -13,6 +13,12 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var secured: Bool = true
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.id, ascending: true)],
+        //predicate: NSPredicate(format: "name BEGINSWITH %@", "G"), //SQL Query
+        animation: .default)
+    private var users: FetchedResults<User>
+    
     var body: some View {
         VStack {
             
@@ -50,12 +56,27 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                print("login")
-                AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                print("login?")
+                if loginCheck() {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                }
             } label: {
                 Text("Login")
             }
         }
+    }
+    
+    private func loginCheck() -> Bool {
+        
+        for user in users {
+            if (user.username == email || user.email == email) && user.password == password {
+                print("Login success =)")
+                return true
+            }
+        }
+        
+        print("Login failed =(")
+        return false
     }
     
 }
