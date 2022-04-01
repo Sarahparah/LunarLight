@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterView: View {
     
     @State private var password: String = ""
+    @State private var passwordTwo: String = ""
     @State private var secured: Bool = true
     
     @State private var email: String = ""
@@ -32,6 +33,7 @@ struct RegisterView: View {
                     SecureField("Password", text: $password)
                         .padding(4)
                         .border(Color.black, width: 1)
+                        .id(1)
                 } else {
                     
                     // 3
@@ -52,9 +54,19 @@ struct RegisterView: View {
                     }
                 }
             }
+            
+            SecureField("Reenter password", text: $passwordTwo)
+                .padding(4)
+                .border(Color.black, width: 1)
+                .id(2)
                         
             Button {
-                print("register")
+                
+                if password == passwordTwo{
+                    print("register")
+                }else{
+                    print("Password not the same buga buga")
+                }
             } label: {
                 Text("Register")
             }
