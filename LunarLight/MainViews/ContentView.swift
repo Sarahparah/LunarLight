@@ -14,6 +14,12 @@ struct ContentView: View {
     
     init() {
         appIndexManager = AppIndexManager.singletonObject
+        
+        let preferences = UserDefaults.standard
+        let currentUserIdKey = "currentUserId"
+        if preferences.object(forKey: currentUserIdKey) == nil {
+            initiateCurrentUserId()
+        }
     }
     
     var body: some View {
@@ -31,6 +37,23 @@ struct ContentView: View {
             ChatView()
         }
         
+    }
+    
+    private func initiateCurrentUserId() {
+        
+        let preferences = UserDefaults.standard
+
+        let currentUserIdKey = "currentUserId"
+
+        let currentUserId = 1
+        preferences.set(currentUserId, forKey: currentUserIdKey)
+
+        //  Save to disk
+        let didSave = preferences.synchronize()
+
+        if !didSave {
+            //  Couldn't save (I've never seen this happen in real world testing)
+        }
     }
 }
 
