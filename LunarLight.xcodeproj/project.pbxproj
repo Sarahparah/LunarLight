@@ -13,6 +13,7 @@
 		33AE6E0B27F5A63E00EEC7E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE6E0A27F5A63E00EEC7E3 /* Preview Assets.xcassets */; };
 		33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */; };
 		33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */; };
+		33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386EE27F6EF7600D338B2 /* InputValidator.swift */; };
 		41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 		33AE6E0A27F5A63E00EEC7E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		33AE6E0F27F5A63E00EEC7E3 /* LunarLight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LunarLight.xcdatamodel; sourceTree = "<group>"; };
+		33D386EE27F6EF7600D338B2 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		41B977CE27F5AC2C00455E86 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 		33D386EC27F6EAA400D338B2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				33D386EE27F6EF7600D338B2 /* InputValidator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
 				41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */,
+				33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */,
 				33AE6E0627F5A63C00EEC7E3 /* WelcomeView.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
 			);

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    private let inputValidator = InputValidator()
+    
     @State private var password: String = ""
     @State private var passwordTwo: String = ""
     @State private var secured: Bool = true
@@ -62,17 +64,29 @@ struct RegisterView: View {
                         
             Button {
                 
-                if password == passwordTwo{
-                    print("register")
-                }else{
-                    print("Password not the same buga buga")
-                }
+                processRegister()
+                
             } label: {
                 Text("Register")
             }
             
         }
+    
+    }
+    
+    private func processRegister() {
         
+        if password != passwordTwo{
+            print("Password not the same buga buga")
+            return
+        }
+        
+        if !inputValidator.isValidEmail(email) {
+            print("Email wrong format")
+            return
+        }
+        
+        print("register")
         
     }
 }
