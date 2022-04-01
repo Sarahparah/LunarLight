@@ -10,11 +10,20 @@ import SwiftUI
 struct LobbyView: View {
     var body: some View {
         
+//        Button {
+//            AppIndexManager.singletonObject.appIndex = AppIndex.chatView
+//        } label: {
+//            Text("Wolrd lobby")
+//        }
+        Text("Lobbyview")
+        
         Button {
-            AppIndexManager.singletonObject.appIndex = AppIndex.chatView
+            AppIndexManager.singletonObject.appIndex = AppIndex.lobbyChatView
+
         } label: {
-            Text("go to chat room")
+            Text("Go to lobbychatView")
         }
+
 
         
     }

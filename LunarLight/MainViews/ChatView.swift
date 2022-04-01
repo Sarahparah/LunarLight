@@ -8,30 +8,69 @@
 import SwiftUI
 
 struct ChatView: View {
+    
+    var entry: ChatEntry? = nil
+    let defaultContent = "Enter text..."
+    
+    
+    
+    @EnvironmentObject var chat : Chat
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State var content: String = ""
+    
     var body: some View {
-        HStack{
-            
-            Button {
-                AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
-            } label: {
-                HStack{
-                    Image(systemName: "chevron.backward")
-                    Text( "Lobby")
-                    Spacer()
+        
+        VStack{
+            TextEditor(text: $content)
+                .onTapGesture {
+                    clearText()
                 }
-                
-            }.padding()
-            Spacer()
             
+        }.navigationBarItems(trailing: Button(action: {
+            saveEntry()
+            presentationMode.wrappedValue.dismiss()
+            
+        } ,label: { Text("save") }))
+            .onAppear(perform: setContent)
+    }
+    
+    func clearText() {
+        
+        if entry == nil{
+            content = ""
+        }
+        
+    }
+    
+    func setContent(){
+        
+        //        guard  let entry = entry else {return}
+        
+        if let entry = entry{
+            
+            
+            content = entry.content
+        } else {
+            content = defaultContent
             
         }
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Spacer()
     }
-}
-
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
+    
+    
+    func saveEntry() {
+        
+        if let entry = entry {
+            //uppdatera befintlig entry
+            chat.updateEntry(entry: entry, with: content)
+            
+            
+        } else {
+            //skapa en ny entry
+            let newEntry = ChatEntry(content: content)
+            chat.entries.append(newEntry)
+        }
+        
     }
+    
 }

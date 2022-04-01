@@ -29,6 +29,8 @@ struct ContentView: View {
             LobbyView()
         case AppIndex.chatView:
             ChatView()
+        case AppIndex.lobbyChatView:
+            LobbyChatView()
         }
         
     }
