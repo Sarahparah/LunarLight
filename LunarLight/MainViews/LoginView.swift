@@ -68,16 +68,15 @@ struct LoginView: View {
     
     private func loginCheck() -> Bool {
         
-        var loginSuccess: Bool = false
-        
-        ForEach(users) { user in
-            //if user.email == email && user.password == password {
-                //loginSuccess = true
-            //}
+        for user in users {
+            if (user.username == email || user.email == email) && user.password == password {
+                print("Login success =)")
+                return true
+            }
         }
         
         print("Login failed =(")
-        return loginSuccess
+        return false
     }
     
 }
