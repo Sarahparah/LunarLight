@@ -18,7 +18,7 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var passwordCheck: String = ""
     @State private var username: String = ""
-
+    
     var body: some View {
         
         VStack{
@@ -64,31 +64,35 @@ struct RegisterView: View {
                         
             Button {
                 
-                processRegister()
+                if processRegister() {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
+                }
                 
             } label: {
                 Text("Register")
             }
             
         }
-    
+        
     }
     
-    private func processRegister() {
+    private func processRegister() -> Bool {
         
-        if password != passwordTwo{
+        if password != passwordTwo {
             print("Password not the same buga buga")
-            return
+            return false
         }
         
         if !inputValidator.isValidEmail(email) {
             print("Email wrong format")
-            return
+            return false
         }
         
         print("register")
+        return true
         
     }
+    
 }
 
 struct SecurePassword_Previews: PreviewProvider {

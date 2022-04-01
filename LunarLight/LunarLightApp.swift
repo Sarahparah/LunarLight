@@ -13,7 +13,7 @@ struct LunarLightApp: App {
 
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -14,6 +14,9 @@
 		33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */; };
 		33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */; };
 		33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386EE27F6EF7600D338B2 /* InputValidator.swift */; };
+		33D386F127F6F23C00D338B2 /* RegisterQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */; };
+		33E7A90427F6FFF70091502E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90327F6FFF70091502E /* ContentView.swift */; };
+		33E7A90627F703340091502E /* AppIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90527F703340091502E /* AppIndexManager.swift */; };
 		41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +30,9 @@
 		33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		33AE6E0F27F5A63E00EEC7E3 /* LunarLight.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LunarLight.xcdatamodel; sourceTree = "<group>"; };
 		33D386EE27F6EF7600D338B2 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
+		33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterQuestionsView.swift; sourceTree = "<group>"; };
+		33E7A90327F6FFF70091502E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		33E7A90527F703340091502E /* AppIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIndexManager.swift; sourceTree = "<group>"; };
 		41B977CE27F5AC2C00455E86 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +67,8 @@
 		33AE6E0227F5A63C00EEC7E3 /* LunarLight */ = {
 			isa = PBXGroup;
 			children = (
-				33D386EC27F6EAA400D338B2 /* Utils */,
 				33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */,
+				33D386EC27F6EAA400D338B2 /* Utils */,
 				41B977CD27F5ABF000455E86 /* Models */,
 				41B977CC27F5ABE700455E86 /* MainViews */,
 				33D386ED27F6EAF400D338B2 /* SubViews */,
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				33D386EE27F6EF7600D338B2 /* InputValidator.swift */,
+				33E7A90527F703340091502E /* AppIndexManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -100,9 +107,11 @@
 		41B977CC27F5ABE700455E86 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				33E7A90327F6FFF70091502E /* ContentView.swift */,
 				33AE6E0527F5A63C00EEC7E3 /* WelcomeView.swift */,
 				41B977D027F5B44500455E86 /* LoginView.swift */,
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
+				33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -185,9 +194,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B977D127F5B44500455E86 /* LoginView.swift in Sources */,
+				33D386F127F6F23C00D338B2 /* RegisterQuestionsView.swift in Sources */,
 				33AE6E0D27F5A63E00EEC7E3 /* Persistence.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
 				41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */,
+				33E7A90627F703340091502E /* AppIndexManager.swift in Sources */,
+				33E7A90427F6FFF70091502E /* ContentView.swift in Sources */,
 				33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */,
 				33AE6E0627F5A63C00EEC7E3 /* WelcomeView.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
