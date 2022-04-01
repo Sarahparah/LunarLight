@@ -20,27 +20,30 @@ struct WelcomeView: View {
     
     var body: some View {
         
+            
+            VStack{
+                
+                TabButtons(tabIndex: $tabIndex)
+                
+                Divider()
+                
+                Spacer()
+                
+                if tabIndex == 0 {
+                    
+                   LoginView()
+                    
+                }else{
+                    
+                   RegisterView()
+                }
+                Spacer()
+                
+            }.padding()
+            
         
         
-        VStack{
-            
-            TabButtons(tabIndex: $tabIndex)
-            
-            Divider()
-            
-            Spacer()
-            
-            if tabIndex == 0 {
-                
-               LoginView()
-                
-            }else{
-                
-               RegisterView()
-            }
-            Spacer()
-            
-        }.padding()
+        
     }
     
     private func addItem() {

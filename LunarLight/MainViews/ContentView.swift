@@ -18,11 +18,17 @@ struct ContentView: View {
     
     var body: some View {
         
+        
         switch appIndexManager.appIndex {
+            
         case AppIndex.welcomeView:
             WelcomeView()
         case AppIndex.registerQuestionsView:
             RegisterQuestionsView()
+        case AppIndex.lobbyView:
+            LobbyView()
+        case AppIndex.chatView:
+            ChatView()
         }
         
     }

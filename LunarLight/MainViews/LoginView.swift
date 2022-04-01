@@ -51,6 +51,7 @@ struct LoginView: View {
             
             Button {
                 print("login")
+                AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
             } label: {
                 Text("Login")
             }
