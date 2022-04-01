@@ -59,10 +59,11 @@
 		33AE6E0227F5A63C00EEC7E3 /* LunarLight */ = {
 			isa = PBXGroup;
 			children = (
+				33D386EC27F6EAA400D338B2 /* Utils */,
 				33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */,
-				41B977CD27F5ABF000455E86 /* Model */,
-				41B977CC27F5ABE700455E86 /* Views */,
-				41B977CB27F5ABDB00455E86 /* Components */,
+				41B977CD27F5ABF000455E86 /* Models */,
+				41B977CC27F5ABE700455E86 /* MainViews */,
+				33D386ED27F6EAF400D338B2 /* SubViews */,
 				33AE6E0727F5A63E00EEC7E3 /* Assets.xcassets */,
 				33AE6E0C27F5A63E00EEC7E3 /* Persistence.swift */,
 				33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */,
@@ -79,28 +80,35 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		41B977CB27F5ABDB00455E86 /* Components */ = {
+		33D386EC27F6EAA400D338B2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Components;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		41B977CC27F5ABE700455E86 /* Views */ = {
+		33D386ED27F6EAF400D338B2 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		41B977CC27F5ABE700455E86 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
 				33AE6E0527F5A63C00EEC7E3 /* WelcomeView.swift */,
 				41B977D027F5B44500455E86 /* LoginView.swift */,
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
 			);
-			path = Views;
+			path = MainViews;
 			sourceTree = "<group>";
 		};
-		41B977CD27F5ABF000455E86 /* Model */ = {
+		41B977CD27F5ABF000455E86 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
