@@ -25,6 +25,7 @@
 		41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D627F7243B00455E86 /* LobbyChatView.swift */; };
 		41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DA27F72DB300455E86 /* ChatEntry.swift */; };
 		41B977DD27F72E5000455E86 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DC27F72E5000455E86 /* Chat.swift */; };
+		41B977E027FAEED900455E86 /* TitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DF27FAEED900455E86 /* TitleRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		41B977D627F7243B00455E86 /* LobbyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyChatView.swift; sourceTree = "<group>"; };
 		41B977DA27F72DB300455E86 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
 		41B977DC27F72E5000455E86 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		41B977DF27FAEED900455E86 /* TitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +126,10 @@
 				41B977D027F5B44500455E86 /* LoginView.swift */,
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
 				33D386F027F6F23C00D338B2 /* RegisterQuestionsView.swift */,
-				41B977D227F70CBC00455E86 /* LobbyView.swift */,
-				41B977D427F7123700455E86 /* ChatView.swift */,
 				41B977D627F7243B00455E86 /* LobbyChatView.swift */,
+				41B977D427F7123700455E86 /* ChatView.swift */,
+				41B977D227F70CBC00455E86 /* LobbyView.swift */,
+				41B977DE27FAEE8200455E86 /* Components */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -139,6 +142,14 @@
 				33E7A90927F727410091502E /* CoredataUserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		41B977DE27FAEE8200455E86 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41B977DF27FAEED900455E86 /* TitleRow.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */,
 				33AE6E0627F5A63C00EEC7E3 /* WelcomeView.swift in Sources */,
 				41B977DD27F72E5000455E86 /* Chat.swift in Sources */,
+				41B977E027FAEED900455E86 /* TitleRow.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

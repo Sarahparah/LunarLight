@@ -36,11 +36,11 @@ class Chat: ObservableObject {
     
     func addMockData() {
         
-        entries.append(ChatEntry(content: "dag 1"))
-        entries.append(ChatEntry(content: "åt mat"))
-        entries.append(ChatEntry(content: "sov dåligt"))
-        entries.append(ChatEntry(content: "passade barn"))
-        entries.append(ChatEntry(content: "gjorde en shoppinglista"))
+        entries.append(ChatEntry(content: "dag 1", imageName: "person" ))
+        entries.append(ChatEntry(content: "åt mat", imageName: "person"))
+        entries.append(ChatEntry(content: "sov dåligt", imageName: "person"))
+        entries.append(ChatEntry(content: "passade barn", imageName: "person"))
+        entries.append(ChatEntry(content: "gjorde en shoppinglista", imageName: "person"))
         
     }
     

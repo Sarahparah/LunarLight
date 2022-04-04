@@ -28,7 +28,7 @@ struct ChatView: View {
                 }
             
         }.navigationBarItems(trailing: Button(action: {
-            saveEntry()
+            //saveEntry()
             presentationMode.wrappedValue.dismiss()
             
         } ,label: { Text("save") }))
@@ -58,19 +58,19 @@ struct ChatView: View {
     }
     
     
-    func saveEntry() {
-        
-        if let entry = entry {
-            //uppdatera befintlig entry
-            chat.updateEntry(entry: entry, with: content)
-            
-            
-        } else {
-            //skapa en ny entry
-            let newEntry = ChatEntry(content: content)
-            chat.entries.append(newEntry)
-        }
-        
-    }
+//    func saveEntry() {
+//
+//        if let entry = entry {
+//            //uppdatera befintlig entry
+//            chat.updateEntry(entry: entry, with: content)
+//
+//
+//        } else {
+//            //skapa en ny entry
+//            let newEntry = ChatEntry(content: content, imageName: )
+//            chat.entries.append(newEntry)
+//        }
+//        
+//    }
     
 }

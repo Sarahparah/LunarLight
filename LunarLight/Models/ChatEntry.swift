@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
@@ -15,6 +16,7 @@ struct ChatEntry: Identifiable, Equatable {
     
     var content: String
     var date: Date = Date()
+    var imageName: String
     
     
     

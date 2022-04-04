@@ -15,33 +15,16 @@ struct LobbyChatView: View {
     @State var showInfo : Bool = false
     
     
+    
     var body: some View {
-//        NavigationView {
-            VStack{
-                
-                VStack{
-                    
-                    Text("Lunar Light")
-                        .font(.title)
-                        .foregroundColor(.purple)
-                    Button {
-                        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
-                    } label: {
-                        HStack{
-                            Image(systemName: "chevron.backward")
-                            Text( "Lobby")
-                            Spacer()
-                        }
-                        
-                    }.padding()
-                    Spacer()
-                    
-                }
-                
-            }
-            
-            
-            List(){
+        //        NavigationView {
+        
+        
+        
+        
+        
+        NavigationView{
+            List{
                 
                 
                 
@@ -49,23 +32,24 @@ struct LobbyChatView: View {
                     
                     NavigationLink(destination: ChatView(entry: entry)){
                         Text(entry.content)
-
+                        Image(systemName: entry.imageName)
+                        
                     }
                     .onAppear(perform: { print(entry.date)})
-
+                    
                 }.onDelete(perform: { indexSet in
                     print ("delete")
                     chat.entries.remove(atOffsets: indexSet)
-
+                    
                 })
-        
                 
             }
-        Spacer()
         }
-        
-                           }
-  
+        Spacer()
+    }
+    
+}
+
 
 
 
