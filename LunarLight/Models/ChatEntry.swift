@@ -14,7 +14,7 @@ struct ChatEntry: Identifiable, Equatable {
     
     var id =  UUID()
     
-    var content: String
+    var name: String
     var date: Date = Date()
     var imageName: String
     

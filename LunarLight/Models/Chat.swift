@@ -24,7 +24,7 @@ class Chat: ObservableObject {
         
         if let index = entries.firstIndex(of: entry) {
             if let content = content {
-                entries[index].content = content
+                entries[index].name = content
             }
             
         }
@@ -36,11 +36,11 @@ class Chat: ObservableObject {
     
     func addMockData() {
         
-        entries.append(ChatEntry(content: "dag 1", imageName: "person" ))
-        entries.append(ChatEntry(content: "åt mat", imageName: "person"))
-        entries.append(ChatEntry(content: "sov dåligt", imageName: "person"))
-        entries.append(ChatEntry(content: "passade barn", imageName: "person"))
-        entries.append(ChatEntry(content: "gjorde en shoppinglista", imageName: "person"))
+        entries.append(ChatEntry(name: "Hampus", imageName: "person" ))
+        entries.append(ChatEntry(name: "Daniel", imageName: "person"))
+        entries.append(ChatEntry(name: "Karol", imageName: "person"))
+        entries.append(ChatEntry(name: "Sarah", imageName: "person"))
+        entries.append(ChatEntry(name: "Bill", imageName: "person"))
         
     }
     
