@@ -14,38 +14,29 @@ struct LobbyChatView: View {
     @StateObject var chat = Chat()
     @State var showInfo : Bool = false
     
-    
-    
     var body: some View {
-        //        NavigationView {
         
-        
-        
-        
-        
-        NavigationView{
-            List{
-                
-                
-                
-                ForEach(chat.entries){ entry in
+        VStack{
+            NavigationView{
+                List{
+                    ForEach(chat.entries){ entry in
+                        
+                        NavigationLink(destination: ChatView(entry: entry)){
+                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
+                        }
+                        .onAppear(perform: { print(entry.date)})
+                        
+                    }.onDelete(perform: { indexSet in
+                        print ("delete")
+                        chat.entries.remove(atOffsets: indexSet)
+                        
+                    })
                     
-                    NavigationLink(destination: ChatView(entry: entry)){
-                        TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
-                    }
-                    .onAppear(perform: { print(entry.date)})
-                    
-                }.onDelete(perform: { indexSet in
-                    print ("delete")
-                    chat.entries.remove(atOffsets: indexSet)
-                    
-                })
-                
+                }
             }
+            Spacer()
         }
-        Spacer()
     }
-    
 }
 
 

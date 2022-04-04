@@ -8,24 +8,30 @@
 import SwiftUI
 
 struct LobbyView: View {
+    
     var body: some View {
         
-//        Button {
-//            AppIndexManager.singletonObject.appIndex = AppIndex.chatView
-//        } label: {
-//            Text("Wolrd lobby")
-//        }
-        Text("Lobbyview")
-        
-        Button {
-            AppIndexManager.singletonObject.appIndex = AppIndex.lobbyChatView
-
-        } label: {
-            Text("Go to lobbychatView")
+        TabView {
+            
+            Text("Lobby View")
+                .tabItem{
+                    Image(systemName: "house")
+                    Text("Chat")
+                }
+            
+            LobbyChatView()
+                .tabItem{
+                    Image(systemName: "bubble.left.fill")
+                    Text("Lobby chat")
+                }
+            
+            Text("Some View??")
+                .tabItem{
+                    Image(systemName: "gearshape.fill")
+                    Text("Some View")
+                }
         }
-
-
-        
+        .font(.headline)
     }
 }
 
