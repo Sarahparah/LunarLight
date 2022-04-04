@@ -50,7 +50,7 @@ struct ChatView: View {
         if let entry = entry{
             
             
-            content = entry.content
+            content = entry.name
         } else {
             content = defaultContent
             

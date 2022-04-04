@@ -31,9 +31,7 @@ struct LobbyChatView: View {
                 ForEach(chat.entries){ entry in
                     
                     NavigationLink(destination: ChatView(entry: entry)){
-                        Text(entry.content)
-                        Image(systemName: entry.imageName)
-                        
+                        TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
                     }
                     .onAppear(perform: { print(entry.date)})
                     
