@@ -34,18 +34,20 @@ struct RegisterView: View {
             VStack{
                 Text("Username:")
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 14))
                 
                     
                 
                 TextField("Ex.. BillPrill", text: $username)
                 .multilineTextAlignment(.center)
-                .padding(4)
+                .padding(2)
                 .border(.black, width: 1.0)
             }
             VStack{
                 
             Text("Date of birth:")
             .frame(maxWidth: .infinity, alignment: .leading)
+            .font(.system(size: 14))
             
             
             Button {
@@ -59,34 +61,40 @@ struct RegisterView: View {
             .padding(4)
             .border(.black, width: 1.0)
             .padding(.top, 0.1)
+            .id(8)
             
             
             
             if showDatePicker {
+                
+               
+                
                 DatePicker("Select Birthdate", selection: $date,
                            displayedComponents: [.date])
                     .accentColor(Color.red)
                     .datePickerStyle(WheelDatePickerStyle())
                 }
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
             
             VStack{
                 Text("Email:")
                     .frame(maxWidth: .infinity,alignment: .leading)
+                    .font(.system(size: 14))
                 
                 
                 TextField("Ex.. bill@email.se", text: $email)
                     .multilineTextAlignment(.center)
-                    .padding(4)
+                    .padding(2)
                     .border(.black, width: 1.0)
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
             
             VStack{
                 
                 Text("Password:")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
             HStack{
                 
                 
@@ -96,7 +104,7 @@ struct RegisterView: View {
                     
                     SecureField("Password", text: $password)
                         .multilineTextAlignment(.center)
-                        .padding(4)
+                        .padding(2)
                         .border(Color.black, width: 1.0)
                         .id(1)
                 } else {
@@ -107,7 +115,7 @@ struct RegisterView: View {
                         .frame(width: UIScreen.main.bounds.size.width * 0.4, alignment: .leading)
                     
                     TextField("Password", text: $password)
-                        .padding(4)
+                        .padding(2)
                         .border(Color.black, width: 1)
                 }
                 
@@ -124,21 +132,14 @@ struct RegisterView: View {
                 }
             }
             }
-            .padding(.top, 20)
+            .padding(.top, 10)
             
-            VStack{
-                
-                Text("Reenter password:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 
             SecureField("Reenter password", text: $passwordTwo)
                 .multilineTextAlignment(.center)
                 .padding(4)
                 .border(Color.black, width: 1)
                 .id(2)
-            }
-            .padding(.top, 20)
-            
             
             Spacer()
         
@@ -190,6 +191,8 @@ struct SecurePassword_Previews: PreviewProvider {
         Group {
             RegisterView()
             RegisterView()
+            RegisterView()
+.previewInterfaceOrientation(.landscapeRight)
         }
     }
 }
