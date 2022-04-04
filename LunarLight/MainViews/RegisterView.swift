@@ -31,48 +31,81 @@ struct RegisterView: View {
     var body: some View {
         
         VStack{
-            
-            TextField("Username", text: $username)
+            VStack{
+                Text("Username:")
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
+                    
+                
+                TextField("Ex.. BillPrill", text: $username)
+                .multilineTextAlignment(.center)
+                .padding(4)
+                .border(.black, width: 1.0)
+            }
+            VStack{
+                
+            Text("Date of birth:")
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            
             Button {
                 showDatePicker.toggle()
             } label: {
-                
-                HStack{
-                    Text("Date of Birth")
-                        .padding(.trailing, 20)
-                        
-                    Text(dateFormatter.string(from: date))
-                }
-                
-                Spacer()
-                
-                
-            }
 
+                    Text(dateFormatter.string(from: date))
+               
+            }
+            .frame(maxWidth: .infinity)
+            .padding(4)
+            .border(.black, width: 1.0)
+            .padding(.top, 0.1)
+            
+            
+            
             if showDatePicker {
                 DatePicker("Select Birthdate", selection: $date,
                            displayedComponents: [.date])
                     .accentColor(Color.red)
-                    .datePickerStyle(
-                        WheelDatePickerStyle()
-                    )
+                    .datePickerStyle(WheelDatePickerStyle())
+                }
             }
+            .padding(.top, 20)
             
-            TextField("Email", text: $email)
+            VStack{
+                Text("Email:")
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                
+                
+                TextField("Ex.. bill@email.se", text: $email)
+                    .multilineTextAlignment(.center)
+                    .padding(4)
+                    .border(.black, width: 1.0)
+            }
+            .padding(.top, 20)
             
+            VStack{
+                
+                Text("Password:")
+                    .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
+                
                 
                 if secured {
                     
                     
+                    
                     SecureField("Password", text: $password)
+                        .multilineTextAlignment(.center)
                         .padding(4)
-                        .border(Color.black, width: 1)
+                        .border(Color.black, width: 1.0)
                         .id(1)
                 } else {
                     
                     // 3
+                    
+                    Text("Username")
+                        .frame(width: UIScreen.main.bounds.size.width * 0.4, alignment: .leading)
+                    
                     TextField("Password", text: $password)
                         .padding(4)
                         .border(Color.black, width: 1)
@@ -90,14 +123,26 @@ struct RegisterView: View {
                     }
                 }
             }
+            }
+            .padding(.top, 20)
             
+            VStack{
+                
+                Text("Reenter password:")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
             SecureField("Reenter password", text: $passwordTwo)
+                .multilineTextAlignment(.center)
                 .padding(4)
                 .border(Color.black, width: 1)
                 .id(2)
-                 
+            }
+            .padding(.top, 20)
+            
             
             Spacer()
+        
+        
             
             Button {
                 
@@ -115,9 +160,11 @@ struct RegisterView: View {
             
             
         }
-        
-        
+        .padding()
     }
+        
+    
+
     
     private func processRegister() -> Bool {
         
@@ -140,6 +187,9 @@ struct RegisterView: View {
 
 struct SecurePassword_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        Group {
+            RegisterView()
+            RegisterView()
+        }
     }
 }
