@@ -18,15 +18,46 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var passwordCheck: String = ""
     @State private var username: String = ""
-    @State private var age: String = ""
+    
+    @State private var showDatePicker: Bool = false
+    @State private var date: Date = Date()
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }
     
     var body: some View {
         
         VStack{
             
             TextField("Username", text: $username)
-            
-            TextField("Age", text: $age)
+                
+            Button {
+                showDatePicker.toggle()
+            } label: {
+                
+                HStack{
+                    Text("Date of Birth")
+                        .padding(.trailing, 20)
+                        
+                    Text(dateFormatter.string(from: date))
+                }
+                
+                Spacer()
+                
+                
+            }
+
+            if showDatePicker {
+                DatePicker("Select Birthdate", selection: $date,
+                           displayedComponents: [.date])
+                    .accentColor(Color.red)
+                    .datePickerStyle(
+                        WheelDatePickerStyle()
+                    )
+            }
             
             TextField("Email", text: $email)
             
@@ -64,30 +95,31 @@ struct RegisterView: View {
                 .padding(4)
                 .border(Color.black, width: 1)
                 .id(2)
-                        
+                 
+            
+            Spacer()
+            
             Button {
                 
                 if processRegister() {
                     AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
                     let coredataUserModel = CoredataUserModel()
-                    coredataUserModel.saveUser(username: username, password: password, age: Int(age)!, email: email)
+                    coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
+                    print()
                 }
                 
             } label: {
                 Text("Register")
-            }
+            }.padding(.bottom, 20)
+            
+            
             
         }
+        
         
     }
     
     private func processRegister() -> Bool {
-        
-        let userAge = Int(age) ?? 11
-        if userAge < 12 {
-            print("Wrong age input")
-            return false
-        }
         
         if password != passwordTwo {
             print("Password not the same buga buga")

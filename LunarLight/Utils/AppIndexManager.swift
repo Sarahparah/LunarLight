@@ -12,7 +12,7 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
-    @Published var appIndex = AppIndex.lobbyView
+    @Published var appIndex = AppIndex.welcomeView
     
     private init() {
         //SINGLETON. PRIVATE INIT.

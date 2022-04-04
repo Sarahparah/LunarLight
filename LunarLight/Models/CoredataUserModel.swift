@@ -18,7 +18,7 @@ class CoredataUserModel {
 
     }
     
-    func saveUser(username: String, password: String, age: Int, email: String) {
+    func saveUser(username: String, password: String, dateOfBirth: Date, email: String) {
         
         print("Saving user...")
         
@@ -40,7 +40,7 @@ class CoredataUserModel {
         user.id = Int16(currentUserId)
         user.username = username
         user.password = password
-        user.age = Int16(age)
+        user.dateOfBirth = dateOfBirth
         user.email = email
 
         do {
