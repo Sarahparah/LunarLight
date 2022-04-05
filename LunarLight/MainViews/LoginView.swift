@@ -58,6 +58,8 @@ struct LoginView: View {
             Button {
                 print("login?")
                 if loginCheck() {
+                    AppIndexManager.singletonObject.userName = email
+                    print("username: \(AppIndexManager.singletonObject.userName)")
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 }
             } label: {

@@ -26,7 +26,7 @@ struct ProfileView: View {
         print("username: \(AppIndexManager.singletonObject.userName)")
         
         stone = testData.stoneArray[3]
-        name = "Sarah"
+        name = AppIndexManager.singletonObject.userName
     }
     
     var body: some View {
