@@ -19,9 +19,17 @@ class InputValidator {
             return false
         }
         
-
+        //TODO: check for unique value in database
         
+        return true
+    }
+    
+    func isValidUsername(_ username: String) -> Bool {
         
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789")
+        if username.rangeOfCharacter(from: characterset.inverted) != nil {
+            return false
+        }
         
         //TODO: check for unique value in database
         
