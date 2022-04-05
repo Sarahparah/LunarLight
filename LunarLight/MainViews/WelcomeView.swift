@@ -18,10 +18,11 @@ struct WelcomeView: View {
         GridItem(.flexible(minimum: 100))
     ]
     
-    @State var selectedImage = ""
+    @State var selectedImage: String
     
     init (){
         selectedImage = profileImages[0]
+        print("Selected image: \(selectedImage)")
     }
     
     var body: some View {
@@ -47,9 +48,20 @@ struct WelcomeView: View {
                         .cornerRadius(65)
                     }
                 })
-            }
+            }.frame(height: UIScreen.main.bounds.height * 0.4)
 
             Spacer()
+            
+            Text("Some welcome info message... I dunno?")
+            
+            Spacer()
+            
+            Button {
+                AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+            } label: {
+                Text("Enter the world of Lunar Light")
+            }
+
         }.padding()
     }
 }

@@ -194,6 +194,11 @@ struct RegisterView: View {
             return false
         }
         
+        if password.count < 5 {
+            print("Password must be at least 5 chars")
+            return false
+        }
+        
         if !inputValidator.isValidEmail(email) {
             print("Email wrong format")
             return false
