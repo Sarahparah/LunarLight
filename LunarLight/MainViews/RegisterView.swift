@@ -158,10 +158,12 @@ struct RegisterView: View {
                 Button {
                     
                     if processRegister() {
-                        AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
                         let coredataUserModel = CoredataUserModel()
                         coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
-                        print()
+                        AppIndexManager.singletonObject.userName = username
+                        print("username: \(AppIndexManager.singletonObject.userName)")
+                        AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
+
                     }
                     
                 } label: {

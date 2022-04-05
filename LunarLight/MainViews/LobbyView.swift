@@ -25,10 +25,11 @@ struct LobbyView: View {
                     Text("Lobby chat")
                 }
             
-            Text("Some View??")
+            ProfileView()
                 .tabItem{
                     Image(systemName: "gearshape.fill")
-                    Text("Some View")
+                    Text("Profile")
+                    
                 }
         }
         .font(.headline)
@@ -37,6 +38,6 @@ struct LobbyView: View {
 
 struct LobbyView_Previews: PreviewProvider {
     static var previews: some View {
-        LobbyView()
+        LobbyView( )
     }
 }
