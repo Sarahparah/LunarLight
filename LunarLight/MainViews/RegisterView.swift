@@ -21,11 +21,25 @@ struct RegisterView: View {
     
     @State private var showDatePicker: Bool = false
     @State private var date: Date = Date()
+    var currentYear: Int = -1
+    var minimumYear: Date = Date()
+    var maximumYear: Date = Date()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter
+    }
+    
+    init(){
+        
+        currentYear = Calendar.current.component(.year, from: Date())
+        minimumYear = Calendar.current.date(from:
+            DateComponents(year: currentYear-12)) ?? Date()
+        maximumYear = Calendar.current.date(from:
+            DateComponents(year: currentYear-120)) ?? Date()
+        date = minimumYear
+        
     }
     
     var body: some View {
@@ -53,8 +67,11 @@ struct RegisterView: View {
             Button {
                 showDatePicker.toggle()
             } label: {
-
-                    Text(dateFormatter.string(from: date))
+                    
+                    Text(dateFormatter.string(from: minimumYear))
+                    .accentColor(showDatePicker ? Color.blue : Color.black)
+                
+                
                
             }
             .frame(maxWidth: .infinity)
@@ -70,7 +87,7 @@ struct RegisterView: View {
                
                 
                 DatePicker("Select Birthdate", selection: $date,
-                           displayedComponents: [.date])
+                    in: maximumYear...minimumYear, displayedComponents: [.date])
                     .accentColor(Color.red)
                     .datePickerStyle(WheelDatePickerStyle())
                 }
