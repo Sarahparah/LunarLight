@@ -18,7 +18,6 @@
 		33E7A90427F6FFF70091502E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90327F6FFF70091502E /* ContentView.swift */; };
 		33E7A90627F703340091502E /* AppIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90527F703340091502E /* AppIndexManager.swift */; };
 		33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90927F727410091502E /* CoredataUserModel.swift */; };
-		41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 		41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D227F70CBC00455E86 /* LobbyView.swift */; };
 		41B977D527F7123700455E86 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D427F7123700455E86 /* ChatView.swift */; };
@@ -26,6 +25,7 @@
 		41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DA27F72DB300455E86 /* ChatEntry.swift */; };
 		41B977DD27F72E5000455E86 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DC27F72E5000455E86 /* Chat.swift */; };
 		41B977E027FAEED900455E86 /* TitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DF27FAEED900455E86 /* TitleRow.swift */; };
+		D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,8 +230,8 @@
 				33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */,
 				41B977D527F7123700455E86 /* ChatView.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
+				D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */,
 				41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */,
-				41B977CF27F5AC2C00455E86 /* RegisterView.swift in Sources */,
 				33E7A90627F703340091502E /* AppIndexManager.swift in Sources */,
 				33E7A90427F6FFF70091502E /* ContentView.swift in Sources */,
 				33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */,
