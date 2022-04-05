@@ -33,7 +33,7 @@ struct ProfileView: View {
         
         ZStack{
             Color.cyan
-                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(.top)
             
             
             

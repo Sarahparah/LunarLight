@@ -11,6 +11,8 @@ struct LobbyView: View {
     
     var body: some View {
         
+        
+        
         TabView {
             
             Text("Lobby View")
@@ -34,6 +36,7 @@ struct LobbyView: View {
         }
         .font(.headline)
     }
+
 }
 
 struct LobbyView_Previews: PreviewProvider {
