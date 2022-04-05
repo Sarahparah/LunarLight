@@ -1,122 +1,45 @@
 //
-//  ContentView.swift
+//  RegisterQuestionsView.swift
 //  LunarLight
 //
-//  Created by Daniel, Karol, Sarah, Hampus on 2022-03-31.
+//  Created by Daniel Falkedal on 2022-04-01.
 //
 
+import Foundation
 import SwiftUI
-import CoreData
 
 struct WelcomeView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    var profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
-    @State private var tabIndex = 0
+    @State var selectedImage = ""
+    
+    init (){
+        selectedImage = profileImages[0]
+    }
     
     var body: some View {
         
+        VStack{
+            Text("Welcome")
+                .font(.title)
             
-            VStack{
-                
-                TabButtons(tabIndex: $tabIndex)
-                
-                Divider()
-                
-                Spacer()
-                
-                if tabIndex == 0 {
-                    
-                   LoginView()
-                    
-                }else{
-                    
-                   RegisterView()
+            HStack {
+                ForEach(profileImages, id: \.self) { imageString in
+                    Button {
+                        selectedImage = imageString
+                    } label: {
+                        Image(imageString)
+                    }.background(imageString == selectedImage ? Color.red : Color.white)
                 }
-                Spacer()
-                
-            }.padding()
-            
-        
-        
-        
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            }.frame(width: UIScreen.main.bounds.width * 1.0)
+            Spacer()
         }
     }
 }
 
-struct TabButtons: View {
-    
-    @Binding var tabIndex: Int
-    
-    var body: some View {
-        
-        HStack {
-            
-            Button {
-                tabIndex = 0
-            } label: {
-                Text("login")
-            }
-            
-            Divider()
-                .frame(height: UIScreen.main.bounds.size.height * 0.03)
-            
-            Button {
-                tabIndex = 1
-            } label: {
-                Text("Register")
-            }
-        }
-        
-    }
-    
-}
-
-
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-struct ContentView_Previews: PreviewProvider {
+struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WelcomeView()
     }
 }

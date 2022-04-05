@@ -28,9 +28,9 @@ struct ContentView: View {
         switch appIndexManager.appIndex {
             
         case AppIndex.welcomeView:
-            WelcomeView()
+            StartView()
         case AppIndex.registerQuestionsView:
-            RegisterQuestionsView()
+            WelcomeView()
         case AppIndex.lobbyView:
             LobbyView()
         case AppIndex.chatView:
