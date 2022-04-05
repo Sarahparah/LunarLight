@@ -35,9 +35,9 @@ struct RegisterView: View {
         
         currentYear = Calendar.current.component(.year, from: Date())
         minimumYear = Calendar.current.date(from:
-            DateComponents(year: currentYear-12)) ?? Date()
+                                                DateComponents(year: currentYear-12)) ?? Date()
         maximumYear = Calendar.current.date(from:
-            DateComponents(year: currentYear-120)) ?? Date()
+                                                DateComponents(year: currentYear-120)) ?? Date()
         date = minimumYear
         
     }
@@ -47,49 +47,41 @@ struct RegisterView: View {
         VStack{
             VStack{
                 Text("Username:")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 14))
-                
-                    
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
                 
                 TextField("Ex.. BillPrill", text: $username)
-                .multilineTextAlignment(.center)
-                .padding(2)
-                .border(.black, width: 1.0)
+                    .multilineTextAlignment(.center)
+                    .padding(2)
+                    .border(.black, width: 1.0)
             }
             VStack{
                 
-            Text("Date of birth:")
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .font(.system(size: 14))
-            
-            
-            Button {
-                showDatePicker.toggle()
-            } label: {
+                Text("Date of birth:")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+                
+                
+                Button {
+                    showDatePicker.toggle()
+                } label: {
                     
                     Text(dateFormatter.string(from: minimumYear))
-                    .accentColor(showDatePicker ? Color.blue : Color.black)
+                        .accentColor(showDatePicker ? Color.blue : Color.black)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(4)
+                .border(.black, width: 1.0)
+                .padding(.top, 0.1)
+                .id(8)
                 
                 
-               
-            }
-            .frame(maxWidth: .infinity)
-            .padding(4)
-            .border(.black, width: 1.0)
-            .padding(.top, 0.1)
-            .id(8)
-            
-            
-            
-            if showDatePicker {
-                
-               
-                
-                DatePicker("Select Birthdate", selection: $date,
-                    in: maximumYear...minimumYear, displayedComponents: [.date])
-                    .accentColor(Color.red)
-                    .datePickerStyle(WheelDatePickerStyle())
+                if showDatePicker {
+                    
+                    DatePicker("Select Birthdate", selection: $date,
+                               in: maximumYear...minimumYear, displayedComponents: [.date])
+                        .accentColor(Color.red)
+                        .datePickerStyle(WheelDatePickerStyle())
                 }
             }
             .padding(.top, 10)
@@ -112,46 +104,44 @@ struct RegisterView: View {
                 Text("Password:")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))
-            HStack{
-                
-                
-                if secured {
-                    
-                    
-                    
-                    SecureField("Password", text: $password)
-                        .multilineTextAlignment(.center)
-                        .padding(2)
-                        .border(Color.black, width: 1.0)
-                        .id(1)
-                } else {
-                    
-                    // 3
-                    
-                    Text("Username")
-                        .frame(width: UIScreen.main.bounds.size.width * 0.4, alignment: .leading)
-                    
-                    TextField("Password", text: $password)
-                        .padding(2)
-                        .border(Color.black, width: 1)
-                }
-                
-                Button(action: {
-                    self.secured.toggle()
-                }) {
+                HStack{
                     
                     
                     if secured {
-                        Image(systemName: "eye.slash")
+                        
+                        SecureField("Password", text: $password)
+                            .multilineTextAlignment(.center)
+                            .padding(2)
+                            .border(Color.black, width: 1.0)
+                            .id(1)
                     } else {
-                        Image(systemName: "eye")
+                        
+                        // 3
+                        
+                        Text("Username")
+                            .frame(width: UIScreen.main.bounds.size.width * 0.4, alignment: .leading)
+                        
+                        TextField("Password", text: $password)
+                            .padding(2)
+                            .border(Color.black, width: 1)
+                    }
+                    
+                    Button(action: {
+                        self.secured.toggle()
+                    }) {
+                        
+                        
+                        if secured {
+                            Image(systemName: "eye.slash")
+                        } else {
+                            Image(systemName: "eye")
+                        }
                     }
                 }
             }
-            }
             .padding(.top, 10)
             
-                
+            
             SecureField("Reenter password", text: $passwordTwo)
                 .multilineTextAlignment(.center)
                 .padding(4)
@@ -159,8 +149,6 @@ struct RegisterView: View {
                 .id(2)
             
             Spacer()
-        
-        
             
             Button {
                 
@@ -174,15 +162,9 @@ struct RegisterView: View {
             } label: {
                 Text("Register")
             }.padding(.bottom, 20)
-            
-            
-            
         }
         .padding()
     }
-        
-    
-
     
     private func processRegister() -> Bool {
         
@@ -207,9 +189,8 @@ struct SecurePassword_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RegisterView()
-            RegisterView()
-            RegisterView()
-.previewInterfaceOrientation(.landscapeRight)
+            
+                .previewInterfaceOrientation(.portrait)
         }
     }
 }
