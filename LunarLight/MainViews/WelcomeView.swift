@@ -12,6 +12,12 @@ struct WelcomeView: View {
     
     var profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
+    let layout = [
+        GridItem(.flexible(minimum: 100)),
+        GridItem(.flexible(minimum: 100)),
+        GridItem(.flexible(minimum: 100))
+    ]
+    
     @State var selectedImage = ""
     
     init (){
@@ -24,17 +30,27 @@ struct WelcomeView: View {
             Text("Welcome")
                 .font(.title)
             
-            HStack {
-                ForEach(profileImages, id: \.self) { imageString in
-                    Button {
-                        selectedImage = imageString
-                    } label: {
-                        Image(imageString)
-                    }.background(imageString == selectedImage ? Color.red : Color.white)
-                }
-            }.frame(width: UIScreen.main.bounds.width * 1.0)
+            ScrollView(.vertical){
+                LazyVGrid(columns: layout, content: {
+                    ForEach(profileImages, id: \.self) { imageString in
+                        Button {
+                            selectedImage = imageString
+                        } label: {
+                            Image(imageString)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
+                            
+                        }
+                        //.frame(width: 100, height: 100)
+                        .background(imageString == selectedImage ? Color.green : Color.white)
+                        .cornerRadius(65)
+                    }
+                })
+            }
+
             Spacer()
-        }
+        }.padding()
     }
 }
 

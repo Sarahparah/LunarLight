@@ -162,7 +162,7 @@ struct RegisterView: View {
                         coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
                         AppIndexManager.singletonObject.userName = username
                         print("username: \(AppIndexManager.singletonObject.userName)")
-                        AppIndexManager.singletonObject.appIndex = AppIndex.registerQuestionsView
+                        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
 
                     }
                     
