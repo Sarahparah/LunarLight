@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>708061894243-vigmslq95nnqpol660a3fdgfddq29naf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.708061894243-vigmslq95nnqpol660a3fdgfddq29naf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDuvCzPjkc565jgrnTnsO9rcaM7J5McjPs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>708061894243</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.DanielFalkedal.LunarLight</string>
+	<key>PROJECT_ID</key>
+	<string>lunarlight-287a2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lunarlight-287a2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:708061894243:ios:94171280c9fd71fe514a56</string>
+</dict>
+</plist>
