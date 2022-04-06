@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import Firebase
+
+class FirestoreUserModel: ObservableObject{
+    
+    let dataBase = Firestore.firestore()
+    
+    
+    func createUser(){
+        
+        
+    }
+}
+
+
+

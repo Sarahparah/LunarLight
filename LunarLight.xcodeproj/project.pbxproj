@@ -33,6 +33,7 @@
 		41B977F027FDC08600455E86 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B977EF27FDC08600455E86 /* FirebaseFirestore */; };
 		41B977F227FDC08600455E86 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 41B977F127FDC08600455E86 /* FirebaseFirestoreSwift-Beta */; };
 		41B977F427FDC12200455E86 /* FirestoreUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977F327FDC12200455E86 /* FirestoreUserModel.swift */; };
+		41B977F627FDC25600455E86 /* UserFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977F527FDC25600455E86 /* UserFirebase.swift */; };
 		D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		41B977E527FC6A0E00455E86 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		41B977EA27FDBC8E00455E86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41B977F327FDC12200455E86 /* FirestoreUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserModel.swift; sourceTree = "<group>"; };
+		41B977F527FDC25600455E86 /* UserFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFirebase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				33E7A90927F727410091502E /* CoredataUserModel.swift */,
 				41B977E527FC6A0E00455E86 /* TestData.swift */,
 				41B977F327FDC12200455E86 /* FirestoreUserModel.swift */,
+				41B977F527FDC25600455E86 /* UserFirebase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */,
 				41B977D527F7123700455E86 /* ChatView.swift in Sources */,
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
+				41B977F627FDC25600455E86 /* UserFirebase.swift in Sources */,
 				D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */,
 				41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */,
 				41B977E227FC423200455E86 /* ProfileView.swift in Sources */,
