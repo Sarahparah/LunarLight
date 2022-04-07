@@ -13,12 +13,17 @@ class SoundPlayer {
     static var audioPlayer: AVAudioPlayer?
     
     static let SFX_EXTENSION = "wav"
+    
+    static let NEW_MSG_SFX = "barrel_shield"
 
     static func playSound(sound: String) {
+        
         if let path = Bundle.main.path(forResource: sound, ofType: SoundPlayer.SFX_EXTENSION) {
+            
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 audioPlayer?.play()
+
             } catch {
                 print("Error: Could not play sound effect")
             }

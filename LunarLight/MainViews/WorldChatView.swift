@@ -30,6 +30,7 @@ struct WorldChatView: View {
                 }
                 .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
                     print("*BLIPP*")
+                    SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                 })
 
                     
