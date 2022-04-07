@@ -48,7 +48,7 @@ class FirestoreUserModel: ObservableObject{
         
     }
     
-    func listenToFirestore() {
+    func listenToUsers() {
         
         //Read data once (example):
         //db.collection("tmp").getDocuments(completion: )

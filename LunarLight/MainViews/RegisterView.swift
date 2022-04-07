@@ -42,7 +42,7 @@ struct RegisterView: View {
                                                 DateComponents(year: currentYear-120)) ?? Date()
 
         
-        firestoreModel.listenToFirestore()
+        firestoreModel.listenToUsers()
 
         
     }

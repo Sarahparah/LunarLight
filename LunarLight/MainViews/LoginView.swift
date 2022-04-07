@@ -18,7 +18,7 @@ struct LoginView: View {
     @State private var currentUser: UserFirebase?
     
     init() {
-        firestoreUserModel.listenToFirestore()
+        firestoreUserModel.listenToUsers()
     }
     
     var body: some View {

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3348158027FF28BA00AF0EC7 /* UserOnlineFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348157F27FF28BA00AF0EC7 /* UserOnlineFirebase.swift */; };
+		3348158227FF662100AF0EC7 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158127FF662100AF0EC7 /* MessageView.swift */; };
+		3348158427FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158327FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift */; };
+		3348158627FF6A1300AF0EC7 /* WorldMsgFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */; };
 		33ADF1EF27FF0A2C00320444 /* OnlineUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */; };
 		33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */; };
 		33AE6E0627F5A63C00EEC7E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0527F5A63C00EEC7E3 /* StartView.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		3348157F27FF28BA00AF0EC7 /* UserOnlineFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnlineFirebase.swift; sourceTree = "<group>"; };
+		3348158127FF662100AF0EC7 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		3348158327FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreWorldMsgModel.swift; sourceTree = "<group>"; };
+		3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMsgFirebase.swift; sourceTree = "<group>"; };
 		33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineUsersView.swift; sourceTree = "<group>"; };
 		33AE6E0027F5A63C00EEC7E3 /* LunarLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLightApp.swift; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 				41B977F327FDC12200455E86 /* FirestoreUserModel.swift */,
 				41B977F527FDC25600455E86 /* UserFirebase.swift */,
 				3348157F27FF28BA00AF0EC7 /* UserOnlineFirebase.swift */,
+				3348158327FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift */,
+				3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 			children = (
 				41B977DF27FAEED900455E86 /* TitleRow.swift */,
 				41B977E327FC4E0800455E86 /* SheetSettings.swift */,
+				3348158127FF662100AF0EC7 /* MessageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,11 +289,14 @@
 				3348158027FF28BA00AF0EC7 /* UserOnlineFirebase.swift in Sources */,
 				41B977F427FDC12200455E86 /* FirestoreUserModel.swift in Sources */,
 				33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */,
+				3348158627FF6A1300AF0EC7 /* WorldMsgFirebase.swift in Sources */,
 				33AE6E0627F5A63C00EEC7E3 /* StartView.swift in Sources */,
+				3348158427FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift in Sources */,
 				33ADF1EF27FF0A2C00320444 /* OnlineUsersView.swift in Sources */,
 				41B977DD27F72E5000455E86 /* Chat.swift in Sources */,
 				41B977E027FAEED900455E86 /* TitleRow.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
+				3348158227FF662100AF0EC7 /* MessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
