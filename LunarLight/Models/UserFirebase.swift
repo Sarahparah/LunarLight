@@ -16,9 +16,10 @@ struct UserFirebase: Codable, Identifiable{
     var password: String
     var year: UInt64
     var month: UInt64
+    var day: UInt64
     var avatar: String
     
-    init(_id: String = "", _username: String, _email: String, _password: String, _year: UInt64, _month: UInt64, _avatar: String ){
+    init(_id: String = "", _username: String, _email: String, _password: String, _year: UInt64, _month: UInt64, _day: UInt64, _avatar: String ){
         
         id = _id
         username = _username
@@ -26,6 +27,7 @@ struct UserFirebase: Codable, Identifiable{
         password = _password
         year = _year
         month = _month
+        day = _day
         avatar = _avatar
     }
     

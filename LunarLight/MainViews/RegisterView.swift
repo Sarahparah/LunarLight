@@ -187,9 +187,15 @@ struct RegisterView: View {
             print("Error: Failed to proccess month of birth.")
             return
         }
+        let day: UInt64 = UInt64(Calendar.current.dateComponents([.day], from: date).day ?? 0)
+        if day == 0 {
+            print("Error: Failed to proccess day of birth.")
+            return
+        }
+
         let localData = LocalData()
         let avatar: String = localData.profileImages[0]
-        let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _avatar: avatar)
+        let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
         
         firestoreModel.createUser(newUser: newUser)
         
@@ -199,7 +205,7 @@ struct RegisterView: View {
         
         //Store local login data (id + username) and show welcome view
         AppIndexManager.singletonObject.currentUser = newUser
-        print("username: \(AppIndexManager.singletonObject.currentUser!.username)")
+        print("username: \(AppIndexManager.singletonObject.currentUser.username)")
         AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     

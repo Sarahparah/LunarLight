@@ -65,7 +65,7 @@ struct LoginView: View {
                         return
                     }
                     AppIndexManager.singletonObject.currentUser = currentUser
-                    print("username: \(AppIndexManager.singletonObject.currentUser!.username)")
+                    print("username: \(AppIndexManager.singletonObject.currentUser.username)")
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 }
             } label: {
