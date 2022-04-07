@@ -58,6 +58,7 @@ struct RegisterView: View {
                         .font(.system(size: 14))
                     
                     TextField("Ex.. BillPrill", text: $username)
+                        .autocapitalization(.none)
                         .multilineTextAlignment(.center)
                         .padding(2)
                         .border(.black, width: 1.0)
@@ -102,6 +103,8 @@ struct RegisterView: View {
                     
                     
                     TextField("Ex.. bill@email.se", text: $email)
+                        .keyboardType(.URL)
+                        .autocapitalization(.none)
                         .multilineTextAlignment(.center)
                         .padding(2)
                         .border(.black, width: 1.0)
@@ -120,6 +123,7 @@ struct RegisterView: View {
                         if secured {
                             
                             SecureField("Password", text: $password)
+                                .autocapitalization(.none)
                                 .multilineTextAlignment(.center)
                                 .padding(2)
                                 .border(Color.black, width: 1.0)
@@ -130,6 +134,7 @@ struct RegisterView: View {
                             // 3
                             
                             TextField("Password", text: $password)
+                                .autocapitalization(.none)
                                 .multilineTextAlignment(.center)
                                 .padding(2)
                                 .border(Color.black, width: 1.0)
@@ -154,6 +159,7 @@ struct RegisterView: View {
                 
                 
                 SecureField("Reenter password", text: $passwordTwo)
+                    .autocapitalization(.none)
                     .multilineTextAlignment(.center)
                     .padding(4)
                     .border(Color.black, width: 1)

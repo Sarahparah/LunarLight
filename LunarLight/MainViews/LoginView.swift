@@ -26,6 +26,7 @@ struct LoginView: View {
             
             TextField("Email", text: $email)
                 .autocapitalization(.none)
+                .disableAutocorrection(true)
             
             HStack{
                 
@@ -33,14 +34,18 @@ struct LoginView: View {
                     
                     
                     SecureField("Password", text: $password)
+                        .autocapitalization(.none)
                         .padding(4)
                         .border(Color.black, width: 1)
+                        .disableAutocorrection(true)
                 } else {
                     
                     // 3
                     TextField("Password", text: $password)
+                        .autocapitalization(.none)
                         .padding(4)
                         .border(Color.black, width: 1)
+                        .disableAutocorrection(true)
                 }
                 
                 Button(action: {
@@ -84,7 +89,8 @@ struct LoginView: View {
         let users = firestoreUserModel.users
         
         for user in users {
-            if (user.username == email || user.email == email) && user.password == password {
+            if (user.username.lowercased() == email.lowercased() ||
+                user.email.lowercased() == email.lowercased()) && user.password == password {
                 print("Login success =)")
                 currentUser = user
                 return true
