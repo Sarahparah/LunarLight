@@ -9,16 +9,32 @@ import SwiftUI
 
 struct TestView: View {
     
-
+    @StateObject var firestoreUserModel = FirestoreUserModel()
     
     init() {
-
-
+        
     }
     
     var body: some View {
         
-        Text("Test View")
+        VStack {
+            Text("Test View")
+            
+            List{
+                ForEach (firestoreUserModel.usersOnline) { userOnline in
+                    
+                    HStack{
+                        Text(userOnline.id)
+                        Text("Online")
+                        Color.green
+                    }
+                }
+            }
+        }.onAppear {
+            firestoreUserModel.listenToOnlineUsers()
+        }
+        
+        
     }
 }
 

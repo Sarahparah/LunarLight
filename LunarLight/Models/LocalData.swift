@@ -9,6 +9,9 @@ import Foundation
 
 class LocalData {
     
+    static let USERS_COLLECTION_KEY = "users"
+    static let USERS_ONLINE_COLLECTION_KEY = "users_online"
+    
     let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
     let stoneArray = ["Granate","Aquamarine","Turkos","Coral", "Aventurine", "Tigers eye", "Karneiol", "Lapiz", "Rose Quartz", "Pink turmalin" , "Malachite", "Citrine"]
