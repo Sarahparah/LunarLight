@@ -13,7 +13,7 @@
 		3348158627FF6A1300AF0EC7 /* WorldMsgFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */; };
 		3348158827FF711600AF0EC7 /* WorldChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158727FF711600AF0EC7 /* WorldChatView.swift */; };
 		3348158A27FF90F000AF0EC7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */; };
-		3348158C27FF92B800AF0EC7 /* barrel_shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3348158B27FF92B800AF0EC7 /* barrel_shield.wav */; };
+		3348158E27FF94EF00AF0EC7 /* new_message.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3348158D27FF94EE00AF0EC7 /* new_message.wav */; };
 		33ADF1EF27FF0A2C00320444 /* OnlineUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */; };
 		33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */; };
 		33AE6E0627F5A63C00EEC7E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0527F5A63C00EEC7E3 /* StartView.swift */; };
@@ -52,7 +52,7 @@
 		3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldMsgFirebase.swift; sourceTree = "<group>"; };
 		3348158727FF711600AF0EC7 /* WorldChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldChatView.swift; sourceTree = "<group>"; };
 		3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		3348158B27FF92B800AF0EC7 /* barrel_shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = barrel_shield.wav; sourceTree = "<group>"; };
+		3348158D27FF94EE00AF0EC7 /* new_message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = new_message.wav; sourceTree = "<group>"; };
 		33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineUsersView.swift; sourceTree = "<group>"; };
 		33AE6E0027F5A63C00EEC7E3 /* LunarLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLightApp.swift; sourceTree = "<group>"; };
@@ -96,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3348158F27FF94F600AF0EC7 /* Sound Effects */ = {
+			isa = PBXGroup;
+			children = (
+				3348158D27FF94EE00AF0EC7 /* new_message.wav */,
+			);
+			path = "Sound Effects";
+			sourceTree = "<group>";
+		};
 		33AE6DF727F5A63C00EEC7E3 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +125,7 @@
 			children = (
 				41B977EA27FDBC8E00455E86 /* GoogleService-Info.plist */,
 				33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */,
+				3348158F27FF94F600AF0EC7 /* Sound Effects */,
 				33D386EC27F6EAA400D338B2 /* Utils */,
 				41B977CD27F5ABF000455E86 /* Models */,
 				41B977CC27F5ABE700455E86 /* MainViews */,
@@ -143,7 +152,6 @@
 				33D386EE27F6EF7600D338B2 /* InputValidator.swift */,
 				33E7A90527F703340091502E /* AppIndexManager.swift */,
 				3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */,
-				3348158B27FF92B800AF0EC7 /* barrel_shield.wav */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -267,7 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33AE6E0B27F5A63E00EEC7E3 /* Preview Assets.xcassets in Resources */,
-				3348158C27FF92B800AF0EC7 /* barrel_shield.wav in Resources */,
+				3348158E27FF94EF00AF0EC7 /* new_message.wav in Resources */,
 				33AE6E0827F5A63E00EEC7E3 /* Assets.xcassets in Resources */,
 				41B977EB27FDBC8E00455E86 /* GoogleService-Info.plist in Resources */,
 			);

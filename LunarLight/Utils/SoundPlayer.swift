@@ -14,7 +14,7 @@ class SoundPlayer {
     
     static let SFX_EXTENSION = "wav"
     
-    static let NEW_MSG_SFX = "barrel_shield"
+    static let NEW_MSG_SFX = "new_message"
 
     static func playSound(sound: String) {
         
