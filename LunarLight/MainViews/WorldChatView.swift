@@ -19,8 +19,8 @@ struct WorldChatView: View {
             Button {
                 AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
             } label: {
-                Text("Online")
-            }
+                Text("Show Online Users")
+            }.padding()
             
             ScrollView{
                 
@@ -28,6 +28,9 @@ struct WorldChatView: View {
                     MessageView(user: worldMsg.username, message: worldMsg.message)
                         .onAppear(perform: { print(worldMsg.message) })
                 }
+                .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
+                    print("*BLIPP*")
+                })
 
                     
             }
