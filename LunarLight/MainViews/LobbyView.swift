@@ -18,13 +18,13 @@ struct LobbyView: View {
             WorldChatView()
             .tabItem{
                     Image(systemName: "house")
-                    Text("Chat")
+                    Text("World Chat")
                 }
             
             LobbyChatView()
                 .tabItem{
                     Image(systemName: "bubble.left.fill")
-                    Text("Lobby chat")
+                    Text("Friends")
                 }
             
             ProfileView()
