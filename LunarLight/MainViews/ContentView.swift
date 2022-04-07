@@ -12,6 +12,8 @@ struct ContentView: View {
 
     @ObservedObject var appIndexManager: AppIndexManager
     
+    @State var timerWorkItem: DispatchWorkItem?
+    
     init() {
         appIndexManager = AppIndexManager.singletonObject
         
@@ -24,24 +26,39 @@ struct ContentView: View {
     
     var body: some View {
         
-        
         switch appIndexManager.appIndex {
             
         case AppIndex.startView:
             StartView()
         case AppIndex.welcomeView:
             WelcomeView()
+                .onAppear(perform: resetTimer)
         case AppIndex.lobbyView:
             LobbyView()
+                .onAppear(perform: resetTimer)
         case AppIndex.chatView:
             ChatView()
+                .onAppear(perform: resetTimer)
         case AppIndex.lobbyChatView:
             LobbyChatView()
+                .onAppear(perform: resetTimer)
         case AppIndex.testView:
             TestView()
+                .onAppear(perform: resetTimer)
         
         }
         
+    }
+    
+    private func resetTimer() {
+        print("timeout: in process")
+                        
+        // set timer
+        timerWorkItem = DispatchWorkItem {
+            AppIndexManager.singletonObject.logout()
+            print("timed out!")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: timerWorkItem!)
     }
     
     private func initiateCurrentUserId() {
