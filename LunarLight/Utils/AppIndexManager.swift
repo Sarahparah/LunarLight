@@ -12,6 +12,7 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
+    var userId: String = ""
     var userName: String = ""
     
     @Published var appIndex = AppIndex.startView

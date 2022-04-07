@@ -157,12 +157,8 @@ struct RegisterView: View {
                 
                 Button {
                     
-                    if processRegister() {
-                        let coredataUserModel = CoredataUserModel()
-                        coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
-                        AppIndexManager.singletonObject.userName = username
-                        print("username: \(AppIndexManager.singletonObject.userName)")
-                        AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
+                    if isValidInput() {
+                        processRegister()
 
                     }
                     
@@ -177,7 +173,38 @@ struct RegisterView: View {
         
     }
     
-    private func processRegister() -> Bool {
+    private func processRegister() {
+        //Create the user in Firestore
+        let firestoreModel = FirestoreUserModel()
+        
+        let userId: String = UUID().uuidString
+        let year: UInt64 = UInt64(Calendar.current.dateComponents([.year], from: date).year ?? 0)
+        if year == 0 {
+            print("Error: Failed to proccess year of birth.")
+            return
+        }
+        let month: UInt64 = UInt64(Calendar.current.dateComponents([.month], from: date).month ?? 0)
+        if month == 0 {
+            print("Error: Failed to proccess month of birth.")
+            return
+        }
+        let localData = LocalData()
+        let avatar: String = localData.profileImages[0]
+        let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _avatar: avatar)
+        
+        firestoreModel.createUser(newUser: newUser)
+        
+        //Temp code (save user to CoreData):
+        //let coredataUserModel = CoredataUserModel()
+        //coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
+        
+        //Store local login data (id + username) and show welcome view
+        AppIndexManager.singletonObject.userName = username
+        print("username: \(AppIndexManager.singletonObject.userName)")
+        AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
+    }
+    
+    private func isValidInput() -> Bool {
         
         if username.count < 3 || username.count > 12 {
             print("Username needs to be between 3 and 12 chars")

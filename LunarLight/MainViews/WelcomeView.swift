@@ -10,17 +10,18 @@ import SwiftUI
 
 struct WelcomeView: View {
     
-    var profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
-    
     let layout = [
         GridItem(.flexible(minimum: 100)),
         GridItem(.flexible(minimum: 100)),
         GridItem(.flexible(minimum: 100))
     ]
     
+    let profileImages: [String]
     @State var selectedImage: String
     
     init (){
+        let localData = LocalData()
+        profileImages = localData.profileImages
         selectedImage = profileImages[0]
         print("Selected image: \(selectedImage)")
     }

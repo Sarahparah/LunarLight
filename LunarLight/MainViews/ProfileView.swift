@@ -21,7 +21,7 @@ struct ProfileView: View {
                     "Detta är din månadssten. den är vacker bl bla"]
     
     init(){
-        let testData = TestData()
+        let testData = LocalData()
         
         print("username: \(AppIndexManager.singletonObject.userName)")
         

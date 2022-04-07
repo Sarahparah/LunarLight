@@ -7,7 +7,9 @@
 
 import Foundation
 
-class TestData {
+class LocalData {
+    
+    let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
     let stoneArray = ["Lapis","Ametist","Flurit","Rosenkvarts", "Citrin", "Månsten", "Rubin", "Mossagat", "Aqvamarin", "Malakit" , "Topaz", "Rökkvarts"]
     
