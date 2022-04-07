@@ -12,10 +12,19 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
-    let testUser = UserFirebase(_id: "", _username: "testuser", _email: "test@gmail.com", _password: "123", _year: 1999, _month: 4, _day: 25, _avatar: "Bengan")
+    let testUser = UserFirebase(
+        _id: "6DF4FC1D-3A34-42CD-A63B-568B8C4A21C5",
+        _username: "testuser",
+        _email: "Test@email.se",
+        _password: "12345",
+        _year: 2000,
+        _month: 4,
+        _day: 7,
+        _avatar: "aries_5")
+    
     var currentUser: UserFirebase
     
-    @Published var appIndex = AppIndex.onlineUsersView
+    @Published var appIndex = AppIndex.startView
     
     private init() {
         //SINGLETON. PRIVATE INIT.

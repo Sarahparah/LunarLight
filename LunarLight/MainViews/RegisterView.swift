@@ -40,9 +40,10 @@ struct RegisterView: View {
                                                 DateComponents(year: currentYear-12)) ?? Date()
         maximumYear = Calendar.current.date(from:
                                                 DateComponents(year: currentYear-120)) ?? Date()
-        date = minimumYear
+
         
         firestoreModel.listenToFirestore()
+
         
     }
     
@@ -73,7 +74,7 @@ struct RegisterView: View {
                         showDatePicker.toggle()
                     } label: {
                         
-                        Text(dateFormatter.string(from: minimumYear))
+                        Text(dateFormatter.string(from: date))
                             .accentColor(showDatePicker ? Color.blue : Color.black)
                     }
                     .frame(maxWidth: .infinity)
@@ -169,7 +170,9 @@ struct RegisterView: View {
             }
             .padding()
             
-        }
+        }.onAppear(perform: {
+            date = minimumYear
+        })
         
         
     }
