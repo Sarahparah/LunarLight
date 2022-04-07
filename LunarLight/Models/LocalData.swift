@@ -11,9 +11,10 @@ class LocalData {
     
     let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
-    let stoneArray = ["Lapis","Ametist","Flurit","Rosenkvarts", "Citrin", "Månsten", "Rubin", "Mossagat", "Aqvamarin", "Malakit" , "Topaz", "Rökkvarts"]
+    let stoneArray = ["Granate","Aquamarine","Turkos","Coral", "Aventurine", "Tigers eye", "Karneiol", "Lapiz", "Rose Quartz", "Pink turmalin" , "Malachite", "Citrine"]
     
-    let stoneColorBackground = ["Lapis", "Rosenkvarts"]
+    let profileBackground = ["Capricorn", "Aquarius", "Pisces","Aries", "Taurus", "Gemeni", "Cancer", "Leo", "Virgo", "Libra",
+    "Scorpio", "Sagittarius"]
     
     
 }
