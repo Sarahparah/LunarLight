@@ -15,8 +15,17 @@ struct LobbyView: View {
         
         TabView {
             
-            Text("Lobby View")
-                .tabItem{
+            
+            VStack{
+                Text("Lobby View")
+                Button {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.testView
+                } label: {
+                    Text("Online")
+                }
+
+            }
+            .tabItem{
                     Image(systemName: "house")
                     Text("Chat")
                 }

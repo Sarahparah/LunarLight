@@ -19,8 +19,6 @@ class InputValidator {
             return false
         }
         
-        //TODO: check for unique value in database
-        
         return true
     }
     
@@ -30,8 +28,6 @@ class InputValidator {
         if username.rangeOfCharacter(from: characterset.inverted) != nil {
             return false
         }
-        
-        //TODO: check for unique value in database
         
         return true
     }
