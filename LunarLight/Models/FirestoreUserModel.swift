@@ -28,9 +28,19 @@ class FirestoreUserModel: ObservableObject{
         
         let id = currentUser.id
         
-        //TODO: Fix update user in firebase
-        //let document = dataBase.collection("users").whereField("id", in: [id])
-        //document.setValue(currentUser.avatar, forKey: "avatar")
+        dataBase.collection("users").whereField("id", isEqualTo: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    return
+                }
+                
+                guard let document = querySnapshot!.documents.first else { return }
+                document.reference.updateData([
+                    "avatar": currentUser.avatar
+                ])
+                
+            }
         
     }
     
