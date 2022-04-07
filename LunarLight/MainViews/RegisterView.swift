@@ -198,6 +198,9 @@ struct RegisterView: View {
 
         let localData = LocalData()
         let avatar: String = localData.profileImages[0]
+        
+        email = email.lowercased()
+        
         let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
         
         firestoreModel.createUser(newUser: newUser)
@@ -218,7 +221,9 @@ struct RegisterView: View {
         print(users)
         
         for user in users {
-            if user.username == username || user.email == email {
+            if user.username.lowercased() == username.lowercased() ||
+                user.email.lowercased() == email.lowercased() {
+                
                 return false
             }
         }
