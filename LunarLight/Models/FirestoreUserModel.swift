@@ -12,6 +12,8 @@ class FirestoreUserModel: ObservableObject{
     
     let dataBase = Firestore.firestore()
     
+    var users = [UserFirebase]()
+    
     func createUser(newUser: UserFirebase){
         
         do {
@@ -21,6 +23,41 @@ class FirestoreUserModel: ObservableObject{
         }
         
     }
+    
+    func listenToFirestore() {
+        
+        //Read data once (example):
+        //db.collection("tmp").getDocuments(completion: )
+        
+        //Add an async listener for database
+        dataBase.collection("users").addSnapshotListener { snapshot, error in
+            //print("Something was changed in database")
+            guard let snapshot = snapshot else { return }
+            
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+            
+            self.users.removeAll()
+            
+            for document in snapshot.documents {
+                
+                let result = Result {
+                    try document.data(as: UserFirebase.self)
+                }
+                
+                switch result {
+                case .success(let item):
+                    self.users.append(item)
+                case .failure(let error):
+                    print("User decode error: \(error)")
+                }
+                
+            }
+        }
+    }
+    
 }
 
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    private var firestoreModel = FirestoreUserModel()
+    
     private let inputValidator = InputValidator()
     
     @State private var password: String = ""
@@ -39,6 +41,8 @@ struct RegisterView: View {
         maximumYear = Calendar.current.date(from:
                                                 DateComponents(year: currentYear-120)) ?? Date()
         date = minimumYear
+        
+        firestoreModel.listenToFirestore()
         
     }
     
@@ -156,12 +160,9 @@ struct RegisterView: View {
                     .disableAutocorrection(true)
                 
                 Button {
-                    
                     if isValidInput() {
                         processRegister()
-
                     }
-                    
                 } label: {
                     Text("Register")
                 }.padding(.top, 30)
@@ -174,8 +175,6 @@ struct RegisterView: View {
     }
     
     private func processRegister() {
-        //Create the user in Firestore
-        let firestoreModel = FirestoreUserModel()
         
         let userId: String = UUID().uuidString
         let year: UInt64 = UInt64(Calendar.current.dateComponents([.year], from: date).year ?? 0)
@@ -204,6 +203,20 @@ struct RegisterView: View {
         AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     
+    private func isUsernameAndPasswordUnique() -> Bool {
+        let users = firestoreModel.users
+        
+        print(users)
+        
+        for user in users {
+            if user.username == username || user.email == email {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     private func isValidInput() -> Bool {
         
         if username.count < 3 || username.count > 12 {
@@ -228,6 +241,11 @@ struct RegisterView: View {
         
         if !inputValidator.isValidEmail(email) {
             print("Email wrong format")
+            return false
+        }
+        
+        if !isUsernameAndPasswordUnique() {
+            print("Username/Password not unique")
             return false
         }
         
