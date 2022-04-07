@@ -26,6 +26,7 @@ struct WorldChatView: View {
                 
                 ForEach(firestoreWorldMsgModel.worldMessages) { worldMsg in
                     MessageView(user: worldMsg.username, message: worldMsg.message)
+                        .onAppear(perform: { print(worldMsg.message) })
                 }
 
                     
@@ -67,7 +68,7 @@ struct WorldChatView: View {
         print(messageInput)
         
         let currentUser = AppIndexManager.singletonObject.currentUser
-        let newMessage = WorldMsgFirebase(_id: currentUser.id, _username: currentUser.username, _message: messageInput)
+        let newMessage = WorldMsgFirebase(_userId: currentUser.id, _username: currentUser.username, _message: messageInput)
         
         firestoreWorldMsgModel.createMessage(newMessage: newMessage)
         
