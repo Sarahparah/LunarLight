@@ -37,6 +37,8 @@ struct ContentView: View {
             ChatView()
         case AppIndex.lobbyChatView:
             LobbyChatView()
+        case AppIndex.stoneTestView:
+            StoneTestView()
         
         }
         

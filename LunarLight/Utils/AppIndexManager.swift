@@ -14,17 +14,17 @@ class AppIndexManager: ObservableObject {
     
     var currentUser: UserFirebase
     
-    @Published var appIndex = AppIndex.startView
+    @Published var appIndex = AppIndex.stoneTestView
     
     private init() {
         //SINGLETON. PRIVATE INIT.
-        currentUser = UserFirebase(_id: "", _username: "testuser", _email: "test@gmail.com", _password: "123", _year: 1999, _month: 03, _day: 31, _avatar: "Bengan")
+        currentUser = UserFirebase(_id: "", _username: "testuser", _email: "test@gmail.com", _password: "123", _year: 1999, _month: 6, _day: 17, _avatar: "Bengan")
     }
     
 }
 
 enum AppIndex : Int {
     
-    case startView = 0, welcomeView, lobbyView, chatView, lobbyChatView
+    case startView = 0, welcomeView, lobbyView, chatView, lobbyChatView, stoneTestView
     
 }
