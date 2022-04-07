@@ -17,7 +17,7 @@ struct ProfileView: View {
     var stone : String
     
     
-    let infoText = ["hej detta är försts fältet om mig",
+    @State var infoText = ["hej detta är försts fältet om mig",
                     "Detta är din månadssten. den är vacker bl bla"]
     
     init(){
@@ -107,7 +107,12 @@ struct ProfileView: View {
                 .shadow(color: Color.black.opacity(0.3), radius: 5, x: 5, y: 5)
                 .shadow(color: Color.pink.opacity(0.5), radius: 5, x: -5, y: -5)
                 
-                Text(infoText[index])
+                if index == 0 {
+                    TextField("", text: $infoText[0])
+                    
+                }else{
+                    Text(infoText[1])
+                }
                 
                Spacer()
                 
