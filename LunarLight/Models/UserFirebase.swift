@@ -31,10 +31,13 @@ struct UserFirebase: Codable, Identifiable{
         avatar = _avatar
     }
     
-    func getStoneName() -> String {
+    static func getStoneName(from user: UserFirebase) -> String {
         
         let localData = LocalData()
         let stones = localData.stoneArray
+        
+        let month = user.month
+        let day = user.day
         
         switch month {
         case 1:
