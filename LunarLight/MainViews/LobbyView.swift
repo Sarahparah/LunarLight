@@ -27,7 +27,7 @@ struct LobbyView: View {
                     Text("Friends")
                 }
             
-            ProfileView()
+            ProfileView(_user: AppIndexManager.singletonObject.currentUser)
                 .tabItem{
                     Image(systemName: "gearshape.fill")
                     Text("Profile")

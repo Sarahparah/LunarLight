@@ -15,6 +15,9 @@ class FirestoreUserModel: ObservableObject{
     var users = [UserFirebase]()
     @Published var usersOnline = [UserOnlineFirebase]()
     
+    @Published var profileUser: UserFirebase?
+    @Published var profileUserActive: Bool = false
+    
     func createUser(newUser: UserFirebase){
         
         let userOnline = UserOnlineFirebase(_id: newUser.id, _username: newUser.username, _isOnline: true)
@@ -46,6 +49,32 @@ class FirestoreUserModel: ObservableObject{
                 
             }
         
+    }
+    
+    func getProfileUser(profileId: String) {
+        print("fetching user profile...")
+        
+        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", isEqualTo: profileId)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    return
+                }
+                
+                guard let document = querySnapshot!.documents.first else { return }
+                let result = Result {
+                    try document.data(as: UserFirebase.self)
+                }
+                
+                switch result {
+                case .success(let item):
+                    self.profileUser = item
+                    self.profileUserActive = true
+                case .failure(let error):
+                    print("User decode error: \(error)")
+                }
+                
+            }
     }
     
     func listenToUsers() {

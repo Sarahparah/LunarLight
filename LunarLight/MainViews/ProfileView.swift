@@ -13,26 +13,25 @@ struct ProfileView: View {
     @State private var showingSheet = false
     @State var index = 0
     
-    var name: String
+    let user: UserFirebase
+    let readOnly: Bool
     var stone: String
-    var avatar: String
     var backgroundColor: String
     
     @State var infoText = ["hej detta är försts fältet om mig",
                     "Detta är din månadssten. den är vacker bl bla"]
     
-    init(){
+    init(_user: UserFirebase){
         let localData = LocalData()
-        let currentUser = AppIndexManager.singletonObject.currentUser
         
-        let stoneIndex = UserFirebase.getStoneIndex(from: currentUser)
+        user = _user
+        readOnly = AppIndexManager.singletonObject.currentUser.id == user.id ? false : true
+        
+        let stoneIndex = UserFirebase.getStoneIndex(from: user)
         let stoneType = localData.profileBackground[stoneIndex]
-        
+
         backgroundColor = stoneType
-        
         stone = localData.stoneArray[stoneIndex]
-        avatar = currentUser.avatar
-        name = AppIndexManager.singletonObject.currentUser.username
     }
     
     var body: some View {
@@ -66,12 +65,12 @@ struct ProfileView: View {
                
                 
                 //Namn och profilbild
-                Image(avatar)
+                Image(user.avatar)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
                 
-                Text(name)
+                Text(user.username)
                     .font(.title).bold()
                     .padding()
                 
@@ -112,7 +111,12 @@ struct ProfileView: View {
                 .shadow(color: Color(backgroundColor).opacity(0.5), radius: 5, x: -5, y: -5)
                 
                 if index == 0 {
-                    TextField("", text: $infoText[0])
+                    if readOnly {
+                        Text(infoText[0])
+                    }
+                    else {
+                        TextField("", text: $infoText[0])
+                    }
                     
                 }else{
                     Text(infoText[1])
@@ -166,6 +170,6 @@ struct SheetView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(_user: AppIndexManager.singletonObject.testUser)
     }
 }

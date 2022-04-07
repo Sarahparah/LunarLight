@@ -11,6 +11,10 @@ struct OnlineUsersView: View {
     
     @StateObject var firestoreUserModel = FirestoreUserModel()
     
+    @State var showProfileView: Bool = false
+    
+    @State var profileId: String?
+    
     init() {
         
     }
@@ -41,12 +45,20 @@ struct OnlineUsersView: View {
                 ForEach (firestoreUserModel.usersOnline) { userOnline in
                     
                     HStack{
-                        Text(userOnline.username)
-                        Spacer()
-                        Text("Online")
-                        Color.green
-                            .frame(width: 25, height: 25)
-                            .cornerRadius(100)
+                        Button {
+                            firestoreUserModel.getProfileUser(profileId: userOnline.id)
+                        } label: {
+                            Text(userOnline.username)
+                            Spacer()
+                            Text("Online")
+                            Color.green
+                                .frame(width: 25, height: 25)
+                                .cornerRadius(100)
+                        }
+                        .sheet(isPresented: $firestoreUserModel.profileUserActive){
+                            ProfileView(_user: firestoreUserModel.profileUser!)
+                        }
+
                             
                     }
                 }

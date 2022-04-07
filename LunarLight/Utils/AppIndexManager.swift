@@ -23,6 +23,7 @@ class AppIndexManager: ObservableObject {
         _avatar: "aries_5")
     
     var currentUser: UserFirebase
+    var profileUser: UserFirebase?
     
     @Published var appIndex = AppIndex.lobbyView
     
