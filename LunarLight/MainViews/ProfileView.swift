@@ -58,11 +58,12 @@ struct ProfileView: View {
                     .background(Color.white)
                     .foregroundColor(.black)
                     .cornerRadius(5)
+                    .opacity(readOnly ? 0 : 1)
+                    .disabled(readOnly ? true : false)
                     
                     
-                }.padding()
-                
-               
+                }
+                .padding()
                 
                 //Namn och profilbild
                 Image(user.avatar)
