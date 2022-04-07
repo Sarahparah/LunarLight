@@ -89,7 +89,7 @@ struct TabButtons: View {
             Button {
                 tabIndex = 0
             } label: {
-                Text("login")
+                Text("Login")
             }
             
             Divider()
