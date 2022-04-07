@@ -23,10 +23,10 @@ struct ProfileView: View {
     init(){
         let testData = LocalData()
         
-        print("username: \(AppIndexManager.singletonObject.userName)")
+        print("username: \(AppIndexManager.singletonObject.currentUser!.username)")
         
         stone = testData.stoneArray[3]
-        name = AppIndexManager.singletonObject.userName
+        name = AppIndexManager.singletonObject.currentUser!.username
     }
     
     var body: some View {

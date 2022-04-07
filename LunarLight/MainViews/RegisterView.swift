@@ -198,8 +198,8 @@ struct RegisterView: View {
         //coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
         
         //Store local login data (id + username) and show welcome view
-        AppIndexManager.singletonObject.userName = username
-        print("username: \(AppIndexManager.singletonObject.userName)")
+        AppIndexManager.singletonObject.currentUser = newUser
+        print("username: \(AppIndexManager.singletonObject.currentUser!.username)")
         AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     

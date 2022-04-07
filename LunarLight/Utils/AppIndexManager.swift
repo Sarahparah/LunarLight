@@ -12,10 +12,10 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
-    var userId: String = ""
-    var userName: String = ""
+    var currentUser: UserFirebase?
     
     @Published var appIndex = AppIndex.startView
+    
     private init() {
         //SINGLETON. PRIVATE INIT.
     }

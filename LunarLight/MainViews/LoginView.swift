@@ -9,15 +9,17 @@ import SwiftUI
 
 struct LoginView: View {
     
+    private let firestoreUserModel = FirestoreUserModel()
+    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var secured: Bool = true
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \User.id, ascending: true)],
-        //predicate: NSPredicate(format: "name BEGINSWITH %@", "G"), //SQL Query
-        animation: .default)
-    private var users: FetchedResults<User>
+    @State private var currentUser: UserFirebase?
+    
+    init() {
+        firestoreUserModel.listenToFirestore()
+    }
     
     var body: some View {
         VStack {
@@ -58,8 +60,12 @@ struct LoginView: View {
             Button {
                 print("login?")
                 if loginCheck() {
-                    AppIndexManager.singletonObject.userName = email
-                    print("username: \(AppIndexManager.singletonObject.userName)")
+                    guard let currentUser = currentUser else {
+                        print("Error: Current user is nil")
+                        return
+                    }
+                    AppIndexManager.singletonObject.currentUser = currentUser
+                    print("username: \(AppIndexManager.singletonObject.currentUser!.username)")
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 }
             } label: {
@@ -70,9 +76,12 @@ struct LoginView: View {
     
     private func loginCheck() -> Bool {
         
+        let users = firestoreUserModel.users
+        
         for user in users {
             if (user.username == email || user.email == email) && user.password == password {
                 print("Login success =)")
+                currentUser = user
                 return true
             }
         }
