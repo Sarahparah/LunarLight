@@ -19,7 +19,7 @@ struct LobbyView: View {
             VStack{
                 Text("Lobby View")
                 Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.testView
+                    AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
                 } label: {
                     Text("Online")
                 }

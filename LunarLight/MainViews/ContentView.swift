@@ -42,8 +42,8 @@ struct ContentView: View {
         case AppIndex.lobbyChatView:
             LobbyChatView()
                 .onAppear(perform: resetTimer)
-        case AppIndex.testView:
-            TestView()
+        case AppIndex.onlineUsersView:
+            OnlineUsersView()
                 .onAppear(perform: resetTimer)
         
         }

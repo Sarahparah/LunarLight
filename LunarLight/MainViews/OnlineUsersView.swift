@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestView: View {
+struct OnlineUsersView: View {
     
     @StateObject var firestoreUserModel = FirestoreUserModel()
     
@@ -24,8 +24,10 @@ struct TestView: View {
                 Button {
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 } label: {
-                    Text("< Back")
+                    Text("< Lobby")
                 }
+                
+                Spacer()
                 
                 Button {
                     AppIndexManager.singletonObject.logout()
@@ -33,15 +35,19 @@ struct TestView: View {
                     Text("Logout")
                 }
 
-            }
+            }.padding()
             
             List{
                 ForEach (firestoreUserModel.usersOnline) { userOnline in
                     
                     HStack{
                         Text(userOnline.username)
+                        Spacer()
                         Text("Online")
                         Color.green
+                            .frame(width: 25, height: 25)
+                            .cornerRadius(100)
+                            
                     }
                 }
             }
@@ -55,6 +61,6 @@ struct TestView: View {
 
 struct StoneTestView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        OnlineUsersView()
     }
 }
