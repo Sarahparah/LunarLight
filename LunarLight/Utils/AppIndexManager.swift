@@ -12,13 +12,25 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
+    let testUser = UserFirebase(_id: "", _username: "testuser", _email: "test@gmail.com", _password: "123", _year: 1999, _month: 4, _day: 25, _avatar: "Bengan")
     var currentUser: UserFirebase
     
     @Published var appIndex = AppIndex.startView
     
     private init() {
         //SINGLETON. PRIVATE INIT.
-        currentUser = UserFirebase(_id: "", _username: "testuser", _email: "test@gmail.com", _password: "123", _year: 1999, _month: 4, _day: 25, _avatar: "Bengan")
+        currentUser = testUser
+    }
+    
+    func logout() {
+        
+        let currentUserOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: false)
+        let firebaseUserModel = FirestoreUserModel()
+        firebaseUserModel.updateOnlineUser(currentUserOnline: currentUserOnline)
+        
+        currentUser = testUser
+        AppIndexManager.singletonObject.appIndex = AppIndex.startView
+        print("Logged out!")
     }
     
 }

@@ -11,12 +11,14 @@ import FirebaseFirestoreSwift
 struct UserOnlineFirebase: Codable, Identifiable{
     
     var id: String
-    var isOnline: Bool
+    var username: String
+    var is_online: Bool
     
-    init(_id: String, _isOnline: Bool){
+    init(_id: String, _username: String, _isOnline: Bool){
         
         id = _id
-        isOnline = _isOnline
+        username = _username
+        is_online = _isOnline
     }
 
     

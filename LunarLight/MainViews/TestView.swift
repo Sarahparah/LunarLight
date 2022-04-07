@@ -20,11 +20,26 @@ struct TestView: View {
         VStack {
             Text("Test View")
             
+            HStack{
+                Button {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                } label: {
+                    Text("< Back")
+                }
+                
+                Button {
+                    AppIndexManager.singletonObject.logout()
+                } label: {
+                    Text("Logout")
+                }
+
+            }
+            
             List{
                 ForEach (firestoreUserModel.usersOnline) { userOnline in
                     
                     HStack{
-                        Text(userOnline.id)
+                        Text(userOnline.username)
                         Text("Online")
                         Color.green
                     }

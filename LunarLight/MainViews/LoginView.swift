@@ -65,6 +65,10 @@ struct LoginView: View {
                         print("Error: Current user is nil")
                         return
                     }
+                    
+                    let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
+                    firestoreUserModel.updateOnlineUser(currentUserOnline: userOnline)
+                    
                     AppIndexManager.singletonObject.currentUser = currentUser
                     print("username: \(AppIndexManager.singletonObject.currentUser.username)")
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
