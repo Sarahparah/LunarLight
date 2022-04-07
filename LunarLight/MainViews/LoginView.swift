@@ -25,6 +25,7 @@ struct LoginView: View {
         VStack {
             
             TextField("Email", text: $email)
+                .autocapitalization(.none)
             
             HStack{
                 
