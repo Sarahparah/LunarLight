@@ -27,7 +27,7 @@ struct ProfileView: View {
         
         stone = testData.stoneArray[3]
         name = AppIndexManager.singletonObject.currentUser.username
-        stoneColor = testData.stoneColorBackground[0]
+        stoneColor = testData.profileBackground[0]
     }
     
     var body: some View {
