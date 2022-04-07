@@ -10,29 +10,58 @@ import SwiftUI
 
 struct WelcomeView: View {
     
+    private var firestoreModel = FirestoreUserModel()
+    
+    let backgroundColor: String
+    
     let layout = [
-        GridItem(.flexible(minimum: 100)),
-        GridItem(.flexible(minimum: 100)),
-        GridItem(.flexible(minimum: 100))
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2))
     ]
     
     let profileImages: [String]
     @State var selectedImage: String
     
+    @State var randomQuoteIndex = 0
+    @State private var quotes = ["temp Quote"]
+    
     init (){
         let localData = LocalData()
-        profileImages = localData.profileImages
+        var currentUser = AppIndexManager.singletonObject.currentUser
+        
+        let stoneIndex = UserFirebase.getStoneIndex(from: currentUser)
+        let stoneType = localData.profileBackground[stoneIndex]
+        
+        backgroundColor = stoneType
+        profileImages = localData.stoneImages[stoneType] ?? []
         selectedImage = profileImages[0]
         print("Selected image: \(selectedImage)")
+        
+        currentUser.avatar = profileImages[0]
+        firestoreModel.updateUser(currentUser: currentUser)
     }
     
     var body: some View {
         
-        VStack{
-            Text("Welcome")
-                .font(.title)
+        ZStack {
             
-            ScrollView(.vertical){
+            //Background (first z-index)
+            //Color(backgroundColor)
+            
+            LinearGradient(gradient: Gradient(colors: [Color(backgroundColor), .white]), startPoint: .bottom, endPoint: .top)
+                .ignoresSafeArea()
+            
+            //Foreground (second z-index)
+            VStack{
+                Text("Welcome")
+                    .font(.title)
+                
+                //ScrollView(.vertical){
+                    
+                //}.frame(height: UIScreen.main.bounds.height * 0.4)
+                
                 LazyVGrid(columns: layout, content: {
                     ForEach(profileImages, id: \.self) { imageString in
                         Button {
@@ -45,25 +74,49 @@ struct WelcomeView: View {
                             
                         }
                         //.frame(width: 100, height: 100)
-                        .background(imageString == selectedImage ? Color.green : Color.white)
+                        .background(imageString == selectedImage ? Color("gradient_black_40") : Color("gradient_black_20"))
                         .cornerRadius(65)
                     }
                 })
-            }.frame(height: UIScreen.main.bounds.height * 0.4)
 
-            Spacer()
-            
-            Text("Some welcome info message... I dunno?")
-            
-            Spacer()
-            
-            Button {
-                AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
-            } label: {
-                Text("Enter the world of Lunar Light")
-            }
+                Spacer()
+                
+                Text(quotes[randomQuoteIndex])
+                    .task {
+                    do {
+                        let url = URL(string: "https://www.hackingwithswift.com/samples/quotes.txt")!
 
-        }.padding()
+                        for try await quote in url.lines {
+                            quotes.append(quote)
+                        }
+                        randomQuoteIndex = Int.random(in: 0..<quotes.count)
+                    } catch {
+                        // Stop adding quotes when an error is thrown
+                    }
+                }
+                
+                Spacer()
+                
+                Button {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                } label: {
+                    Text("Enter the world of Lunar Light")
+                        .font(Font.subheadline.weight(.bold))
+                        .foregroundColor(Color.white)
+                        .padding()
+                        .background(Color("gradient_black_20"))
+                        .cornerRadius(30)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(Color.white, lineWidth: 1)
+                            )
+                }
+
+            }.padding()
+                
+        }
+        
+        
     }
     
     private func updateAvatar(_ imageString: String) {
