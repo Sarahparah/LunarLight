@@ -26,28 +26,33 @@ struct ContentView: View {
     
     var body: some View {
         
-        switch appIndexManager.appIndex {
+        VStack{
             
-        case AppIndex.startView:
-            StartView()
-        case AppIndex.welcomeView:
-            WelcomeView()
-                .onAppear(perform: resetTimer)
-        case AppIndex.lobbyView:
-            LobbyView()
-                .onAppear(perform: resetTimer)
-        case AppIndex.chatView:
-            ChatView()
-                .onAppear(perform: resetTimer)
-        case AppIndex.lobbyChatView:
-            LobbyChatView()
-                .onAppear(perform: resetTimer)
-        case AppIndex.onlineUsersView:
-            OnlineUsersView()
-                .onAppear(perform: resetTimer)
-        
+            switch appIndexManager.appIndex {
+                
+            case AppIndex.startView:
+                StartView()
+            case AppIndex.welcomeView:
+                WelcomeView()
+                    .onAppear(perform: resetTimer)
+            case AppIndex.lobbyView:
+                LobbyView()
+                    .onAppear(perform: resetTimer)
+            case AppIndex.chatView:
+                ChatView()
+                    .onAppear(perform: resetTimer)
+            case AppIndex.lobbyChatView:
+                LobbyChatView()
+                    .onAppear(perform: resetTimer)
+            case AppIndex.onlineUsersView:
+                OnlineUsersView()
+                    .onAppear(perform: resetTimer)
+            
+            }
+            
         }
         
+
     }
     
     private func resetTimer() {
@@ -55,7 +60,7 @@ struct ContentView: View {
                         
         // set timer
         timerWorkItem = DispatchWorkItem {
-            AppIndexManager.singletonObject.logout()
+            //AppIndexManager.singletonObject.logout()
             print("timed out!")
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: timerWorkItem!)

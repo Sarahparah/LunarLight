@@ -14,29 +14,32 @@ struct ProfileView: View {
     @State var index = 0
     
     var name: String
-    var stone : String
-    var stoneColor : String
+    var stone: String
+    var avatar: String
+    var backgroundColor: String
     
     @State var infoText = ["hej detta är försts fältet om mig",
                     "Detta är din månadssten. den är vacker bl bla"]
     
     init(){
-        let testData = LocalData()
+        let localData = LocalData()
+        let currentUser = AppIndexManager.singletonObject.currentUser
         
-        print("username: \(AppIndexManager.singletonObject.currentUser.username)")
+        let stoneIndex = UserFirebase.getStoneIndex(from: currentUser)
+        let stoneType = localData.profileBackground[stoneIndex]
         
-        stone = testData.stoneArray[3]
+        backgroundColor = stoneType
+        
+        stone = localData.stoneArray[stoneIndex]
+        avatar = currentUser.avatar
         name = AppIndexManager.singletonObject.currentUser.username
-        stoneColor = testData.profileBackground[0]
     }
     
     var body: some View {
         
         ZStack{
-            Color(stoneColor)
-                .edgesIgnoringSafeArea(.top)
-            
-            
+            LinearGradient(gradient: Gradient(colors: [Color(backgroundColor), .white]), startPoint: .bottom, endPoint: .top)
+                .ignoresSafeArea()
             
             
             VStack{
@@ -63,7 +66,7 @@ struct ProfileView: View {
                
                 
                 //Namn och profilbild
-                Image(systemName: "person")
+                Image(avatar)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
@@ -106,7 +109,7 @@ struct ProfileView: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.3), radius: 5, x: 5, y: 5)
-                .shadow(color: Color.pink.opacity(0.5), radius: 5, x: -5, y: -5)
+                .shadow(color: Color(backgroundColor).opacity(0.5), radius: 5, x: -5, y: -5)
                 
                 if index == 0 {
                     TextField("", text: $infoText[0])
