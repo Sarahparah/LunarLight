@@ -36,7 +36,7 @@ struct WelcomeView: View {
                 LazyVGrid(columns: layout, content: {
                     ForEach(profileImages, id: \.self) { imageString in
                         Button {
-                            selectedImage = imageString
+                            updateAvatar(imageString)
                         } label: {
                             Image(imageString)
                                 .resizable()
@@ -64,6 +64,16 @@ struct WelcomeView: View {
             }
 
         }.padding()
+    }
+    
+    private func updateAvatar(_ imageString: String) {
+        selectedImage = imageString
+        
+        var currentUser = AppIndexManager.singletonObject.currentUser
+        currentUser.avatar = imageString
+        
+        let firestoreUserModel = FirestoreUserModel()
+        firestoreUserModel.updateUser(currentUser: currentUser)
     }
 }
 

@@ -24,6 +24,16 @@ class FirestoreUserModel: ObservableObject{
         
     }
     
+    func updateUser(currentUser: UserFirebase) {
+        
+        let id = currentUser.id
+        
+        //TODO: Fix update user in firebase
+        //let document = dataBase.collection("users").whereField("id", in: [id])
+        //document.setValue(currentUser.avatar, forKey: "avatar")
+        
+    }
+    
     func listenToFirestore() {
         
         //Read data once (example):
