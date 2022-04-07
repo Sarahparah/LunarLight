@@ -16,7 +16,7 @@ struct MessageView: View {
         
         VStack {
             Divider()
-                .padding(5)
+                .padding(2)
                 .opacity(0)
             
             HStack {
@@ -25,6 +25,10 @@ struct MessageView: View {
                     .background(Color.white)
                     .cornerRadius(30)
             }
+            
+            Divider()
+                .padding(2)
+                .opacity(0)
         }
     }
 }
