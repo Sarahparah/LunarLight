@@ -15,7 +15,7 @@ struct ProfileView: View {
     
     var name: String
     var stone : String
-    
+    var stoneColor : String
     
     @State var infoText = ["hej detta är försts fältet om mig",
                     "Detta är din månadssten. den är vacker bl bla"]
@@ -26,13 +26,15 @@ struct ProfileView: View {
         print("username: \(AppIndexManager.singletonObject.userName)")
         
         stone = testData.stoneArray[3]
+        stoneColor = testData.stoneColorBackground[0]
+        
         name = AppIndexManager.singletonObject.userName
     }
     
     var body: some View {
         
         ZStack{
-            Color.cyan
+            Color(stoneColor)
                 .edgesIgnoringSafeArea(.top)
             
             

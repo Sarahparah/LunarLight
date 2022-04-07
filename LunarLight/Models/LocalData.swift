@@ -13,5 +13,7 @@ class LocalData {
     
     let stoneArray = ["Lapis","Ametist","Flurit","Rosenkvarts", "Citrin", "Månsten", "Rubin", "Mossagat", "Aqvamarin", "Malakit" , "Topaz", "Rökkvarts"]
     
+    let stoneColorBackground = ["Lapis", "Rosenkvarts"]
+    
     
 }

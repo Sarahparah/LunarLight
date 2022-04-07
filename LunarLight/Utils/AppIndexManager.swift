@@ -15,7 +15,7 @@ class AppIndexManager: ObservableObject {
     var userId: String = ""
     var userName: String = ""
     
-    @Published var appIndex = AppIndex.startView
+    @Published var appIndex = AppIndex.lobbyView
     private init() {
         //SINGLETON. PRIVATE INIT.
     }
