@@ -198,6 +198,7 @@
 		41B977CD27F5ABF000455E86 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				41B977E527FC6A0E00455E86 /* LocalData.swift */,
 				D56760952800563A004826D2 /* Collections */,
 			);
 			path = Models;
@@ -234,7 +235,6 @@
 				41B977DA27F72DB300455E86 /* ChatEntry.swift */,
 				41B977DC27F72E5000455E86 /* Chat.swift */,
 				33E7A90927F727410091502E /* CoredataUserModel.swift */,
-				41B977E527FC6A0E00455E86 /* LocalData.swift */,
 			);
 			path = First_try_files_do_we_still_need;
 			sourceTree = "<group>";
