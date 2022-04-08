@@ -57,12 +57,22 @@ struct WelcomeView: View {
             VStack{
                 Text("Welcome")
                     .font(.title)
+                    .padding(.bottom, 20)
+                
+                Text("Choose an icon that suits your soul:")
+                    .font(Font.subheadline.weight(.bold))
+                    .padding()
+//                    .background(Color("gradient_black_20"))
+//                    .foregroundColor(Color.black)
+//                    .cornerRadius(30)
+//
+                        
                 
                 //ScrollView(.vertical){
                     
                 //}.frame(height: UIScreen.main.bounds.height * 0.4)
                 
-                LazyVGrid(columns: layout, content: {
+                LazyVGrid(columns: layout, alignment: .center, content: {
                     ForEach(profileImages, id: \.self) { imageString in
                         Button {
                             updateAvatar(imageString)
@@ -74,14 +84,23 @@ struct WelcomeView: View {
                             
                         }
                         //.frame(width: 100, height: 100)
-                        .background(imageString == selectedImage ? Color("gradient_black_40") : Color("gradient_black_20"))
+                        .background(imageString == selectedImage ? Color(.white) : Color("gradient_white_30"))
                         .cornerRadius(65)
                     }
                 })
+                    .padding()
 
                 Spacer()
                 
                 Text(quotes[randomQuoteIndex])
+                    .foregroundColor(.white)
+                    .font(Font.subheadline.weight(.bold))
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.size.width * 0.8,
+                           height: UIScreen.main.bounds.size.height * 0.2)
+                    .background(Color("gradient_black_20"))
+                    .cornerRadius(30)
+                    .padding()
                     .task {
                     do {
                         let url = URL(string: "https://www.hackingwithswift.com/samples/quotes.txt")!
