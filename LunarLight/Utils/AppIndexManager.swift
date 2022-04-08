@@ -25,7 +25,7 @@ class AppIndexManager: ObservableObject {
     var currentUser: UserFirebase
     var profileUser: UserFirebase?
     
-    @Published var appIndex = AppIndex.lobbyView
+    @Published var appIndex = AppIndex.welcomeView
     
     private init() {
         //SINGLETON. PRIVATE INIT.
