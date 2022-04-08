@@ -203,11 +203,23 @@ struct RegisterView: View {
         }
 
         let localData = LocalData()
-        let avatar: String = localData.profileImages[0]
+     
+        
+        let stoneIndex = UserFirebase.getStoneIndex(month: month, day: day)
+        
+        let stoneType = localData.profileBackground[stoneIndex]
+        
+        let stoneArray = localData.stoneImages[stoneType]
+        let avatar: String = stoneArray![0]
+      
+       
         
         email = email.lowercased()
         
         let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
+        
+        
+     
         
         //1. create user document
         firestoreModel.createUser(newUser: newUser)

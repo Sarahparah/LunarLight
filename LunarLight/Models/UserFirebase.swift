@@ -31,10 +31,9 @@ struct UserFirebase: Codable, Identifiable{
         avatar = _avatar
     }
     
-    static func getStoneIndex(from user: UserFirebase) -> Int {
+    static func getStoneIndex(month: UInt64, day: UInt64) -> Int {
         
-        let month = user.month
-        let day = user.day
+       
         
         switch month {
         case 1:

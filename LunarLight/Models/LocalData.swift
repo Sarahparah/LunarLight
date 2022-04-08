@@ -13,7 +13,7 @@ class LocalData {
     static let USERS_ONLINE_COLLECTION_KEY = "users_online"
     static let WORLD_MESSAGES_COLLECTION_KEY = "world_messages"
     
-    let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
+    //let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
     let stoneArray = ["Granate","Aquamarine","Turkos","Coral", "Aventurine", "Tigers eye", "Karneiol", "Lapiz", "Rose Quartz", "Pink turmalin" , "Malachite", "Citrine"]
     

@@ -31,7 +31,7 @@ struct WelcomeView: View {
         let localData = LocalData()
         var currentUser = AppIndexManager.singletonObject.currentUser
         
-        let stoneIndex = UserFirebase.getStoneIndex(from: currentUser)
+        let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let stoneType = localData.profileBackground[stoneIndex]
         
         backgroundColor = stoneType

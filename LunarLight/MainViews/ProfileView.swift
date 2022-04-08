@@ -27,7 +27,7 @@ struct ProfileView: View {
         user = _user
         readOnly = AppIndexManager.singletonObject.currentUser.id == user.id ? false : true
         
-        let stoneIndex = UserFirebase.getStoneIndex(from: user)
+        let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
         let stoneType = localData.profileBackground[stoneIndex]
 
         backgroundColor = stoneType

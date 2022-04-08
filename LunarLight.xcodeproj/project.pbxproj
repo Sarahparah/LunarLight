@@ -161,6 +161,9 @@
 		33D386ED27F6EAF400D338B2 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				3348158127FF662100AF0EC7 /* MessageView.swift */,
+				41B977DF27FAEED900455E86 /* TitleRow.swift */,
+				41B977E327FC4E0800455E86 /* SheetSettings.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -179,7 +182,6 @@
 				41B977D427F7123700455E86 /* ChatView.swift */,
 				41B977E127FC423200455E86 /* ProfileView.swift */,
 				33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */,
-				41B977DE27FAEE8200455E86 /* Components */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -199,16 +201,6 @@
 				3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		41B977DE27FAEE8200455E86 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				41B977DF27FAEED900455E86 /* TitleRow.swift */,
-				41B977E327FC4E0800455E86 /* SheetSettings.swift */,
-				3348158127FF662100AF0EC7 /* MessageView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

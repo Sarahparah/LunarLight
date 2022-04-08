@@ -29,7 +29,7 @@ struct LobbyView: View {
             
             ProfileView(_user: AppIndexManager.singletonObject.currentUser)
                 .tabItem{
-                    Image(systemName: "gearshape.fill")
+                    Image(systemName: "person.circle")
                     Text("Profile")
                     
                 }
