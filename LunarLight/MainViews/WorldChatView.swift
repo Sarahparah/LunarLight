@@ -25,7 +25,7 @@ struct WorldChatView: View {
             ScrollView{
                 
                 ForEach(firestoreWorldMsgModel.worldMessages) { worldMsg in
-                    MessageView(user: worldMsg.username, message: worldMsg.message)
+                    MessageView(_user: worldMsg.username, _message: worldMsg.message, _avatar: worldMsg.avatar, _month: worldMsg.month, _day: worldMsg.day )
                         .onAppear(perform: { print(worldMsg.message) })
                 }
                 .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
@@ -72,7 +72,7 @@ struct WorldChatView: View {
         print(messageInput)
         
         let currentUser = AppIndexManager.singletonObject.currentUser
-        let newMessage = WorldMsgFirebase(_userId: currentUser.id, _username: currentUser.username, _message: messageInput)
+        let newMessage = WorldMsgFirebase(_userId: currentUser.id, _username: currentUser.username, _message: messageInput, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day)
         
         firestoreWorldMsgModel.createMessage(newMessage: newMessage)
         
