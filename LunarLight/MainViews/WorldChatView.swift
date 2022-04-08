@@ -15,14 +15,33 @@ struct WorldChatView: View {
     
     var body: some View {
         VStack{
-            Text("Lobby View")
-            Button {
-                AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
-            } label: {
-                Text("Show Online Users")
-            }.padding()
+            
+            HStack(alignment: .center){
+                
+                Button {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
+                } label: {
+                    Text("Show Users")
+                }.padding()
+                    .foregroundColor(.black)
+                
+                Divider()
+                    .frame(height: UIScreen.main.bounds.size.height * 0.03)
+                
+                Button {
+                    print("lobbies pressed - not in use")
+                } label: {
+                    Text("Choose Lobby")
+                }.padding()
+                    .foregroundColor(.black)
+                
+                
+            }
             
             ScrollView{
+                Divider()
+                    .padding(2)
+                    .opacity(0)
                 
                 ForEach(firestoreWorldMsgModel.worldMessages) { worldMsg in
                     MessageView(_user: worldMsg.username, _message: worldMsg.message, _avatar: worldMsg.avatar, _month: worldMsg.month, _day: worldMsg.day )
@@ -41,22 +60,33 @@ struct WorldChatView: View {
             .padding()
             
             HStack {
-                TextField("Say something to the world...", text: $messageInput)
+                TextField("Enter message..", text: $messageInput)
+                    .foregroundColor(.white)
+                    .accentColor(.white)
                     .padding()
+                    
+                    
                 Button {
                     sendMessage()
                 } label: {
                     Text("Send")
                         .padding()
                 }
-                .background(Color("gradient_black_40"))
+                .font(Font.subheadline.weight(.bold))
+                .foregroundColor(Color.white)
+                .padding(2)
+                .background(Color("gradient_black_20"))
                 .cornerRadius(30)
+                .overlay(
+                        RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color.white, lineWidth: 1)
+                        )
 
             }
             .frame(maxWidth: .infinity, minHeight: 50)
             .background(Color("gradient_black_20"))
             .cornerRadius(30)
-            .padding([.leading, .bottom, .trailing], 20)
+            .padding()
 
         }
         .onAppear(perform: {
