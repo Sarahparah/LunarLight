@@ -41,8 +41,8 @@ struct ContentView: View {
             case AppIndex.chatView:
                 ChatView()
                     .onAppear(perform: resetTimer)
-            case AppIndex.lobbyChatView:
-                LobbyChatView()
+            case AppIndex.friendsView:
+                FriendsView()
                     .onAppear(perform: resetTimer)
             case AppIndex.onlineUsersView:
                 OnlineUsersView()

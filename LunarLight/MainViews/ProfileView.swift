@@ -43,6 +43,15 @@ struct ProfileView: View {
             
             VStack{
                 
+                if readOnly {
+                    Button {
+                        addFriend()
+                    } label: {
+                        Text("Add friend")
+                    }
+
+                }
+                
                 //knappen för settings sheet
                 HStack{
                     
@@ -130,6 +139,19 @@ struct ProfileView: View {
         }
         
     }
+    
+    private func addFriend() {
+        
+        let friendId = user.id
+        
+        let newFriend = FriendsFirebase(_userId: friendId)
+        
+        let firestoreFriendsModel = FirestoreFriendsModel()
+        
+        firestoreFriendsModel.createFriend(newFriend: newFriend)
+        
+    }
+    
 }
 
 struct SheetView: View {

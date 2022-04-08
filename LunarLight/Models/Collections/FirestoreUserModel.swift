@@ -22,7 +22,7 @@ class FirestoreUserModel: ObservableObject{
     func createUser(newUser: UserFirebase){
         
         do {
-            _ = try dataBase.collection(LocalData.USERS_COLLECTION_KEY).addDocument(from: newUser)
+            _ = try dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(newUser.id).setData(from: newUser)
         } catch {
             print("Error: Could not save user to Firestore")
         }

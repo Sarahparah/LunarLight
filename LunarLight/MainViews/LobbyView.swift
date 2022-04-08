@@ -21,7 +21,7 @@ struct LobbyView: View {
                     Text("World Chat")
                 }
             
-            LobbyChatView()
+            FriendsView()
                 .tabItem{
                     Image(systemName: "bubble.left.fill")
                     Text("Friends")
