@@ -8,6 +8,8 @@
 import Foundation
 import Firebase
 
+//Grundläggande userdata, här sparas all info om en user
+
 class FirestoreUserModel: ObservableObject{
     
     let dataBase = Firestore.firestore()

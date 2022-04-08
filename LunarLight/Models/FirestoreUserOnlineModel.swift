@@ -8,6 +8,8 @@
 import Foundation
 import Firebase
 
+//Denna collection visar om en user är online eller inte
+
 class FirestoreUserOnlineModel: ObservableObject{
     
     let dataBase = Firestore.firestore()
