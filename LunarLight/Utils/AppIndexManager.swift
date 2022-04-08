@@ -13,14 +13,14 @@ class AppIndexManager: ObservableObject {
     static let singletonObject = AppIndexManager()
     
     let testUser = UserFirebase(
-        _id: "6DF4FC1D-3A34-42CD-A63B-568B8C4A21C5",
-        _username: "testuser",
-        _email: "Test@email.se",
+        _id: "9B51960C-0CF2-42CF-BFDC-5CA01232B402",
+        _username: "test",
+        _email: "test123@gmail.com",
         _password: "12345",
-        _year: 2000,
-        _month: 4,
-        _day: 7,
-        _avatar: "aries_5")
+        _year: 2010,
+        _month: 1,
+        _day: 1,
+        _avatar: "capricorn_6")
     
     var currentUser: UserFirebase
     var profileUser: UserFirebase?
