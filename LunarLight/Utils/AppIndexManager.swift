@@ -35,8 +35,8 @@ class AppIndexManager: ObservableObject {
     func logout() {
         
         let currentUserOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: false)
-        let firebaseUserModel = FirestoreUserModel()
-        firebaseUserModel.updateOnlineUser(currentUserOnline: currentUserOnline)
+        let firebaseUserOnlineModel = FirestoreUserOnlineModel()
+        firebaseUserOnlineModel.updateOnlineUser(currentUserOnline: currentUserOnline)
         
         currentUser = testUser
         AppIndexManager.singletonObject.appIndex = AppIndex.startView

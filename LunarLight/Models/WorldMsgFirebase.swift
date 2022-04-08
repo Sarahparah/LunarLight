@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 struct WorldMsgFirebase: Codable, Identifiable, Equatable{
     
     var id: String
-    var userId: String
+    var user_id: String
     var username: String
     var message: String
     var timestamp: Double
@@ -19,7 +19,7 @@ struct WorldMsgFirebase: Codable, Identifiable, Equatable{
     init(_userId: String, _username: String, _message: String){
         
         id = UUID().uuidString
-        userId = _userId
+        user_id = _userId
         username = _username
         message = _message
         timestamp = NSDate().timeIntervalSince1970

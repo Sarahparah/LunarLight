@@ -10,6 +10,7 @@ import SwiftUI
 struct OnlineUsersView: View {
     
     @StateObject var firestoreUserModel = FirestoreUserModel()
+    @StateObject var firestoreUserOnlineModel = FirestoreUserOnlineModel()
     
     @State var showProfileView: Bool = false
     
@@ -42,7 +43,7 @@ struct OnlineUsersView: View {
             }.padding()
             
             List{
-                ForEach (firestoreUserModel.usersOnline) { userOnline in
+                ForEach (firestoreUserOnlineModel.usersOnline) { userOnline in
                     
                     
                     Button {
@@ -66,7 +67,7 @@ struct OnlineUsersView: View {
                 }
             }
         }.onAppear {
-            firestoreUserModel.listenToOnlineUsers()
+            firestoreUserOnlineModel.listenToOnlineUsers()
         }
         
         

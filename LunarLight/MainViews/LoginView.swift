@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     private let firestoreUserModel = FirestoreUserModel()
+    private let firestoreUserOnlineModel = FirestoreUserOnlineModel()
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -72,7 +73,7 @@ struct LoginView: View {
                     }
                     
                     let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
-                    firestoreUserModel.updateOnlineUser(currentUserOnline: userOnline)
+                    firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
                     
                     AppIndexManager.singletonObject.currentUser = currentUser
                     print("username: \(AppIndexManager.singletonObject.currentUser.username)")

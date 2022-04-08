@@ -209,7 +209,13 @@ struct RegisterView: View {
         
         let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
         
+        //1. create user document
         firestoreModel.createUser(newUser: newUser)
+        
+        //2. create user online document
+        let userOnline = UserOnlineFirebase(_id: newUser.id, _username: newUser.username, _isOnline: true)
+        let firestoreUserOnlineModel = FirestoreUserOnlineModel()
+        firestoreUserOnlineModel.createUserOnline(newUserOnline: userOnline)
         
         //Temp code (save user to CoreData):
         //let coredataUserModel = CoredataUserModel()
