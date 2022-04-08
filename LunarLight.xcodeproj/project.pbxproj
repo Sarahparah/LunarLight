@@ -30,7 +30,7 @@
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
 		41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D227F70CBC00455E86 /* LobbyView.swift */; };
 		41B977D527F7123700455E86 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D427F7123700455E86 /* ChatView.swift */; };
-		41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D627F7243B00455E86 /* LobbyChatView.swift */; };
+		41B977D727F7243B00455E86 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D627F7243B00455E86 /* FriendsView.swift */; };
 		41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DA27F72DB300455E86 /* ChatEntry.swift */; };
 		41B977DD27F72E5000455E86 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DC27F72E5000455E86 /* Chat.swift */; };
 		41B977E027FAEED900455E86 /* TitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DF27FAEED900455E86 /* TitleRow.swift */; };
@@ -76,7 +76,7 @@
 		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		41B977D227F70CBC00455E86 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
 		41B977D427F7123700455E86 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		41B977D627F7243B00455E86 /* LobbyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyChatView.swift; sourceTree = "<group>"; };
+		41B977D627F7243B00455E86 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		41B977DA27F72DB300455E86 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
 		41B977DC27F72E5000455E86 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		41B977DF27FAEED900455E86 /* TitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRow.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
 				33D386F027F6F23C00D338B2 /* WelcomeView.swift */,
 				41B977D227F70CBC00455E86 /* LobbyView.swift */,
-				41B977D627F7243B00455E86 /* LobbyChatView.swift */,
+				41B977D627F7243B00455E86 /* FriendsView.swift */,
 				3348158727FF711600AF0EC7 /* WorldChatView.swift */,
 				41B977D427F7123700455E86 /* ChatView.swift */,
 				41B977E127FC423200455E86 /* ProfileView.swift */,
@@ -335,7 +335,7 @@
 				41B977F627FDC25600455E86 /* UserFirebase.swift in Sources */,
 				D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */,
 				D5676092280055FB004826D2 /* FirestoreFriendsModel.swift in Sources */,
-				41B977D727F7243B00455E86 /* LobbyChatView.swift in Sources */,
+				41B977D727F7243B00455E86 /* FriendsView.swift in Sources */,
 				41B977E227FC423200455E86 /* ProfileView.swift in Sources */,
 				33E7A90627F703340091502E /* AppIndexManager.swift in Sources */,
 				33E7A90427F6FFF70091502E /* ContentView.swift in Sources */,

@@ -8,9 +8,9 @@
 import SwiftUI
 
 
-struct LobbyChatView: View {
+struct FriendsView: View {
     
-    
+    @StateObject var firestoreFriendsModel = FirestoreFriendsModel()
     @StateObject var chat = Chat()
     @State var showInfo : Bool = false
     
@@ -19,12 +19,12 @@ struct LobbyChatView: View {
         VStack{
             NavigationView{
                 List{
-                    ForEach(chat.entries){ entry in
-                        
-                        NavigationLink(destination: ChatView(entry: entry)){
-                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
-                        }
-                        .onAppear(perform: { print(entry.date)})
+                    ForEach(firestoreFriendsModel.friends){ entry in
+                        Text(entry.user_id)
+//                        NavigationLink(destination: ChatView(entry: entry.user_id)){
+//                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
+//                        }
+//                        .onAppear(perform: { print(entry.date)})
                         
                     }.onDelete(perform: { indexSet in
                         print ("delete")
@@ -35,6 +35,8 @@ struct LobbyChatView: View {
                 }
             }
             Spacer()
+        }.onAppear(){
+            firestoreFriendsModel.listenToFriends()
         }
     }
 }
@@ -45,6 +47,6 @@ struct LobbyChatView: View {
 
 struct LobbyChatView_Previews: PreviewProvider {
     static var previews: some View {
-        LobbyChatView()
+        FriendsView()
     }
 }
