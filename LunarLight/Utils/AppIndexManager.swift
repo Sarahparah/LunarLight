@@ -15,9 +15,9 @@ class AppIndexManager: ObservableObject {
     var timerWorkItem: DispatchWorkItem?
     
     let testUser = UserFirebase(
-        _id: "9B51960C-0CF2-42CF-BFDC-5CA01232B402",
+        _id: "7D59D875-E3F4-4396-91DC-20309FD68195",
         _username: "test",
-        _email: "test123@gmail.com",
+        _email: "test@email.se",
         _password: "12345",
         _year: 2010,
         _month: 1,
