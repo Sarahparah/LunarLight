@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @ObservedObject var appIndexManager: AppIndexManager
     
     init() {
@@ -33,33 +33,30 @@ struct ContentView: View {
             case AppIndex.welcomeView:
                 WelcomeView()
             case AppIndex.lobbyView:
-                LobbyView()
+                LobbyTabView()
             case AppIndex.chatView:
                 ChatView()
             case AppIndex.friendsView:
                 FriendsView()
             case AppIndex.onlineUsersView:
                 OnlineUsersView()
-            
+                
             }
-            
         }
-        
-
     }
     
     private func initiateCurrentUserId() {
         
         let preferences = UserDefaults.standard
-
+        
         let currentUserIdKey = "currentUserId"
-
+        
         let currentUserId = 1
         preferences.set(currentUserId, forKey: currentUserIdKey)
-
+        
         //  Save to disk
         let didSave = preferences.synchronize()
-
+        
         if !didSave {
             //  Couldn't save (I've never seen this happen in real world testing)
         }

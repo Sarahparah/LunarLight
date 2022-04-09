@@ -33,8 +33,6 @@ struct UserFirebase: Codable, Identifiable{
     
     static func getStoneIndex(month: UInt64, day: UInt64) -> Int {
         
-       
-        
         switch month {
         case 1:
             if day >= 1 && day <= 20 {

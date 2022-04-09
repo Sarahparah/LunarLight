@@ -62,14 +62,14 @@ struct WelcomeView: View {
                 Text("Choose an icon that suits your soul:")
                     .font(Font.subheadline.weight(.bold))
                     .padding()
-//                    .background(Color("gradient_black_20"))
-//                    .foregroundColor(Color.black)
-//                    .cornerRadius(30)
-//
-                        
+                //                    .background(Color("gradient_black_20"))
+                //                    .foregroundColor(Color.black)
+                //                    .cornerRadius(30)
+                //
+                
                 
                 //ScrollView(.vertical){
-                    
+                
                 //}.frame(height: UIScreen.main.bounds.height * 0.4)
                 
                 LazyVGrid(columns: layout, alignment: .center, content: {
@@ -89,7 +89,7 @@ struct WelcomeView: View {
                     }
                 })
                     .padding()
-
+                
                 Spacer()
                 
                 Text(quotes[randomQuoteIndex])
@@ -102,17 +102,17 @@ struct WelcomeView: View {
                     .cornerRadius(30)
                     .padding()
                     .task {
-                    do {
-                        let url = URL(string: "https://www.hackingwithswift.com/samples/quotes.txt")!
-
-                        for try await quote in url.lines {
-                            quotes.append(quote)
+                        do {
+                            let url = URL(string: "https://www.hackingwithswift.com/samples/quotes.txt")!
+                            
+                            for try await quote in url.lines {
+                                quotes.append(quote)
+                            }
+                            randomQuoteIndex = Int.random(in: 0..<quotes.count)
+                        } catch {
+                            // Stop adding quotes when an error is thrown
                         }
-                        randomQuoteIndex = Int.random(in: 0..<quotes.count)
-                    } catch {
-                        // Stop adding quotes when an error is thrown
                     }
-                }
                 
                 Spacer()
                 
@@ -126,16 +126,13 @@ struct WelcomeView: View {
                         .background(Color("gradient_black_20"))
                         .cornerRadius(30)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(Color.white, lineWidth: 1)
-                            )
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(Color.white, lineWidth: 1)
+                        )
                 }
-
-            }.padding()
                 
+            }.padding()
         }
-        
-        
     }
     
     private func updateAvatar(_ imageString: String) {

@@ -16,7 +16,6 @@ class FirestoreFriendModel: ObservableObject{
     
     func createFriend(newFriend: FriendFirebase) {
         
-        
         let id = AppIndexManager.singletonObject.currentUser.id
         
         do {
@@ -24,11 +23,7 @@ class FirestoreFriendModel: ObservableObject{
         } catch {
             print("Error: Could not save user to Firestore")
         }
-        
         //let currentUser = AppIndexManager.singletonObject.currentUser
-        
-        
-        
     }
     
     func listenToFriends() {
@@ -62,11 +57,9 @@ class FirestoreFriendModel: ObservableObject{
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
-                
             }
         }
     }
-    
 }
 
 

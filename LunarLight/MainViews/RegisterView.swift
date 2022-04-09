@@ -16,13 +16,12 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var passwordTwo: String = ""
     @State private var secured: Bool = true
-    
     @State private var email: String = ""
     @State private var passwordCheck: String = ""
     @State private var username: String = ""
-    
     @State private var showDatePicker: Bool = false
     @State private var date: Date = Date()
+    
     var currentYear: Int = -1
     var minimumYear: Date = Date()
     var maximumYear: Date = Date()
@@ -40,10 +39,8 @@ struct RegisterView: View {
                                                 DateComponents(year: currentYear-12)) ?? Date()
         maximumYear = Calendar.current.date(from:
                                                 DateComponents(year: currentYear-120)) ?? Date()
-
         
         firestoreModel.listenToUsers()
-
         
     }
     
@@ -70,7 +67,6 @@ struct RegisterView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 14))
                     
-                    
                     Button {
                         showDatePicker.toggle()
                     } label: {
@@ -84,9 +80,7 @@ struct RegisterView: View {
                     .padding(.top, 0.1)
                     .id(8)
                     
-                    
                     if showDatePicker {
-                        
                         DatePicker("", selection: $date,
                                    in: maximumYear...minimumYear, displayedComponents: [.date])
                             .accentColor(Color.red)
@@ -119,16 +113,14 @@ struct RegisterView: View {
                         .font(.system(size: 14))
                     HStack{
                         
-                        
                         if secured {
-                            
                             SecureField("Password", text: $password)
                                 .autocapitalization(.none)
                                 .multilineTextAlignment(.center)
                                 .padding(2)
                                 .border(Color.black, width: 1.0)
                                 .disableAutocorrection(true)
-                                //.id(1)
+                            //.id(1)
                         } else {
                             
                             // 3
@@ -139,14 +131,12 @@ struct RegisterView: View {
                                 .padding(2)
                                 .border(Color.black, width: 1.0)
                                 .disableAutocorrection(true)
-                                //.id(1)
+                            //.id(1)
                         }
                         
                         Button(action: {
                             self.secured.toggle()
                         }) {
-                            
-                            
                             if secured {
                                 Image(systemName: "eye.slash")
                             } else {
@@ -156,7 +146,6 @@ struct RegisterView: View {
                     }
                 }
                 .padding(.top, 10)
-                
                 
                 SecureField("Reenter password", text: $passwordTwo)
                     .autocapitalization(.none)
@@ -179,8 +168,6 @@ struct RegisterView: View {
         }.onAppear(perform: {
             date = minimumYear
         })
-        
-        
     }
     
     private func processRegister() {
@@ -201,25 +188,17 @@ struct RegisterView: View {
             print("Error: Failed to proccess day of birth.")
             return
         }
-
+        
         let localData = LocalData()
-     
         
         let stoneIndex = UserFirebase.getStoneIndex(month: month, day: day)
-        
         let stoneType = localData.profileBackground[stoneIndex]
-        
         let stoneArray = localData.stoneImages[stoneType]
         let avatar: String = stoneArray![0]
-      
-       
         
         email = email.lowercased()
         
         let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
-        
-        
-     
         
         //1. create user document
         firestoreModel.createUser(newUser: newUser)
@@ -251,7 +230,6 @@ struct RegisterView: View {
                 return false
             }
         }
-        
         return true
     }
     
@@ -289,9 +267,7 @@ struct RegisterView: View {
         
         print("register completed")
         return true
-        
     }
-    
 }
 
 struct SecurePassword_Previews: PreviewProvider {

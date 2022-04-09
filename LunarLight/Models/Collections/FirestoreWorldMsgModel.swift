@@ -23,7 +23,6 @@ class FirestoreWorldMsgModel: ObservableObject{
         } catch {
             print("Error: Could not save world message to Firestore")
         }
-        
     }
     
     func listenToWorldMessages() {
@@ -55,9 +54,7 @@ class FirestoreWorldMsgModel: ObservableObject{
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
-                
             }
         }
     }
-    
 }

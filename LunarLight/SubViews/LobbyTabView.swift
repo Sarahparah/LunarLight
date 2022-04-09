@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-struct LobbyView: View {
-    
-    
+struct LobbyTabView: View {
     
     var body: some View {
         
         TabView {
             
             WorldChatView()
-            .tabItem{
+                .tabItem{
                     Image(systemName: "house")
                     Text("World Chat")
                 }
@@ -31,16 +29,14 @@ struct LobbyView: View {
                 .tabItem{
                     Image(systemName: "person.circle")
                     Text("Profile")
-                    
                 }
         }
         .font(.headline)
     }
-
 }
 
 struct LobbyView_Previews: PreviewProvider {
     static var previews: some View {
-        LobbyView( )
+        LobbyTabView( )
     }
 }

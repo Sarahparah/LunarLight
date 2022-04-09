@@ -35,7 +35,6 @@ struct WorldChatView: View {
                 }.padding()
                     .foregroundColor(.black)
                 
-                
             }
             
             ScrollView{
@@ -51,8 +50,6 @@ struct WorldChatView: View {
                     print("*BLIPP*")
                     SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                 })
-
-                    
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("gradient_black_20"))
@@ -64,8 +61,8 @@ struct WorldChatView: View {
                     .foregroundColor(.white)
                     .accentColor(.white)
                     .padding()
-                    
-                    
+                
+                
                 Button {
                     sendMessage()
                 } label: {
@@ -78,16 +75,16 @@ struct WorldChatView: View {
                 .background(Color("gradient_black_20"))
                 .cornerRadius(30)
                 .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(Color.white, lineWidth: 1)
-                        )
-
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Color.white, lineWidth: 1)
+                )
+                
             }
             .frame(maxWidth: .infinity, minHeight: 50)
             .background(Color("gradient_black_20"))
             .cornerRadius(30)
             .padding()
-
+            
         }
         .onAppear(perform: {
             firestoreWorldMsgModel.listenToWorldMessages()

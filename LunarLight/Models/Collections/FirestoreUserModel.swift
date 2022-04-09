@@ -26,7 +26,6 @@ class FirestoreUserModel: ObservableObject{
         } catch {
             print("Error: Could not save user to Firestore")
         }
-        
     }
     
     func updateUser(currentUser: UserFirebase) {
@@ -44,9 +43,7 @@ class FirestoreUserModel: ObservableObject{
                 document.reference.updateData([
                     "avatar": currentUser.avatar
                 ])
-                
             }
-        
     }
     
     func getProfileUser(profileId: String) {
@@ -71,7 +68,6 @@ class FirestoreUserModel: ObservableObject{
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
-                
             }
     }
     
@@ -104,11 +100,9 @@ class FirestoreUserModel: ObservableObject{
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
-                
             }
         }
     }
-    
 }
 
 

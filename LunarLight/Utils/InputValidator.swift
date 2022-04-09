@@ -18,7 +18,6 @@ class InputValidator {
         if !formatValid {
             return false
         }
-        
         return true
     }
     
@@ -28,8 +27,6 @@ class InputValidator {
         if username.rangeOfCharacter(from: characterset.inverted) != nil {
             return false
         }
-        
         return true
     }
-    
 }

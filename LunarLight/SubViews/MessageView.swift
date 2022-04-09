@@ -34,10 +34,9 @@ struct MessageView: View {
     var body: some View {
         
         VStack {
-            //            Divider()
-            //                .padding(2)
-            //                .opacity(0)
+            
             HStack{
+                
                 HStack(alignment:.top) {
                     
                     Image(avatar)
@@ -52,8 +51,6 @@ struct MessageView: View {
                         .padding()
                     
                     Spacer()
-                    
-                    
                 }
                 .frame(width: UIScreen.main.bounds.size.width * 0.7)
                 .background(Color(backround))
@@ -62,10 +59,6 @@ struct MessageView: View {
                 
                 Spacer()
             }
-            
-            //            Divider()
-            //                .padding(2)
-            //                .opacity(0)
         }
     }
 }

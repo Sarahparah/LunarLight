@@ -33,7 +33,6 @@ struct LoginView: View {
                 
                 if secured {
                     
-                    
                     SecureField("Password", text: $password)
                         .autocapitalization(.none)
                         .padding(4)
@@ -101,14 +100,10 @@ struct LoginView: View {
         print("Login failed =(")
         return false
     }
-    
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
-    
-    
-    
 }

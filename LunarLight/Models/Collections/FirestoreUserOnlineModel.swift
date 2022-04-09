@@ -23,7 +23,6 @@ class FirestoreUserOnlineModel: ObservableObject{
         } catch {
             print("Error: Could not save user to Firestore")
         }
-        
     }
     
     func updateOnlineUser(currentUserOnline: UserOnlineFirebase) {
@@ -41,9 +40,7 @@ class FirestoreUserOnlineModel: ObservableObject{
                 document.reference.updateData([
                     "is_online": currentUserOnline.is_online
                 ])
-                
             }
-        
     }
     
     func listenToOnlineUsers() {
@@ -80,11 +77,8 @@ class FirestoreUserOnlineModel: ObservableObject{
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
-                
             }
-            
             print("Users online: \(self.usersOnline.count)")
         }
     }
-    
 }

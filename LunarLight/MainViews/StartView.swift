@@ -20,30 +20,22 @@ struct StartView: View {
     
     var body: some View {
         
+        VStack{
             
-            VStack{
-                
-                TabButtons(tabIndex: $tabIndex)
-                
-                Divider()
-                
-                Spacer()
-                
-                if tabIndex == 0 {
-                    
-                   LoginView()
-                    
-                }else{
-                    
-                   RegisterView()
-                }
-                Spacer()
-                
-            }.padding()
+            TabButtons(tabIndex: $tabIndex)
             
-        
-        
-        
+            Divider()
+            
+            Spacer()
+            
+            if tabIndex == 0 {
+                LoginView()
+            }else{
+                RegisterView()
+            }
+            Spacer()
+            
+        }.padding()
     }
     
     private func addItem() {
@@ -101,12 +93,8 @@ struct TabButtons: View {
                 Text("Register")
             }
         }
-        
     }
-    
 }
-
-
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()

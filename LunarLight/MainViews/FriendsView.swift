@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct FriendsView: View {
     
     @StateObject var firestoreFriendModel = FirestoreFriendModel()
@@ -21,17 +20,15 @@ struct FriendsView: View {
                 List{
                     ForEach(firestoreFriendModel.friends){ entry in
                         Text(entry.user_id)
-//                        NavigationLink(destination: ChatView(entry: entry.user_id)){
-//                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
-//                        }
-//                        .onAppear(perform: { print(entry.date)})
+                        //                        NavigationLink(destination: ChatView(entry: entry.user_id)){
+                        //                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
+                        //                        }
+                        //                        .onAppear(perform: { print(entry.date)})
                         
                     }.onDelete(perform: { indexSet in
                         print ("delete")
                         chat.entries.remove(atOffsets: indexSet)
-                        
                     })
-                    
                 }
             }
             Spacer()
@@ -40,10 +37,6 @@ struct FriendsView: View {
         }
     }
 }
-
-
-
-
 
 struct LobbyChatView_Previews: PreviewProvider {
     static var previews: some View {

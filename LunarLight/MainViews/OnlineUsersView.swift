@@ -39,7 +39,7 @@ struct OnlineUsersView: View {
                 } label: {
                     Text("Logout")
                 }
-
+                
             }.padding()
             
             List{
@@ -57,9 +57,8 @@ struct OnlineUsersView: View {
                             Color.green
                                 .frame(width: 25, height: 25)
                                 .cornerRadius(100)
-                                
+                            
                         }
-                        
                     }
                     .sheet(isPresented: $firestoreUserModel.profileUserActive){
                         ProfileView(_user: firestoreUserModel.profileUser!)
@@ -69,8 +68,6 @@ struct OnlineUsersView: View {
         }.onAppear {
             firestoreUserOnlineModel.listenToOnlineUsers()
         }
-        
-        
     }
 }
 

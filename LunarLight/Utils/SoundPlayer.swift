@@ -28,7 +28,5 @@ class SoundPlayer {
                 print("Error: Could not play sound effect")
             }
         }
-    }
-
-    
+    }  
 }

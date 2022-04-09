@@ -58,19 +58,19 @@ struct ChatView: View {
     }
     
     
-//    func saveEntry() {
-//
-//        if let entry = entry {
-//            //uppdatera befintlig entry
-//            chat.updateEntry(entry: entry, with: content)
-//
-//
-//        } else {
-//            //skapa en ny entry
-//            let newEntry = ChatEntry(content: content, imageName: )
-//            chat.entries.append(newEntry)
-//        }
-//        
-//    }
+    //    func saveEntry() {
+    //
+    //        if let entry = entry {
+    //            //uppdatera befintlig entry
+    //            chat.updateEntry(entry: entry, with: content)
+    //
+    //
+    //        } else {
+    //            //skapa en ny entry
+    //            let newEntry = ChatEntry(content: content, imageName: )
+    //            chat.entries.append(newEntry)
+    //        }
+    //        
+    //    }
     
 }

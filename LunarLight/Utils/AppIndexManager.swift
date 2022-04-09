@@ -55,7 +55,6 @@ class AppIndexManager: ObservableObject {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: timerWorkItem!)
     }
-    
 }
 
 enum AppIndex : Int {

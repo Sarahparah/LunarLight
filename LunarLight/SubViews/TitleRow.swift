@@ -14,6 +14,7 @@ struct TitleRow: View {
     
     
     var body: some View {
+        
         HStack{
             image
                 .resizable()
@@ -28,10 +29,7 @@ struct TitleRow: View {
             Text("Online")
                 .foregroundColor(.purple)
                 .font(.caption)
-            
-            
         }
-        
     }
 }
 

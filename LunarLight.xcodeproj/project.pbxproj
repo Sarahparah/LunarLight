@@ -28,7 +28,7 @@
 		33E7A90627F703340091502E /* AppIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90527F703340091502E /* AppIndexManager.swift */; };
 		33E7A90A27F727410091502E /* CoredataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90927F727410091502E /* CoredataUserModel.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
-		41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D227F70CBC00455E86 /* LobbyView.swift */; };
+		41B977D327F70CBC00455E86 /* LobbyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D227F70CBC00455E86 /* LobbyTabView.swift */; };
 		41B977D527F7123700455E86 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D427F7123700455E86 /* ChatView.swift */; };
 		41B977D727F7243B00455E86 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D627F7243B00455E86 /* FriendsView.swift */; };
 		41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977DA27F72DB300455E86 /* ChatEntry.swift */; };
@@ -74,7 +74,7 @@
 		33E7A90927F727410091502E /* CoredataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataUserModel.swift; sourceTree = "<group>"; };
 		41B977CE27F5AC2C00455E86 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		41B977D027F5B44500455E86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		41B977D227F70CBC00455E86 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
+		41B977D227F70CBC00455E86 /* LobbyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTabView.swift; sourceTree = "<group>"; };
 		41B977D427F7123700455E86 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		41B977D627F7243B00455E86 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		41B977DA27F72DB300455E86 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				33AE6E0227F5A63C00EEC7E3 /* LunarLight */,
+				D567609828005FBE004826D2 /* First_try_files_do_we_still_need */,
 				33AE6E0127F5A63C00EEC7E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -138,7 +139,6 @@
 				3348158F27FF94F600AF0EC7 /* Sound Effects */,
 				33D386EC27F6EAA400D338B2 /* Utils */,
 				41B977CD27F5ABF000455E86 /* Models */,
-				D567609828005FBE004826D2 /* First_try_files_do_we_still_need */,
 				41B977CC27F5ABE700455E86 /* MainViews */,
 				33D386ED27F6EAF400D338B2 /* SubViews */,
 				33AE6E0727F5A63E00EEC7E3 /* Assets.xcassets */,
@@ -170,6 +170,7 @@
 		33D386ED27F6EAF400D338B2 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				41B977D227F70CBC00455E86 /* LobbyTabView.swift */,
 				3348158127FF662100AF0EC7 /* MessageView.swift */,
 				41B977DF27FAEED900455E86 /* TitleRow.swift */,
 				41B977E327FC4E0800455E86 /* SheetSettings.swift */,
@@ -185,7 +186,6 @@
 				41B977D027F5B44500455E86 /* LoginView.swift */,
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
 				33D386F027F6F23C00D338B2 /* WelcomeView.swift */,
-				41B977D227F70CBC00455E86 /* LobbyView.swift */,
 				41B977D627F7243B00455E86 /* FriendsView.swift */,
 				3348158727FF711600AF0EC7 /* WorldChatView.swift */,
 				41B977D427F7123700455E86 /* ChatView.swift */,
@@ -324,7 +324,7 @@
 				3348158A27FF90F000AF0EC7 /* SoundPlayer.swift in Sources */,
 				D567608E2800509D004826D2 /* FriendFirebase.swift in Sources */,
 				41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */,
-				41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */,
+				41B977D327F70CBC00455E86 /* LobbyTabView.swift in Sources */,
 				41B977E627FC6A0E00455E86 /* LocalData.swift in Sources */,
 				41B977D127F5B44500455E86 /* LoginView.swift in Sources */,
 				33D386F127F6F23C00D338B2 /* WelcomeView.swift in Sources */,

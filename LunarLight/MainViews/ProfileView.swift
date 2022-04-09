@@ -19,7 +19,7 @@ struct ProfileView: View {
     var backgroundColor: String
     
     @State var infoText = ["hej detta är försts fältet om mig",
-                    "Detta är din månadssten. den är vacker bl bla"]
+                           "Detta är din månadssten. den är vacker bl bla"]
     
     init(_user: UserFirebase){
         let localData = LocalData()
@@ -29,7 +29,7 @@ struct ProfileView: View {
         
         let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
         let stoneType = localData.profileBackground[stoneIndex]
-
+        
         backgroundColor = stoneType
         stone = localData.stoneArray[stoneIndex]
     }
@@ -49,7 +49,6 @@ struct ProfileView: View {
                     } label: {
                         Text("Add friend")
                     }
-
                 }
                 
                 //knappen för settings sheet
@@ -69,7 +68,6 @@ struct ProfileView: View {
                     .cornerRadius(5)
                     .opacity(readOnly ? 0 : 1)
                     .disabled(readOnly ? true : false)
-                    
                     
                 }
                 .padding()
@@ -132,12 +130,10 @@ struct ProfileView: View {
                     Text(infoText[1])
                 }
                 
-               Spacer()
+                Spacer()
                 
             }
-            
         }
-        
     }
     
     private func addFriend() {
@@ -151,7 +147,6 @@ struct ProfileView: View {
         firestoreFriendModel.createFriend(newFriend: newFriend)
         
     }
-    
 }
 
 struct SheetView: View {
@@ -168,25 +163,19 @@ struct SheetView: View {
         } label: {
             Text("dismiss")
                 .foregroundColor(.white)
-            .font(.title)
-            .padding()
-            .background(Color.black)
-        }
-
-        
-        
-    
-    VStack{
-        
-        HStack{
-            Text("Reset password")
-            TextField("Reset password", text: $resetPassword)
+                .font(.title)
+                .padding()
+                .background(Color.black)
         }
         
-        
-        
+        VStack{
+            
+            HStack{
+                Text("Reset password")
+                TextField("Reset password", text: $resetPassword)
+            }
+        }
     }
-}
 }
 
 
