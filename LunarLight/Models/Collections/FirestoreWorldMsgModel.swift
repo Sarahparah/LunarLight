@@ -19,7 +19,7 @@ class FirestoreWorldMsgModel: ObservableObject{
         print(newMessage.message)
         
         do {
-            _ = try dataBase.collection(LocalData.WORLD_MESSAGES_COLLECTION_KEY).addDocument(from: newMessage)
+            _ = try dataBase.collection(LocalData.WORLD_MESSAGES_COLLECTION_KEY).document(newMessage.id).setData(from: newMessage)
         } catch {
             print("Error: Could not save world message to Firestore")
         }

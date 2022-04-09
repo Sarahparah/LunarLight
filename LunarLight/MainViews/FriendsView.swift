@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FriendsView: View {
     
-    @StateObject var firestoreFriendsModel = FirestoreFriendsModel()
+    @StateObject var firestoreFriendModel = FirestoreFriendModel()
     @StateObject var chat = Chat()
     @State var showInfo : Bool = false
     
@@ -19,7 +19,7 @@ struct FriendsView: View {
         VStack{
             NavigationView{
                 List{
-                    ForEach(firestoreFriendsModel.friends){ entry in
+                    ForEach(firestoreFriendModel.friends){ entry in
                         Text(entry.user_id)
 //                        NavigationLink(destination: ChatView(entry: entry.user_id)){
 //                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
@@ -36,7 +36,7 @@ struct FriendsView: View {
             }
             Spacer()
         }.onAppear(){
-            firestoreFriendsModel.listenToFriends()
+            firestoreFriendModel.listenToFriends()
         }
     }
 }

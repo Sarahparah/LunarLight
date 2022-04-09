@@ -19,7 +19,7 @@ class FirestoreUserOnlineModel: ObservableObject{
     func createUserOnline(newUserOnline: UserOnlineFirebase){
         
         do {
-            _ = try dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY).addDocument(from: newUserOnline)
+            _ = try dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY).document(newUserOnline.id).setData(from: newUserOnline)
         } catch {
             print("Error: Could not save user to Firestore")
         }

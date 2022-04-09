@@ -43,9 +43,9 @@
 		41B977F227FDC08600455E86 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 41B977F127FDC08600455E86 /* FirebaseFirestoreSwift-Beta */; };
 		41B977F427FDC12200455E86 /* FirestoreUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977F327FDC12200455E86 /* FirestoreUserModel.swift */; };
 		41B977F627FDC25600455E86 /* UserFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977F527FDC25600455E86 /* UserFirebase.swift */; };
-		D567608E2800509D004826D2 /* FriendsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567608D2800509D004826D2 /* FriendsFirebase.swift */; };
+		D567608E2800509D004826D2 /* FriendFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567608D2800509D004826D2 /* FriendFirebase.swift */; };
 		D5676090280051D6004826D2 /* PrivateMsgFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567608F280051D6004826D2 /* PrivateMsgFirebase.swift */; };
-		D5676092280055FB004826D2 /* FirestoreFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5676091280055FB004826D2 /* FirestoreFriendsModel.swift */; };
+		D5676092280055FB004826D2 /* FirestoreFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5676091280055FB004826D2 /* FirestoreFriendModel.swift */; };
 		D567609428005631004826D2 /* FirestorePrivateMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */; };
 		D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
@@ -86,9 +86,9 @@
 		41B977EA27FDBC8E00455E86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41B977F327FDC12200455E86 /* FirestoreUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserModel.swift; sourceTree = "<group>"; };
 		41B977F527FDC25600455E86 /* UserFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFirebase.swift; sourceTree = "<group>"; };
-		D567608D2800509D004826D2 /* FriendsFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFirebase.swift; sourceTree = "<group>"; };
+		D567608D2800509D004826D2 /* FriendFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFirebase.swift; sourceTree = "<group>"; };
 		D567608F280051D6004826D2 /* PrivateMsgFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMsgFirebase.swift; sourceTree = "<group>"; };
-		D5676091280055FB004826D2 /* FirestoreFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriendsModel.swift; sourceTree = "<group>"; };
+		D5676091280055FB004826D2 /* FirestoreFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriendModel.swift; sourceTree = "<group>"; };
 		D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePrivateMsgModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,7 +210,7 @@
 				41B977F327FDC12200455E86 /* FirestoreUserModel.swift */,
 				337844332800167600F9323B /* FirestoreUserOnlineModel.swift */,
 				3348158327FF69C700AF0EC7 /* FirestoreWorldMsgModel.swift */,
-				D5676091280055FB004826D2 /* FirestoreFriendsModel.swift */,
+				D5676091280055FB004826D2 /* FirestoreFriendModel.swift */,
 				D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */,
 				D567609628005647004826D2 /* Documents */,
 			);
@@ -223,7 +223,7 @@
 				41B977F527FDC25600455E86 /* UserFirebase.swift */,
 				3348157F27FF28BA00AF0EC7 /* UserOnlineFirebase.swift */,
 				3348158527FF6A1300AF0EC7 /* WorldMsgFirebase.swift */,
-				D567608D2800509D004826D2 /* FriendsFirebase.swift */,
+				D567608D2800509D004826D2 /* FriendFirebase.swift */,
 				D567608F280051D6004826D2 /* PrivateMsgFirebase.swift */,
 			);
 			path = Documents;
@@ -322,7 +322,7 @@
 				41B977E427FC4E0800455E86 /* SheetSettings.swift in Sources */,
 				3348158827FF711600AF0EC7 /* WorldChatView.swift in Sources */,
 				3348158A27FF90F000AF0EC7 /* SoundPlayer.swift in Sources */,
-				D567608E2800509D004826D2 /* FriendsFirebase.swift in Sources */,
+				D567608E2800509D004826D2 /* FriendFirebase.swift in Sources */,
 				41B977DB27F72DB300455E86 /* ChatEntry.swift in Sources */,
 				41B977D327F70CBC00455E86 /* LobbyView.swift in Sources */,
 				41B977E627FC6A0E00455E86 /* LocalData.swift in Sources */,
@@ -334,7 +334,7 @@
 				33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */,
 				41B977F627FDC25600455E86 /* UserFirebase.swift in Sources */,
 				D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */,
-				D5676092280055FB004826D2 /* FirestoreFriendsModel.swift in Sources */,
+				D5676092280055FB004826D2 /* FirestoreFriendModel.swift in Sources */,
 				41B977D727F7243B00455E86 /* FriendsView.swift in Sources */,
 				41B977E227FC423200455E86 /* ProfileView.swift in Sources */,
 				33E7A90627F703340091502E /* AppIndexManager.swift in Sources */,

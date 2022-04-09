@@ -144,11 +144,11 @@ struct ProfileView: View {
         
         let friendId = user.id
         
-        let newFriend = FriendsFirebase(_userId: friendId)
+        let newFriend = FriendFirebase(_userId: friendId)
         
-        let firestoreFriendsModel = FirestoreFriendsModel()
+        let firestoreFriendModel = FirestoreFriendModel()
         
-        firestoreFriendsModel.createFriend(newFriend: newFriend)
+        firestoreFriendModel.createFriend(newFriend: newFriend)
         
     }
     

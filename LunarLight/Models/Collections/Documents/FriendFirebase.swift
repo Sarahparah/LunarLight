@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct FriendsFirebase: Codable, Identifiable, Equatable{
+struct FriendFirebase: Codable, Identifiable, Equatable{
     
     var id: String
     var user_id: String

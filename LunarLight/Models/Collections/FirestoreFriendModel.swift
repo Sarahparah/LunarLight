@@ -8,19 +8,19 @@
 import Foundation
 import Firebase
 
-class FirestoreFriendsModel: ObservableObject{
+class FirestoreFriendModel: ObservableObject{
     
     let dataBase = Firestore.firestore()
     
-    @Published var friends = [FriendsFirebase]()
+    @Published var friends = [FriendFirebase]()
     
-    func createFriend(newFriend: FriendsFirebase) {
+    func createFriend(newFriend: FriendFirebase) {
         
         
         let id = AppIndexManager.singletonObject.currentUser.id
         
         do {
-            _ = try dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(id).collection(LocalData.FRIENDS_COLLECTION_KEY).document(newFriend.user_id).setData(from: newFriend)
+            _ = try dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(id).collection(LocalData.FRIENDS_COLLECTION_KEY).document(newFriend.id).setData(from: newFriend)
         } catch {
             print("Error: Could not save user to Firestore")
         }
@@ -53,7 +53,7 @@ class FirestoreFriendsModel: ObservableObject{
             for document in snapshot.documents {
                 
                 let result = Result {
-                    try document.data(as: FriendsFirebase.self)
+                    try document.data(as: FriendFirebase.self)
                 }
                 
                 switch result {

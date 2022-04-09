@@ -12,6 +12,8 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
+    var timerWorkItem: DispatchWorkItem?
+    
     let testUser = UserFirebase(
         _id: "9B51960C-0CF2-42CF-BFDC-5CA01232B402",
         _username: "test",
@@ -41,6 +43,17 @@ class AppIndexManager: ObservableObject {
         currentUser = testUser
         AppIndexManager.singletonObject.appIndex = AppIndex.startView
         print("Logged out!")
+    }
+    
+    func resetTimer() {
+        print("timeout: in process")
+                        
+        // set timer
+        timerWorkItem = DispatchWorkItem {
+            //AppIndexManager.singletonObject.logout()
+            print("timed out!")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: timerWorkItem!)
     }
     
 }
