@@ -13,7 +13,7 @@ struct FriendsView: View {
     @StateObject var chat = Chat()
     @State var showInfo : Bool = false
     
-    let friends : [FriendFirebase]
+    let friends: [FriendFirebase]
     
     init() {
         friends = AppIndexManager.singletonObject.firestoreFriendModel.friends

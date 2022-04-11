@@ -44,7 +44,6 @@ struct WorldChatView: View {
                 
                 ForEach(firestoreWorldMsgModel.worldMessages) { worldMsg in
                     MessageView(_user: worldMsg.username, _message: worldMsg.message, _avatar: worldMsg.avatar, _month: worldMsg.month, _day: worldMsg.day )
-                        .onAppear(perform: { print(worldMsg.message) })
                 }
                 .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
                     print("*BLIPP*")
