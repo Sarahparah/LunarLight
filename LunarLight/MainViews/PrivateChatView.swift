@@ -18,100 +18,123 @@ struct PrivateChatView: View {
     let currentUser: UserFirebase
     let friend: UserFirebase
     
+    let userBackground: String
+    let friendBackground: String
+    
     @State var newMessage = ""
     
     init() {
+        let localData = LocalData()
+        
         currentUser = AppIndexManager.singletonObject.currentUser
         friend = AppIndexManager.singletonObject.privateChatUser ?? AppIndexManager.singletonObject.testUser
+        
+        let userStoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
+        let userStoneType = localData.profileBackground[userStoneIndex]
+        
+        userBackground = userStoneType
+        
+        let friendStoneIndex = UserFirebase.getStoneIndex(month: friend.month, day: friend.day)
+        let friendStoneType = localData.profileBackground[friendStoneIndex]
+        
+        friendBackground = friendStoneType
     }
     
     var body: some View {
-        VStack{
-            Button {
-                firestoreUserModel.getProfileUser(profileId: friend.id)
-            } label: {
-                Text(friend.username)
-            }
-            .sheet(isPresented: $firestoreUserModel.profileUserActive){
-                ProfileView(_user: firestoreUserModel.profileUser!)
-            }
+        
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color(userBackground), Color(friendBackground)]), startPoint: .bottom, endPoint: .top)
+                .ignoresSafeArea()
+            
+            VStack{
+                Button {
+                    firestoreUserModel.getProfileUser(profileId: friend.id)
+                } label: {
+                    Text(friend.username)
+                }
+                .sheet(isPresented: $firestoreUserModel.profileUserActive){
+                    ProfileView(_user: firestoreUserModel.profileUser!)
+                }
 
-            
-            HStack {
-                Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
-                } label: {
-                    Text("< Back")
-                }
-                .padding()
                 
-                Spacer()
-            }
-            
-            ScrollView{
-                
-                Divider()
-                    .padding(2)
-                    .opacity(0)
-                
-                ForEach (messages) { message in
-                    if message.sender_id == currentUser.id {
-                        MessageView(_user: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day )
+                HStack {
+                    Button {
+                        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                    } label: {
+                        Text("< Back")
                     }
-                    else{
-                        MessageView(_user: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day )
-                    }
-                }
-                .onChange(of: messages, perform: { newValue in
-                    print("*BLIPP*")
-                    SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
-                })
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("gradient_black_20"))
-            .cornerRadius(30)
-            .padding()
-            
-            HStack {
-                TextField("Enter message..", text: $newMessage)
-                    .foregroundColor(.white)
-                    .accentColor(.white)
                     .padding()
-                
-                
-                Button {
-                    newPrivateMsg()
-                } label: {
-                    Text("Send")
-                        .padding()
+                    
+                    Spacer()
                 }
-                .font(Font.subheadline.weight(.bold))
-                .foregroundColor(Color.white)
-                .padding(2)
+                
+                ScrollView{
+                    
+                    Divider()
+                        .padding(2)
+                        .opacity(0)
+                    
+                    ForEach (messages) { message in
+                        if message.sender_id == currentUser.id {
+                            MessageView(_user: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day )
+                        }
+                        else{
+                            MessageView(_user: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day )
+                        }
+                    }
+                    .onChange(of: messages, perform: { newValue in
+                        print("*BLIPP*")
+                        SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
+                    })
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("gradient_black_20"))
                 .cornerRadius(30)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(Color.white, lineWidth: 1)
-                )
+                .padding()
                 
-            }
-            .frame(maxWidth: .infinity, minHeight: 50)
-            .background(Color("gradient_black_20"))
-            .cornerRadius(30)
-            .padding()
+                HStack {
+                    TextField("Enter message..", text: $newMessage)
+                        .foregroundColor(.white)
+                        .accentColor(.white)
+                        .padding()
+                    
+                    
+                    Button {
+                        newPrivateMsg()
+                    } label: {
+                        Text("Send")
+                            .padding()
+                    }
+                    .font(Font.subheadline.weight(.bold))
+                    .foregroundColor(Color.white)
+                    .padding(2)
+                    .background(Color("gradient_black_20"))
+                    .cornerRadius(30)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color.white, lineWidth: 1)
+                    )
+                    
+                }
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .background(Color("gradient_black_20"))
+                .cornerRadius(30)
+                .padding()
+                
+            }.onAppear(perform: {
+                print("DANNE: 0, listen!")
+                firestorePrivateMsgModel.listenToUserMsgs()
+                firestorePrivateMsgModel.listenToFriendMsgs()
+            })
+                .onChange(of: firestorePrivateMsgModel.userMsgs, perform: {newValue in
+                    updateMessagesArray()
+                })
+                .onChange(of: firestorePrivateMsgModel.friendMsgs, perform: {newValue in
+                    updateMessagesArray()
+                })
             
-        }.onAppear(perform: {
-            print("DANNE: 0, listen!")
-            firestorePrivateMsgModel.listenToUserMsgs()
-            firestorePrivateMsgModel.listenToFriendMsgs()
-        })
-            .onChange(of: firestorePrivateMsgModel.userMsgs, perform: {newValue in
-                updateMessagesArray()
-            })
-            .onChange(of: firestorePrivateMsgModel.friendMsgs, perform: {newValue in
-                updateMessagesArray()
-            })
+        }
+    
     }
     
     func updateMessagesArray() {
