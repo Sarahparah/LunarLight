@@ -188,11 +188,11 @@
 				41B977CE27F5AC2C00455E86 /* RegisterView.swift */,
 				33D386F027F6F23C00D338B2 /* WelcomeView.swift */,
 				41B977D627F7243B00455E86 /* FriendsView.swift */,
+				EB12B69928041DA900576E61 /* PrivateChatView.swift */,
 				3348158727FF711600AF0EC7 /* WorldChatView.swift */,
 				41B977E127FC423200455E86 /* ProfileView.swift */,
 				33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */,
 				41B977D227F70CBC00455E86 /* LobbyTabView.swift */,
-				EB12B69928041DA900576E61 /* PrivateChatView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
