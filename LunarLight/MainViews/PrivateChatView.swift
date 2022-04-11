@@ -23,7 +23,7 @@ struct PrivateChatView: View {
             
             HStack {
                 Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.friendsView
+                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 } label: {
                     Text("Back")
                 }
