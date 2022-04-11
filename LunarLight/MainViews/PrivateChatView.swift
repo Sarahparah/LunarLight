@@ -8,8 +8,43 @@
 import SwiftUI
 
 struct PrivateChatView: View {
+    
+    let friend: UserFirebase
+    
+    @State var newMessage = ""
+    
+    init() {
+        friend = AppIndexManager.singletonObject.privateChatUser ?? AppIndexManager.singletonObject.testUser
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(friend.username)
+            
+            HStack {
+                Button {
+                    AppIndexManager.singletonObject.appIndex = AppIndex.friendsView
+                } label: {
+                    Text("Back")
+                }
+                Spacer()
+            }
+            ScrollView{
+                Text("Message1")
+                Text("Message2")
+            }
+            
+            HStack {
+                TextField("Message", text: $newMessage)
+                Button {
+                    print(newMessage)
+                } label: {
+                    Text("Send")
+                }
+
+            }
+            
+        }
     }
 }
 
