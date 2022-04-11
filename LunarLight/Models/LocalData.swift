@@ -13,6 +13,7 @@ class LocalData {
     static let USERS_ONLINE_COLLECTION_KEY = "users_online"
     static let WORLD_MESSAGES_COLLECTION_KEY = "world_messages"
     static let FRIENDS_COLLECTION_KEY = "friends"
+    static let PRIVATE_MESSAGES_COLLECTION_KEY = "private_messages"
     
     //let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     

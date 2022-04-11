@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PrivateChatView: View {
     
+    @StateObject var firestorePrivateMsgModel = FirestorePrivateMsgModel()
+    
     let friend: UserFirebase
     
     @State var newMessage = ""
@@ -37,7 +39,7 @@ struct PrivateChatView: View {
             HStack {
                 TextField("Message", text: $newMessage)
                 Button {
-                    print(newMessage)
+                    newPrivateMsg()
                 } label: {
                     Text("Send")
                 }
@@ -46,6 +48,17 @@ struct PrivateChatView: View {
             
         }
     }
+    
+    func newPrivateMsg () {
+        
+        let newPrivateMsg = PrivateMsgFirebase(_message: newMessage)
+        let currentUserId = AppIndexManager.singletonObject.currentUser.id
+        let friendId = friend.id
+        
+        firestorePrivateMsgModel.createPrivateMsg(newPrivateMsg: newPrivateMsg, currentUserId: currentUserId, friendId: friendId)
+        
+    }
+    
 }
 
 struct PrivateChatView_Previews: PreviewProvider {
