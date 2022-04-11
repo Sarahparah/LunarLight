@@ -32,6 +32,9 @@ struct LobbyTabView: View {
                 }
         }
         .font(.headline)
+        .onAppear(){
+            AppIndexManager.singletonObject.firestoreFriendModel.listenToFriends()
+        }
     }
 }
 

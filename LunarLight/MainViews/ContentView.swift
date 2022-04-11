@@ -40,6 +40,8 @@ struct ContentView: View {
                 FriendsView()
             case AppIndex.onlineUsersView:
                 OnlineUsersView()
+            case AppIndex.privateChatView:
+                PrivateChatView()
                 
             }
         }

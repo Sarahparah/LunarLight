@@ -9,22 +9,34 @@ import SwiftUI
 
 struct FriendsView: View {
     
-    @StateObject var firestoreFriendModel = FirestoreFriendModel()
+    @StateObject var firestoreUserModel = FirestoreUserModel()
     @StateObject var chat = Chat()
     @State var showInfo : Bool = false
+    
+    let friends : [FriendFirebase]
+    
+    init() {
+        friends = AppIndexManager.singletonObject.firestoreFriendModel.friends
+    }
     
     var body: some View {
         
         VStack{
             NavigationView{
                 List{
-                    ForEach(firestoreFriendModel.friends){ entry in
-                        Text(entry.user_id)
+                    ForEach(firestoreUserModel.userFriends){ entry in
+                        Button {
+                            AppIndexManager.singletonObject.privateChatUser = entry
+                            AppIndexManager.singletonObject.appIndex = AppIndex.privateChatView
+                        } label: {
+                            Text(entry.username)
+                        }
+
                         //                        NavigationLink(destination: ChatView(entry: entry.user_id)){
                         //                            TitleRow(image: Image(systemName: entry.imageName), name: entry.name)
                         //                        }
                         //                        .onAppear(perform: { print(entry.date)})
-                        
+
                     }.onDelete(perform: { indexSet in
                         print ("delete")
                         chat.entries.remove(atOffsets: indexSet)
@@ -33,7 +45,7 @@ struct FriendsView: View {
             }
             Spacer()
         }.onAppear(){
-            firestoreFriendModel.listenToFriends()
+            firestoreUserModel.listenToUserFriends()
         }
     }
 }

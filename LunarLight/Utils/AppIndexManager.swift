@@ -12,6 +12,8 @@ class AppIndexManager: ObservableObject {
     
     static let singletonObject = AppIndexManager()
     
+    let firestoreFriendModel = FirestoreFriendModel()
+    
     var timerWorkItem: DispatchWorkItem?
     
     let testUser = UserFirebase(
@@ -26,6 +28,7 @@ class AppIndexManager: ObservableObject {
     
     var currentUser: UserFirebase
     var profileUser: UserFirebase?
+    var privateChatUser : UserFirebase?
     
     @Published var appIndex = AppIndex.startView
     
@@ -59,6 +62,6 @@ class AppIndexManager: ObservableObject {
 
 enum AppIndex : Int {
     
-    case startView = 0, welcomeView, lobbyView, chatView, friendsView, onlineUsersView
+    case startView = 0, welcomeView, lobbyView, chatView, friendsView, onlineUsersView, privateChatView
     
 }

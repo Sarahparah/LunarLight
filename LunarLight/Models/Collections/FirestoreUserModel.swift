@@ -16,6 +16,7 @@ class FirestoreUserModel: ObservableObject{
     
     var users = [UserFirebase]()
     
+    @Published var userFriends = [UserFirebase]()
     @Published var profileUser: UserFirebase?
     @Published var profileUserActive: Bool = false
     
@@ -103,6 +104,43 @@ class FirestoreUserModel: ObservableObject{
             }
         }
     }
+    
+    func listenToUserFriends() {
+        
+        var friendsIds = [String]()
+        
+        for friend in AppIndexManager.singletonObject.firestoreFriendModel.friends {
+            friendsIds.append(friend.user_id)
+        }
+        
+        //Add an async listener for database
+        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", in: friendsIds).addSnapshotListener { snapshot, error in
+            //print("Something was changed in database")
+            guard let snapshot = snapshot else { return }
+            
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+            
+            self.userFriends.removeAll()
+            
+            for document in snapshot.documents {
+                
+                let result = Result {
+                    try document.data(as: UserFirebase.self)
+                }
+                
+                switch result {
+                case .success(let item):
+                    self.userFriends.append(item)
+                case .failure(let error):
+                    print("User decode error: \(error)")
+                }
+            }
+        }
+    }
+    
 }
 
 

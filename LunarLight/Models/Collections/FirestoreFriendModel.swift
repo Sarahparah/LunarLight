@@ -12,7 +12,7 @@ class FirestoreFriendModel: ObservableObject{
     
     let dataBase = Firestore.firestore()
     
-    @Published var friends = [FriendFirebase]()
+    var friends = [FriendFirebase]()
     
     func createFriend(newFriend: FriendFirebase) {
         

@@ -48,6 +48,7 @@
 		D5676092280055FB004826D2 /* FirestoreFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5676091280055FB004826D2 /* FirestoreFriendModel.swift */; };
 		D567609428005631004826D2 /* FirestorePrivateMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */; };
 		D577A35627FC2AF700C64542 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977CE27F5AC2C00455E86 /* RegisterView.swift */; };
+		EB12B69A28041DA900576E61 /* PrivateChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB12B69928041DA900576E61 /* PrivateChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		D567608F280051D6004826D2 /* PrivateMsgFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMsgFirebase.swift; sourceTree = "<group>"; };
 		D5676091280055FB004826D2 /* FirestoreFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriendModel.swift; sourceTree = "<group>"; };
 		D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePrivateMsgModel.swift; sourceTree = "<group>"; };
+		EB12B69928041DA900576E61 /* PrivateChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +172,6 @@
 		33D386ED27F6EAF400D338B2 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				41B977D227F70CBC00455E86 /* LobbyTabView.swift */,
 				3348158127FF662100AF0EC7 /* MessageView.swift */,
 				41B977DF27FAEED900455E86 /* TitleRow.swift */,
 				41B977E327FC4E0800455E86 /* SheetSettings.swift */,
@@ -191,6 +192,8 @@
 				41B977D427F7123700455E86 /* ChatView.swift */,
 				41B977E127FC423200455E86 /* ProfileView.swift */,
 				33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */,
+				41B977D227F70CBC00455E86 /* LobbyTabView.swift */,
+				EB12B69928041DA900576E61 /* PrivateChatView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				41B977DD27F72E5000455E86 /* Chat.swift in Sources */,
 				41B977E027FAEED900455E86 /* TitleRow.swift in Sources */,
 				33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */,
+				EB12B69A28041DA900576E61 /* PrivateChatView.swift in Sources */,
 				3348158227FF662100AF0EC7 /* MessageView.swift in Sources */,
 				D567609428005631004826D2 /* FirestorePrivateMsgModel.swift in Sources */,
 			);
