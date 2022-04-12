@@ -12,9 +12,9 @@ struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
         animation: .default)
-    private var users: FetchedResults<User>
+    private var users: FetchedResults<UserCoreData>
     
     @State private var tabIndex = 0
     
@@ -40,8 +40,8 @@ struct StartView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            //let newItem = Item(context: viewContext)
+            //newItem.timestamp = Date()
             
             do {
                 try viewContext.save()
