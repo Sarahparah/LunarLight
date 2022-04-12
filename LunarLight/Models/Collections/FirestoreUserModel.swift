@@ -113,6 +113,8 @@ class FirestoreUserModel: ObservableObject{
             friendsIds.append(friend.user_id)
         }
         
+        if friendsIds.isEmpty { return }
+        
         //Add an async listener for database
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", in: friendsIds).addSnapshotListener { snapshot, error in
             //print("Something was changed in database")
