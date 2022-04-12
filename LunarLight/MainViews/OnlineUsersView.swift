@@ -9,6 +9,14 @@ import SwiftUI
 
 struct OnlineUsersView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
+        animation: .default)
+    private var users: FetchedResults<UserCoreData>
+
+    
     @StateObject var firestoreUserModel = FirestoreUserModel()
     @StateObject var firestoreUserOnlineModel = FirestoreUserOnlineModel()
     
@@ -35,6 +43,17 @@ struct OnlineUsersView: View {
                 Spacer()
                 
                 Button {
+                        print(users)
+                    for user in users{
+                        viewContext.delete(user)
+                    }
+
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        print("Failed to delete CoredData users")
+                    }
+                    
                     AppIndexManager.singletonObject.logout()
                 } label: {
                     Text("Logout")

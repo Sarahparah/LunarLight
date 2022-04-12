@@ -9,6 +9,13 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
+        animation: .default)
+    private var users: FetchedResults<UserCoreData>
+    
     private let firestoreUserModel = FirestoreUserModel()
     private let firestoreUserOnlineModel = FirestoreUserOnlineModel()
     
@@ -71,17 +78,66 @@ struct LoginView: View {
                         return
                     }
                     
-                    let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
-                    firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
-                    
-                    AppIndexManager.singletonObject.currentUser = currentUser
-                    print("username: \(AppIndexManager.singletonObject.currentUser.username)")
-                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
-                }
+                    login(currentUser: currentUser)               }
             } label: {
                 Text("Login")
             }
         }
+        
+        ForEach(users){ user in
+            
+            if let username = user.username {
+                Text(username)
+                    .onAppear(){
+                        checkAutoLogin(user: user)
+                    }
+            }
+        }
+        
+    }
+    
+    private func checkAutoLogin(user: UserCoreData) {
+        
+        let id = user.id!
+        let username = user.username!
+        let password = user.password!
+        let email = user.email!
+        let year = UInt64(user.year)
+        let month = UInt64(user.month)
+        let day = UInt64(user.day)
+        let avatar = user.avatar!
+        
+        let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
+        
+        AppIndexManager.singletonObject.currentUser = userFirebase
+        login(currentUser: userFirebase)
+    }
+    
+    private func login(currentUser: UserFirebase){
+        
+        let userCoreData = UserCoreData(context: viewContext)
+        userCoreData.id = currentUser.id
+        userCoreData.username = currentUser.username
+        userCoreData.email = currentUser.email
+        userCoreData.password = currentUser.password
+        userCoreData.year = Int64(currentUser.year)
+        userCoreData.month = Int64(currentUser.month)
+        userCoreData.day = Int64(currentUser.day)
+        userCoreData.avatar = currentUser.avatar
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Failed to save CoreData user")
+        }
+        
+        let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
+        firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
+        
+        AppIndexManager.singletonObject.currentUser = currentUser
+        print("username: \(AppIndexManager.singletonObject.currentUser.username)")
+        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+        
     }
     
     private func loginCheck() -> Bool {

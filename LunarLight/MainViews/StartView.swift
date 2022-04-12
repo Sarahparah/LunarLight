@@ -12,9 +12,9 @@ struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var users: FetchedResults<UserCoreData>
     
     @State private var tabIndex = 0
     
@@ -40,8 +40,8 @@ struct StartView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            //let newItem = Item(context: viewContext)
+            //newItem.timestamp = Date()
             
             do {
                 try viewContext.save()
@@ -56,7 +56,7 @@ struct StartView: View {
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            //offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
                 try viewContext.save()

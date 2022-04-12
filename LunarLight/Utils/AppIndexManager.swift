@@ -62,6 +62,6 @@ class AppIndexManager: ObservableObject {
 
 enum AppIndex : Int {
     
-    case startView = 0, welcomeView, lobbyView, chatView, friendsView, onlineUsersView, privateChatView
+    case startView = 0, welcomeView, lobbyView, friendsView, onlineUsersView, privateChatView
     
 }
