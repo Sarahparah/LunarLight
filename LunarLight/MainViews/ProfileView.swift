@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State var entries = [ChatEntry]()
     @State private var showingSheet = false
     @State var index = 0
     

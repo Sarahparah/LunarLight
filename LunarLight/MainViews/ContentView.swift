@@ -34,8 +34,6 @@ struct ContentView: View {
                 WelcomeView()
             case AppIndex.lobbyView:
                 LobbyTabView()
-            case AppIndex.chatView:
-                ChatView()
             case AppIndex.friendsView:
                 FriendsView()
             case AppIndex.onlineUsersView:
