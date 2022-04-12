@@ -12,9 +12,9 @@ struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var users: FetchedResults<User>
     
     @State private var tabIndex = 0
     
