@@ -12,9 +12,9 @@ struct OnlineUsersView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
         animation: .default)
-    private var users: FetchedResults<User>
+    private var users: FetchedResults<UserCoreData>
 
     
     @StateObject var firestoreUserModel = FirestoreUserModel()
@@ -44,15 +44,15 @@ struct OnlineUsersView: View {
                 
                 Button {
                         print(users)
-//                    for user in users{
-//                        viewContext.delete(user)
-//                    }
-//
-//                    do {
-//                        try viewContext.save()
-//                    } catch {
-//                        print("Failed to delete CoredData users")
-//                    }
+                    for user in users{
+                        viewContext.delete(user)
+                    }
+
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        print("Failed to delete CoredData users")
+                    }
                     
                     AppIndexManager.singletonObject.logout()
                 } label: {

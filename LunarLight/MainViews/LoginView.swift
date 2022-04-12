@@ -12,9 +12,9 @@ struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \User.username, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
         animation: .default)
-    private var users: FetchedResults<User>
+    private var users: FetchedResults<UserCoreData>
     
     private let firestoreUserModel = FirestoreUserModel()
     private let firestoreUserOnlineModel = FirestoreUserOnlineModel()
@@ -96,7 +96,7 @@ struct LoginView: View {
         
     }
     
-    private func checkAutoLogin(user: User) {
+    private func checkAutoLogin(user: UserCoreData) {
         
         let id = user.id!
         let username = user.username!
@@ -115,7 +115,7 @@ struct LoginView: View {
     
     private func login(currentUser: UserFirebase){
         
-        let userCoreData = User(context: viewContext)
+        let userCoreData = UserCoreData(context: viewContext)
         userCoreData.id = currentUser.id
         userCoreData.username = currentUser.username
         userCoreData.email = currentUser.email
