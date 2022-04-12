@@ -19,7 +19,7 @@ struct ProfileView: View {
     var backgroundColor: String
     
     @State var infoText = ["hej detta är försts fältet om mig",
-                           "Detta är din månadssten. den är vacker bl bla"]
+                           ""]
     
     init(_user: UserFirebase){
         let localData = LocalData()
@@ -32,6 +32,8 @@ struct ProfileView: View {
         
         backgroundColor = stoneType
         stone = localData.stoneArray[stoneIndex]
+        
+        
     }
     
     var body: some View {
@@ -109,6 +111,10 @@ struct ProfileView: View {
                             .padding(.horizontal)
                             .background(self.index == 1 ? Color.gray : Color.clear)
                             .cornerRadius(10)
+                            .onAppear {
+                                let localData = LocalData()
+                                infoText[1] = localData.stonesInfo[stone] ?? "Could not find stone info."
+                            }
                     }
                 }
                 .padding(.horizontal,10)

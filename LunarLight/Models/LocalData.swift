@@ -131,4 +131,10 @@ class LocalData {
         ]
     ]
     
+    let stonesInfo = [
+    
+        "Tigers eye": "Detta är en Tigers eye-sten. Den är fantastisk och gul. Här kommer ännu mer text... HEJ!"
+    
+    ]
+    
 }
