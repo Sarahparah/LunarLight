@@ -124,6 +124,9 @@ struct ProfileView: View {
                 .shadow(color: Color.black.opacity(0.3), radius: 5, x: 5, y: 5)
                 .shadow(color: Color(backgroundColor).opacity(0.5), radius: 5, x: -5, y: -5)
                 
+                ScrollView{
+                    
+                
                 if index == 0 {
                     if readOnly {
                         Text(infoText[0])
@@ -137,6 +140,7 @@ struct ProfileView: View {
                 }
                 
                 Spacer()
+                }.padding()
                 
             }
         }
