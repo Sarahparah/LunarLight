@@ -15,7 +15,7 @@ struct WorldMsgFirebase: Codable, Identifiable, Equatable{
     var username: String
     var avatar: String
     var message: String
-    var timestamp: Double
+    var timestamp: UInt64
     var month: UInt64
     var day: UInt64
     
@@ -28,7 +28,7 @@ struct WorldMsgFirebase: Codable, Identifiable, Equatable{
         avatar = _avatar
         username = _username
         message = _message
-        timestamp = NSDate().timeIntervalSince1970
+        timestamp = UInt64(NSDate().timeIntervalSince1970*1000)
     }
     
 }
