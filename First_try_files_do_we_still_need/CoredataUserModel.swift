@@ -36,12 +36,12 @@ class CoredataUserModel {
         }
         
         
-        let user = User(context: viewContext)
-        user.id = Int16(currentUserId)
-        user.username = username
-        user.password = password
-        user.dateOfBirth = dateOfBirth
-        user.email = email
+//        let user = User(context: viewContext)
+//        user.id = Int16(currentUserId)
+//        user.username = username
+//        user.password = password
+//        user.dateOfBirth = dateOfBirth
+//        user.email = email
 
         do {
             try viewContext.save()
