@@ -19,7 +19,9 @@ class FirestoreUserOnlineModel: ObservableObject{
     func createUserOnline(newUserOnline: UserOnlineFirebase){
         
         do {
-            _ = try dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY).document(newUserOnline.id).setData(from: newUserOnline)
+            _ = try dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY)
+                .document(newUserOnline.id)
+                .setData(from: newUserOnline)
         } catch {
             print("Error: Could not save user to Firestore")
         }
@@ -27,20 +29,15 @@ class FirestoreUserOnlineModel: ObservableObject{
     
     func updateOnlineUser(currentUserOnline: UserOnlineFirebase) {
         
-        let id = currentUserOnline.id
+        do {
+            _ = try dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY)
+                .document(currentUserOnline.id)
+                .setData(from: currentUserOnline)
+        } catch {
+            print("Error: Failed to update user online in firestore.")
+        }
         
-        dataBase.collection(LocalData.USERS_ONLINE_COLLECTION_KEY).whereField("id", isEqualTo: id)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                    return
-                }
-                
-                guard let document = querySnapshot!.documents.first else { return }
-                document.reference.updateData([
-                    "is_online": currentUserOnline.is_online
-                ])
-            }
+        
     }
     
     func listenToOnlineUsers() {
