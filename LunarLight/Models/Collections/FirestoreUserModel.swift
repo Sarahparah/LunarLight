@@ -110,7 +110,7 @@ class FirestoreUserModel: ObservableObject{
         var friendsIds = [String]()
         
         for friend in AppIndexManager.singletonObject.firestoreFriendModel.friends {
-            friendsIds.append(friend.user_id)
+            friendsIds.append(friend.id)
         }
         
         if friendsIds.isEmpty { return }
