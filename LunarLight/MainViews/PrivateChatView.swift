@@ -76,10 +76,10 @@ struct PrivateChatView: View {
                     
                     ForEach (messages) { message in
                         if message.sender_id == currentUser.id {
-                            MessageView(_user: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day )
+                            MessageView(_username: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day, _isPrivate: true )
                         }
                         else{
-                            MessageView(_user: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day )
+                            MessageView(_username: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day, _isPrivate: true )
                         }
                     }
                     .onChange(of: messages, perform: { newValue in

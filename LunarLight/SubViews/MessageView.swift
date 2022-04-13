@@ -9,18 +9,20 @@ import SwiftUI
 
 struct MessageView: View {
     
-    let user: String
+    let username: String
     let message: String
     let avatar: String
     let month: UInt64
     let day: UInt64
     
+    let msgPrefix: String
+    
     @State var backround: String
     
-    init(_user: String, _message: String, _avatar: String, _month: UInt64, _day: UInt64){
+    init(_username: String, _message: String, _avatar: String, _month: UInt64, _day: UInt64, _isPrivate: Bool){
         
         let localData = LocalData()
-        user = _user
+        username = _username
         message = _message
         avatar = _avatar
         month = _month
@@ -29,11 +31,18 @@ struct MessageView: View {
         let stoneType = localData.profileBackground[stoneIndex]
         backround = stoneType
         
+        if _isPrivate {
+            msgPrefix = ""
+        }
+        else {
+            msgPrefix = username + ": "
+        }
+        
     }
     
     var body: some View {
         
-        VStack {
+        VStack(alignment: AppIndexManager.singletonObject.currentUser.username == username ? .trailing : .leading) {
             
             HStack{
                 
@@ -47,18 +56,23 @@ struct MessageView: View {
                         .cornerRadius(30)
                         .padding(8)
                     
-                    Text("\(user): \(message)")
-                        .padding()
+                    Text("\(msgPrefix)\(message)")
+                        .padding([.top, .bottom], 20)
+                        .padding(.trailing, 30)
                     
-                    Spacer()
+                    //Spacer()
                 }
-                .frame(width: UIScreen.main.bounds.size.width * 0.7)
+                //.frame(width: UIScreen.main.bounds.size.width * 0.7)
                 .background(Color(backround))
                 .cornerRadius(30)
                 .padding(5)
                 
-                Spacer()
+                //Spacer()
             }
+            .frame(maxWidth: 300, alignment: AppIndexManager.singletonObject.currentUser.username == username ? .trailing : .leading)
+            
         }
+        .frame(maxWidth: .infinity, alignment: AppIndexManager.singletonObject.currentUser.username == username ? .trailing : .leading)
+        //.padding(AppIndexManager.singletonObject.currentUser.username == user ? .trailing : .leading)
     }
 }
