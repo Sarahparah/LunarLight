@@ -43,7 +43,6 @@ struct OnlineUsersView: View {
                 Spacer()
                 
                 Button {
-                        print(users)
                     for user in users{
                         viewContext.delete(user)
                     }
@@ -51,7 +50,7 @@ struct OnlineUsersView: View {
                     do {
                         try viewContext.save()
                     } catch {
-                        print("Failed to delete CoredData users")
+                        print("Failed to delete CoreData users")
                     }
                     
                     AppIndexManager.singletonObject.logout()

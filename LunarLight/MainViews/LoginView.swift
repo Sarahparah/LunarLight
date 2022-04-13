@@ -91,14 +91,14 @@ struct LoginView: View {
             if let username = user.username {
                 Text(username)
                     .onAppear(){
-                        checkAutoLogin(user: user)
+                        performAutoLogin(user: user)
                     }
             }
         }
         
     }
     
-    private func checkAutoLogin(user: UserCoreData) {
+    private func performAutoLogin(user: UserCoreData) {
         
         let id = user.id!
         let username = user.username!
