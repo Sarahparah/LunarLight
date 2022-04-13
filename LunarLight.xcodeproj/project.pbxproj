@@ -15,6 +15,7 @@
 		3348158A27FF90F000AF0EC7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */; };
 		3348158E27FF94EF00AF0EC7 /* new_message.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3348158D27FF94EE00AF0EC7 /* new_message.wav */; };
 		337844342800167600F9323B /* FirestoreUserOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337844332800167600F9323B /* FirestoreUserOnlineModel.swift */; };
+		33801A152807278200D3DA08 /* CoredataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33801A142807278200D3DA08 /* CoredataUserModel.swift */; };
 		33ADF1EF27FF0A2C00320444 /* OnlineUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */; };
 		33AE6E0427F5A63C00EEC7E3 /* LunarLightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */; };
 		33AE6E0627F5A63C00EEC7E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0527F5A63C00EEC7E3 /* StartView.swift */; };
@@ -56,6 +57,7 @@
 		3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		3348158D27FF94EE00AF0EC7 /* new_message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = new_message.wav; sourceTree = "<group>"; };
 		337844332800167600F9323B /* FirestoreUserOnlineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserOnlineModel.swift; sourceTree = "<group>"; };
+		33801A142807278200D3DA08 /* CoredataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataUserModel.swift; sourceTree = "<group>"; };
 		33ADF1EE27FF0A2C00320444 /* OnlineUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineUsersView.swift; sourceTree = "<group>"; };
 		33AE6E0027F5A63C00EEC7E3 /* LunarLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLightApp.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				41B977E527FC6A0E00455E86 /* LocalData.swift */,
+				33801A142807278200D3DA08 /* CoredataUserModel.swift */,
 				D56760952800563A004826D2 /* Collections */,
 			);
 			path = Models;
@@ -307,6 +310,7 @@
 				3348158A27FF90F000AF0EC7 /* SoundPlayer.swift in Sources */,
 				D567608E2800509D004826D2 /* FriendFirebase.swift in Sources */,
 				41B977D327F70CBC00455E86 /* LobbyTabView.swift in Sources */,
+				33801A152807278200D3DA08 /* CoredataUserModel.swift in Sources */,
 				41B977E627FC6A0E00455E86 /* LocalData.swift in Sources */,
 				41B977D127F5B44500455E86 /* LoginView.swift in Sources */,
 				33D386F127F6F23C00D338B2 /* WelcomeView.swift in Sources */,

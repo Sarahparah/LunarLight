@@ -43,14 +43,9 @@ struct OnlineUsersView: View {
                 Spacer()
                 
                 Button {
-                    for user in users{
-                        viewContext.delete(user)
-                    }
-
-                    do {
-                        try viewContext.save()
-                    } catch {
-                        print("Failed to delete CoreData users")
+                    let coredataUserModel = CoredataUserModel()
+                    for user in users {
+                        coredataUserModel.deleteUser(user: user)
                     }
                     
                     AppIndexManager.singletonObject.logout()

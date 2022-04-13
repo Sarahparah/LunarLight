@@ -117,21 +117,8 @@ struct LoginView: View {
     
     private func login(currentUser: UserFirebase){
         
-        let userCoreData = UserCoreData(context: viewContext)
-        userCoreData.id = currentUser.id
-        userCoreData.username = currentUser.username
-        userCoreData.email = currentUser.email
-        userCoreData.password = currentUser.password
-        userCoreData.year = Int64(currentUser.year)
-        userCoreData.month = Int64(currentUser.month)
-        userCoreData.day = Int64(currentUser.day)
-        userCoreData.avatar = currentUser.avatar
-        
-        do {
-            try viewContext.save()
-        } catch {
-            print("Failed to save CoreData user")
-        }
+        let coredataUserModel = CoredataUserModel()
+        coredataUserModel.createUser(currentUser: currentUser)
         
         let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
         firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
