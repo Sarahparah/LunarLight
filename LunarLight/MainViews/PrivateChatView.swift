@@ -149,7 +149,7 @@ struct PrivateChatView: View {
         let currentUserId = AppIndexManager.singletonObject.currentUser.id
         let friendId = friend.id
         
-        let newPrivateMsg = PrivateMsgFirebase(_message: newMessage, _senderId: currentUserId)
+        let newPrivateMsg = PrivateMsgFirebase(_message: newMessage, _senderId: currentUserId, _receiverId: friendId)
         newMessage = ""
         
         firestorePrivateMsgModel.createPrivateMsg(newPrivateMsg: newPrivateMsg, currentUserId: currentUserId, friendId: friendId)

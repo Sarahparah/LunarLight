@@ -12,13 +12,15 @@ struct PrivateMsgFirebase: Codable, Identifiable, Equatable{
     
     var id: String
     var sender_id: String
+    var receiver_id: String
     var my_message: String
     var timestamp: UInt64
     
-    init( _message: String, _senderId: String){
+    init( _message: String, _senderId: String, _receiverId: String){
         
         id = UUID().uuidString
         sender_id = _senderId
+        receiver_id = _receiverId
         my_message = _message
         timestamp = UInt64(NSDate().timeIntervalSince1970*1000)
     }
