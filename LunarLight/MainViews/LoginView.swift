@@ -78,7 +78,9 @@ struct LoginView: View {
                         return
                     }
                     
-                    login(currentUser: currentUser)               }
+                    login(currentUser: currentUser)
+                    
+                }
             } label: {
                 Text("Login")
             }
