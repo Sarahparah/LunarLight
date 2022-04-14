@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct LoginView: View {
     
@@ -98,7 +99,6 @@ struct LoginView: View {
             .frame(width: UIScreen.main.bounds.size.width * 0.9)
         
         ForEach(users){ user in
-            
             if let username = user.username {
                 Text(username)
                     .onAppear(){
@@ -121,7 +121,7 @@ struct LoginView: View {
         let month = UInt64(user.month)
         let day = UInt64(user.day)
         let avatar = user.avatar!
-        let profileInfo = user.profile_info!
+        let profileInfo = user.profile_info == nil ? "" : user.profile_info!
         
         let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: profileInfo)
         
