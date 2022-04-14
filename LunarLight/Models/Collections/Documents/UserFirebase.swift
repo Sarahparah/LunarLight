@@ -18,8 +18,9 @@ struct UserFirebase: Codable, Identifiable{
     var month: UInt64
     var day: UInt64
     var avatar: String
+    var profile_info: String
     
-    init(_id: String = "", _username: String, _email: String, _password: String, _year: UInt64, _month: UInt64, _day: UInt64, _avatar: String ){
+    init(_id: String = "", _username: String, _email: String, _password: String, _year: UInt64, _month: UInt64, _day: UInt64, _avatar: String, _profileInfo: String ){
         
         id = _id
         username = _username
@@ -29,6 +30,7 @@ struct UserFirebase: Codable, Identifiable{
         month = _month
         day = _day
         avatar = _avatar
+        profile_info = _profileInfo
     }
     
     static func getStoneIndex(month: UInt64, day: UInt64) -> Int {

@@ -25,7 +25,7 @@ struct LobbyTabView: View {
                     Text("Friends")
                 }
             
-            ProfileView(_user: AppIndexManager.singletonObject.currentUser)
+            ProfileView(_user: AppIndexManager.singletonObject.loggedInUser)
                 .tabItem{
                     Image(systemName: "person.circle")
                     Text("Profile")

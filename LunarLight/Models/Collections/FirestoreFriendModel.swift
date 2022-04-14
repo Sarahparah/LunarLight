@@ -16,7 +16,7 @@ class FirestoreFriendModel: ObservableObject{
     
     func createFriend(newFriend: FriendFirebase) {
         
-        let id = AppIndexManager.singletonObject.currentUser.id
+        let id = AppIndexManager.singletonObject.loggedInUser.id
         
         do {
             _ = try dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(id).collection(LocalData.FRIENDS_COLLECTION_KEY).document(newFriend.id).setData(from: newFriend)
@@ -31,7 +31,7 @@ class FirestoreFriendModel: ObservableObject{
         //Read data once (example):
         //db.collection("tmp").getDocuments(completion: )
         
-        let userId = AppIndexManager.singletonObject.currentUser.id
+        let userId = AppIndexManager.singletonObject.loggedInUser.id
         
         //Add an async listener for database
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(userId).collection(LocalData.FRIENDS_COLLECTION_KEY).addSnapshotListener { snapshot, error in

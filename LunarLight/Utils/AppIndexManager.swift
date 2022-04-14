@@ -24,26 +24,28 @@ class AppIndexManager: ObservableObject {
         _year: 2010,
         _month: 1,
         _day: 1,
-        _avatar: "capricorn_6")
+        _avatar: "capricorn_6",
+        _profileInfo: "This is me yo")
     
-    var currentUser: UserFirebase
+    var loggedInUser: UserFirebase
     var profileUser: UserFirebase?
     var privateChatUser : UserFirebase?
+    var coreDataUser: UserCoreData?
     
-    @Published var appIndex = AppIndex.welcomeView
+    @Published var appIndex = AppIndex.startView
     
     private init() {
         //SINGLETON. PRIVATE INIT.
-        currentUser = testUser
+        loggedInUser = testUser
     }
     
     func logout() {
         
-        let currentUserOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: false)
+        let currentUserOnline = UserOnlineFirebase(_id: loggedInUser.id, _username: loggedInUser.username, _isOnline: false)
         let firebaseUserOnlineModel = FirestoreUserOnlineModel()
         firebaseUserOnlineModel.updateOnlineUser(currentUserOnline: currentUserOnline)
         
-        currentUser = testUser
+        loggedInUser = testUser
         AppIndexManager.singletonObject.appIndex = AppIndex.startView
         print("Logged out!")
     }

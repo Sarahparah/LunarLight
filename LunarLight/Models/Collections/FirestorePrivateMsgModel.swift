@@ -34,7 +34,7 @@ class FirestorePrivateMsgModel: ObservableObject {
         
         guard let friendId = AppIndexManager.singletonObject.privateChatUser?.id else { return }
         
-        let userId = AppIndexManager.singletonObject.currentUser.id
+        let userId = AppIndexManager.singletonObject.loggedInUser.id
         
         print("DANNE: 2, \(userId) and \(friendId)")
         
@@ -77,7 +77,7 @@ class FirestorePrivateMsgModel: ObservableObject {
         
         guard let friendId = AppIndexManager.singletonObject.privateChatUser?.id else { return }
         
-        let userId = AppIndexManager.singletonObject.currentUser.id
+        let userId = AppIndexManager.singletonObject.loggedInUser.id
         
         //Add an async listener for database
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(friendId)

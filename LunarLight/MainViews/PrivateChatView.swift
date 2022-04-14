@@ -26,7 +26,7 @@ struct PrivateChatView: View {
     init() {
         let localData = LocalData()
         
-        currentUser = AppIndexManager.singletonObject.currentUser
+        currentUser = AppIndexManager.singletonObject.loggedInUser
         friend = AppIndexManager.singletonObject.privateChatUser ?? AppIndexManager.singletonObject.testUser
         
         let userStoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
@@ -146,7 +146,7 @@ struct PrivateChatView: View {
     
     func newPrivateMsg () {
         
-        let currentUserId = AppIndexManager.singletonObject.currentUser.id
+        let currentUserId = AppIndexManager.singletonObject.loggedInUser.id
         let friendId = friend.id
         
         let newPrivateMsg = PrivateMsgFirebase(_message: newMessage, _senderId: currentUserId, _receiverId: friendId)

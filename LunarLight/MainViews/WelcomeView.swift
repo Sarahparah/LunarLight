@@ -29,7 +29,7 @@ struct WelcomeView: View {
     
     init (){
         let localData = LocalData()
-        var currentUser = AppIndexManager.singletonObject.currentUser
+        var currentUser = AppIndexManager.singletonObject.loggedInUser
         
         let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let stoneType = localData.profileBackground[stoneIndex]
@@ -148,7 +148,7 @@ struct WelcomeView: View {
     private func updateAvatar(_ imageString: String) {
         selectedImage = imageString
         
-        var currentUser = AppIndexManager.singletonObject.currentUser
+        var currentUser = AppIndexManager.singletonObject.loggedInUser
         currentUser.avatar = imageString
         
         let firestoreUserModel = FirestoreUserModel()

@@ -97,7 +97,7 @@ struct WorldChatView: View {
         
         print(messageInput)
         
-        let currentUser = AppIndexManager.singletonObject.currentUser
+        let currentUser = AppIndexManager.singletonObject.loggedInUser
         let newMessage = WorldMsgFirebase(_userId: currentUser.id, _username: currentUser.username, _message: messageInput, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day)
         
         firestoreWorldMsgModel.createMessage(newMessage: newMessage)

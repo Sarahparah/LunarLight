@@ -17,7 +17,7 @@ class LocalData {
     
     //let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
-    let stoneArray = ["Garnet","Aquamarine","Turquoise","Coral", "Aventurine", "Tigers eye", "Carnelian", "Lapis Lazuli", "Rose Quartz", "Pink turmalin" , "Malachite", "Citrine"]
+    let stoneArray = ["Garnet","Aquamarine","Turquoise","Coral", "Aventurine", "Tigers eye", "Carnelian", "Lapis Lazuli", "Rose Quartz", "Pink Turmalin" , "Malachite", "Citrine"]
     
     let profileBackground = ["Capricorn", "Aquarius", "Pisces","Aries", "Taurus", "Gemeni", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"]
     

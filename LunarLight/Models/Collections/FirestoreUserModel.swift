@@ -29,6 +29,8 @@ class FirestoreUserModel: ObservableObject{
         }
     }
     
+    
+    
     func updateUser(currentUser: UserFirebase) {
         
         let id = currentUser.id
@@ -42,7 +44,8 @@ class FirestoreUserModel: ObservableObject{
                 
                 guard let document = querySnapshot!.documents.first else { return }
                 document.reference.updateData([
-                    "avatar": currentUser.avatar
+                    "avatar": currentUser.avatar,
+                    "profile_info": currentUser.profile_info
                 ])
             }
     }
