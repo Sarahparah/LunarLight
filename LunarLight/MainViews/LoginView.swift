@@ -91,8 +91,9 @@ struct LoginView: View {
             if let username = user.username {
                 Text(username)
                     .onAppear(){
+                        AppIndexManager.singletonObject.coreDataUser = user
                         performAutoLogin(user: user)
-                      
+                        
                     }
             }
         }

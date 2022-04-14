@@ -24,12 +24,32 @@ class CoredataUserModel {
         userCoreData.avatar = currentUser.avatar
         userCoreData.profile_info = currentUser.profile_info
         
+        
+        
+        
         do {
             try viewContext.save()
+            AppIndexManager.singletonObject.coreDataUser = userCoreData
+            print("Du är inloggad: \(userCoreData)")
         } catch {
             print("Failed to save CoreData user")
         }
         
+    }
+    //ta emot en user, och kör en viewContext save som gör att databasen uppdateras
+    func updateUser(){
+        
+        let viewContext = PersistenceController.shared.container.viewContext
+        
+        do{
+            try viewContext.save()
+            print("KOLLA OM DET SPARAS:  \(AppIndexManager.singletonObject.coreDataUser?.profile_info)")
+            
+        }catch{
+            print("Failed to update user")
+            
+        }
+              
     }
     
     func deleteUser(user: UserCoreData) {

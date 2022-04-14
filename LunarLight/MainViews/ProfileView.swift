@@ -183,8 +183,10 @@ struct ProfileView: View {
         let firestoreUserModel = FirestoreUserModel()
         firestoreUserModel.updateUser(currentUser: AppIndexManager.singletonObject.loggedInUser)
         
-        let  coreDataUserModel = CoredataUserModel()
-        coreDataUserModel.updateUser(userFirebase: AppIndexManager.singletonObject.loggedInUser)
+        AppIndexManager.singletonObject.coreDataUser?.profile_info = infoText[0]
+        let coreDataUserModel = CoredataUserModel()
+        coreDataUserModel.updateUser()
+        
         
     }
     
