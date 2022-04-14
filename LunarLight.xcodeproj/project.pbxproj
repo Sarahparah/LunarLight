@@ -85,6 +85,7 @@
 		D567608F280051D6004826D2 /* PrivateMsgFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMsgFirebase.swift; sourceTree = "<group>"; };
 		D5676091280055FB004826D2 /* FirestoreFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriendModel.swift; sourceTree = "<group>"; };
 		D567609328005631004826D2 /* FirestorePrivateMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePrivateMsgModel.swift; sourceTree = "<group>"; };
+		D56760A6280850D6004826D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB12B69928041DA900576E61 /* PrivateChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +130,7 @@
 		33AE6E0227F5A63C00EEC7E3 /* LunarLight */ = {
 			isa = PBXGroup;
 			children = (
+				D56760A6280850D6004826D2 /* Info.plist */,
 				41B977EA27FDBC8E00455E86 /* GoogleService-Info.plist */,
 				33AE6E0327F5A63C00EEC7E3 /* LunarLightApp.swift */,
 				3348158F27FF94F600AF0EC7 /* Sound Effects */,
@@ -470,9 +472,11 @@
 				DEVELOPMENT_TEAM = 5C7SAYQ8DJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LunarLight/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,9 +503,11 @@
 				DEVELOPMENT_TEAM = 5C7SAYQ8DJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LunarLight/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

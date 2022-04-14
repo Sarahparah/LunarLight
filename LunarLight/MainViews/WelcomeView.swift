@@ -41,6 +41,8 @@ struct WelcomeView: View {
         
         currentUser.avatar = profileImages[0]
         firestoreModel.updateUser(currentUser: currentUser)
+        
+        
     }
     
     var body: some View {
@@ -50,7 +52,7 @@ struct WelcomeView: View {
             //Background (first z-index)
             //Color(backgroundColor)
             
-            LinearGradient(gradient: Gradient(colors: [Color(backgroundColor), .white]), startPoint: .bottom, endPoint: .top)
+            LinearGradient(gradient: Gradient(colors: [Color(backgroundColor), .black]), startPoint: .bottomTrailing, endPoint: .topLeading)
                 .ignoresSafeArea()
             
             //Foreground (second z-index)
@@ -58,10 +60,12 @@ struct WelcomeView: View {
                 Text("Welcome")
                     .font(.title)
                     .padding(.bottom, 20)
+                    .foregroundColor(.white)
                 
                 Text("Choose an icon that suits your soul:")
                     .font(Font.subheadline.weight(.bold))
                     .padding()
+                    .foregroundColor(.white)
                 //                    .background(Color("gradient_black_20"))
                 //                    .foregroundColor(Color.black)
                 //                    .cornerRadius(30)
@@ -132,6 +136,12 @@ struct WelcomeView: View {
                 }
                 
             }.padding()
+                .background(Image("star_heaven")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea())
+        
+
         }
     }
     

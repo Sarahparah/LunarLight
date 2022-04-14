@@ -17,10 +17,19 @@ struct StartView: View {
     private var users: FetchedResults<UserCoreData>
     
     @State private var tabIndex = 0
+
+    
+    var bGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]), startPoint: .bottomTrailing, endPoint: .topLeading)
     
     var body: some View {
+    
+        
+        ZStack{
+            
         
         VStack{
+            
+            
             
             TabButtons(tabIndex: $tabIndex)
             
@@ -36,6 +45,14 @@ struct StartView: View {
             Spacer()
             
         }.padding()
+            .background(Image("star_heaven")
+                    .resizable()
+                    .scaledToFill()
+                )
+            
+        }
+        .background(bGColor)
+        
     }
     
     private func addItem() {
@@ -77,22 +94,36 @@ struct TabButtons: View {
     var body: some View {
         
         HStack {
+            Spacer()
             
             Button {
                 tabIndex = 0
             } label: {
                 Text("Login")
+                    .foregroundColor(.white)
             }
             
+                Spacer()
+            
             Divider()
-                .frame(height: UIScreen.main.bounds.size.height * 0.03)
+                .frame(height: UIScreen.main.bounds.size.height * 0.05)
+                .background(.white)
+            
+            
+                Spacer()
             
             Button {
                 tabIndex = 1
             } label: {
                 Text("Register")
+                    .foregroundColor(.white)
             }
+            
+                Spacer()
         }
+        Divider()
+            .frame(width: UIScreen.main.bounds.size.width * 0.9)
+            .background(.white)
     }
 }
 

@@ -46,6 +46,8 @@ struct RegisterView: View {
     
     var body: some View {
         
+        VStack{
+        
         ScrollView {
             
             VStack{
@@ -53,12 +55,14 @@ struct RegisterView: View {
                     Text("Username:")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 14))
+                        .foregroundColor(.white)
                     
                     TextField("Ex.. BillPrill", text: $username)
                         .autocapitalization(.none)
                         .multilineTextAlignment(.center)
-                        .padding(2)
-                        .border(.black, width: 1.0)
+                        .padding(10)
+                        .background(.white)
+                        .cornerRadius(5)
                         .disableAutocorrection(true)
                 }
                 VStack{
@@ -66,6 +70,7 @@ struct RegisterView: View {
                     Text("Date of birth:")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 14))
+                        .foregroundColor(.white)
                     
                     Button {
                         showDatePicker.toggle()
@@ -75,10 +80,10 @@ struct RegisterView: View {
                             .accentColor(showDatePicker ? Color.blue : Color.black)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(4)
-                    .border(.black, width: 1.0)
+                    .padding(10)
                     .padding(.top, 0.1)
-                    .id(8)
+                    .background(.white)
+                    .cornerRadius(5)
                     
                     if showDatePicker {
                         DatePicker("", selection: $date,
@@ -86,6 +91,8 @@ struct RegisterView: View {
                             .accentColor(Color.red)
                             .datePickerStyle(WheelDatePickerStyle())
                             .frame(width: UIScreen.main.bounds.width * 0.8)
+                            .background(.white)
+                            .cornerRadius(5)
                     }
                 }
                 .padding(.top, 10)
@@ -94,15 +101,17 @@ struct RegisterView: View {
                     Text("Email:")
                         .frame(maxWidth: .infinity,alignment: .leading)
                         .font(.system(size: 14))
+                        .foregroundColor(.white)
                     
                     
                     TextField("Ex.. bill@email.se", text: $email)
                         .keyboardType(.URL)
                         .autocapitalization(.none)
                         .multilineTextAlignment(.center)
-                        .padding(2)
-                        .border(.black, width: 1.0)
+                        .padding(10)
                         .disableAutocorrection(true)
+                        .background(.white)
+                        .cornerRadius(5)
                 }
                 .padding(.top, 10)
                 
@@ -111,15 +120,18 @@ struct RegisterView: View {
                     Text("Password:")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 14))
+                        .foregroundColor(.white)
+                    
                     HStack{
                         
                         if secured {
                             SecureField("Password", text: $password)
                                 .autocapitalization(.none)
                                 .multilineTextAlignment(.center)
-                                .padding(2)
-                                .border(Color.black, width: 1.0)
+                                .padding(10)
                                 .disableAutocorrection(true)
+                                .background(.white)
+                                .cornerRadius(5)
                             //.id(1)
                         } else {
                             
@@ -128,8 +140,9 @@ struct RegisterView: View {
                             TextField("Password", text: $password)
                                 .autocapitalization(.none)
                                 .multilineTextAlignment(.center)
-                                .padding(2)
-                                .border(Color.black, width: 1.0)
+                                .padding(10)
+                                .background(.white)
+                                .cornerRadius(5)
                                 .disableAutocorrection(true)
                             //.id(1)
                         }
@@ -139,8 +152,10 @@ struct RegisterView: View {
                         }) {
                             if secured {
                                 Image(systemName: "eye.slash")
+                                    .foregroundColor(.white)
                             } else {
                                 Image(systemName: "eye")
+                                    .foregroundColor(.white)
                             }
                         }
                     }
@@ -150,24 +165,34 @@ struct RegisterView: View {
                 SecureField("Reenter password", text: $passwordTwo)
                     .autocapitalization(.none)
                     .multilineTextAlignment(.center)
-                    .padding(4)
-                    .border(Color.black, width: 1)
-                    .id(2)
+                    .padding(10)
                     .disableAutocorrection(true)
+                    .background(.white)
+                    .cornerRadius(5)
                 
-                Button {
-                    if isValidInput() {
-                        processRegister()
-                    }
-                } label: {
-                    Text("Register")
-                }.padding(.top, 30)
-            }
-            .padding()
+                
             
-        }.onAppear(perform: {
+            }
+                .frame(width: UIScreen.main.bounds.size.width * 0.9)
+                .padding(10)
+                .onAppear(perform: {
             date = minimumYear
         })
+            
+            Spacer()
+            
+            
+        }
+            
+            Button {
+                if isValidInput() {
+                    processRegister()
+                }
+            } label: {
+                Text("Register")
+                    .foregroundColor(.white)
+            }
+        }
     }
     
     private func processRegister() {

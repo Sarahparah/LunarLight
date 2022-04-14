@@ -32,9 +32,13 @@ struct LoginView: View {
     var body: some View {
         VStack {
             
-            TextField("Email", text: $email)
+            TextField("Email / Username", text: $email)
                 .autocapitalization(.none)
+                .padding(10)
                 .disableAutocorrection(true)
+                .background(.white)
+                .cornerRadius(5)
+            
             
             HStack{
                 
@@ -42,17 +46,20 @@ struct LoginView: View {
                     
                     SecureField("Password", text: $password)
                         .autocapitalization(.none)
-                        .padding(4)
-                        .border(Color.black, width: 1)
+                        .padding(10)
                         .disableAutocorrection(true)
+                        .background(.white)
+                        .cornerRadius(5)
+                    
                 } else {
                     
                     // 3
                     TextField("Password", text: $password)
                         .autocapitalization(.none)
-                        .padding(4)
-                        .border(Color.black, width: 1)
+                        .padding(10)
                         .disableAutocorrection(true)
+                        .background(.white)
+                        .cornerRadius(5)
                 }
                 
                 Button(action: {
@@ -62,11 +69,13 @@ struct LoginView: View {
                     
                     if secured {
                         Image(systemName: "eye.slash")
+                            .foregroundColor(.white)
                     } else {
                         Image(systemName: "eye")
+                            .foregroundColor(.white)
                     }
                 }
-            }
+            }.padding(.top, 10)
             
             Spacer()
             
@@ -83,8 +92,10 @@ struct LoginView: View {
                 }
             } label: {
                 Text("Login")
+                    .foregroundColor(.white)
             }
-        }
+        }.padding(.top, 20)
+            .frame(width: UIScreen.main.bounds.size.width * 0.9)
         
         ForEach(users){ user in
             
