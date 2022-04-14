@@ -92,6 +92,7 @@ struct LoginView: View {
                 Text(username)
                     .onAppear(){
                         performAutoLogin(user: user)
+                      
                     }
             }
         }
@@ -108,10 +109,11 @@ struct LoginView: View {
         let month = UInt64(user.month)
         let day = UInt64(user.day)
         let avatar = user.avatar!
+        let profileInfo = user.profile_info!
         
-        let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar)
+        let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: profileInfo)
         
-        AppIndexManager.singletonObject.currentUser = userFirebase
+        AppIndexManager.singletonObject.loggedInUser = userFirebase
         login(currentUser: userFirebase)
     }
     
@@ -123,8 +125,8 @@ struct LoginView: View {
         let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
         firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
         
-        AppIndexManager.singletonObject.currentUser = currentUser
-        print("username: \(AppIndexManager.singletonObject.currentUser.username)")
+        AppIndexManager.singletonObject.loggedInUser = currentUser
+        print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
         AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
         
     }

@@ -17,14 +17,15 @@ struct ProfileView: View {
     var stone: String
     var backgroundColor: String
     
-    @State var infoText = ["hej detta är försts fältet om mig",
-                           ""]
+    
+    @State var infoText = ["profileInfo",
+                           "stoneInfo"]
     
     init(_user: UserFirebase){
         let localData = LocalData()
         
         user = _user
-        readOnly = AppIndexManager.singletonObject.currentUser.id == user.id ? false : true
+        readOnly = AppIndexManager.singletonObject.loggedInUser.id == user.id ? false : true
         
         let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
         let stoneType = localData.profileBackground[stoneIndex]
@@ -32,6 +33,7 @@ struct ProfileView: View {
         backgroundColor = stoneType
         stone = localData.stoneArray[stoneIndex]
         
+        print("Detta är user: \(_user)")
         
     }
     
@@ -97,6 +99,10 @@ struct ProfileView: View {
                             .padding(.horizontal)
                             .background(self.index == 0 ? Color.gray : Color.clear)
                             .cornerRadius(10)
+                            .onAppear {
+                                infoText[0] = user.profile_info
+                            }
+                        
                     }
                     Button(action: {
                         
@@ -112,6 +118,7 @@ struct ProfileView: View {
                             .cornerRadius(10)
                             .onAppear {
                                 let localData = LocalData()
+                                print(stone)
                                 infoText[1] = localData.stonesInfo[stone] ?? "Could not find stone info."
                             }
                     }
@@ -125,21 +132,34 @@ struct ProfileView: View {
                 
                 ScrollView{
                     
-                
-                if index == 0 {
-                    if readOnly {
-                        Text(infoText[0])
-                    }
-                    else {
-                        TextField("", text: $infoText[0])
+                    
+                    if index == 0 {
+                        if readOnly {
+                            Text(infoText[0])
+                        }
+                        else {
+                            TextField(user.profile_info, text: $infoText[0])
+                            
+                            Button {
+                                updateUser()
+                                
+                                
+                            } label: {
+                                Text("Save")
+                            }
+                        }
+                        
+                    }else{
+                        Text(infoText[1])
                     }
                     
-                }else{
-                    Text(infoText[1])
-                }
-                
-                Spacer()
+                    Spacer()
                 }.padding()
+                
+            }
+        }.onAppear {
+            if user.id == AppIndexManager.singletonObject.loggedInUser.id {
+                infoText[0] = AppIndexManager.singletonObject.loggedInUser.profile_info
                 
             }
         }
@@ -156,6 +176,18 @@ struct ProfileView: View {
         firestoreFriendModel.createFriend(newFriend: newFriend)
         
     }
+    
+    private func updateUser(){
+        
+        AppIndexManager.singletonObject.loggedInUser.profile_info = infoText[0]
+        let firestoreUserModel = FirestoreUserModel()
+        firestoreUserModel.updateUser(currentUser: AppIndexManager.singletonObject.loggedInUser)
+        
+        let  coreDataUserModel = CoredataUserModel()
+        coreDataUserModel.updateUser(userFirebase: AppIndexManager.singletonObject.loggedInUser)
+        
+    }
+    
 }
 
 struct SheetView: View {

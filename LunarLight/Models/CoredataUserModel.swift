@@ -22,6 +22,7 @@ class CoredataUserModel {
         userCoreData.month = Int64(currentUser.month)
         userCoreData.day = Int64(currentUser.day)
         userCoreData.avatar = currentUser.avatar
+        userCoreData.profile_info = currentUser.profile_info
         
         do {
             try viewContext.save()
@@ -41,6 +42,19 @@ class CoredataUserModel {
             try viewContext.save()
         } catch {
             print("Failed to delete CoreData users")
+        }
+    }
+    
+    
+    
+    func updateUser(user: UserCoreData){
+
+        let viewContext = PersistenceController.shared.container.viewContext
+
+        do {
+            try viewContext.save()
+        } catch {
+            print("Failed to save your profile info")
         }
     }
     
