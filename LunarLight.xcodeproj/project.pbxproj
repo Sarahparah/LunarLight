@@ -157,8 +157,8 @@
 		33D386EC27F6EAA400D338B2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				33D386EE27F6EF7600D338B2 /* InputValidator.swift */,
 				33E7A90527F703340091502E /* AppIndexManager.swift */,
+				33D386EE27F6EF7600D338B2 /* InputValidator.swift */,
 				3348158927FF90EF00AF0EC7 /* SoundPlayer.swift */,
 			);
 			path = Utils;
