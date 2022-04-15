@@ -12,7 +12,7 @@ struct ProfileView: View {
     @State private var showingSheet = false
     @State var index = 0
     
-    let user: UserFirebase
+    @State var user: UserFirebase
     let readOnly: Bool
     var stone: String
     var backgroundColor: String
@@ -25,9 +25,9 @@ struct ProfileView: View {
         let localData = LocalData()
         
         user = _user
-        readOnly = AppIndexManager.singletonObject.loggedInUser.id == user.id ? false : true
+        readOnly = AppIndexManager.singletonObject.loggedInUser.id == _user.id ? false : true
         
-        let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
+        let stoneIndex = UserFirebase.getStoneIndex(month: _user.month, day: _user.day)
         let stoneType = localData.profileBackground[stoneIndex]
         
         backgroundColor = stoneType
@@ -178,6 +178,8 @@ struct ProfileView: View {
     }
     
     private func updateUser(){
+        
+        user.profile_info = infoText[0]
         
         AppIndexManager.singletonObject.loggedInUser.profile_info = infoText[0]
         let firestoreUserModel = FirestoreUserModel()
