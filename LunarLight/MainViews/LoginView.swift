@@ -97,11 +97,13 @@ struct LoginView: View {
             }
         }.padding(.top, 20)
             .frame(width: UIScreen.main.bounds.size.width * 0.9)
+
         
         ForEach(users){ user in
             if let username = user.username {
                 Text(username)
                     .onAppear(){
+                        
                         AppIndexManager.singletonObject.coreDataUser = user
                         performAutoLogin(user: user)
                         
