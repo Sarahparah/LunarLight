@@ -20,6 +20,7 @@ struct WorldChatView: View {
                 
                 Button {
                     AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
+                    
                 } label: {
                     Text("Show Users")
                 }.padding()

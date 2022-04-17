@@ -37,12 +37,13 @@ struct ContentView: View {
             case AppIndex.friendsView:
                 FriendsView()
             case AppIndex.onlineUsersView:
-                OnlineUsersView()
+                OnlineUsersView().transition(.move(edge: .leading))
             case AppIndex.privateChatView:
-                PrivateChatView()
+                PrivateChatView().transition(.move(edge: .leading))
                 
             }
-        }
+        }.animation(.easeIn, value: appIndexManager.appIndex)
+            
     }
     
     private func initiateCurrentUserId() {

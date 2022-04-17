@@ -33,6 +33,7 @@ class AppIndexManager: ObservableObject {
     var coreDataUser: UserCoreData?
     
     @Published var appIndex = AppIndex.startView
+    @Published var currentLobbyTab = 1
     
     private init() {
         //SINGLETON. PRIVATE INIT.
