@@ -127,6 +127,8 @@ struct LoginView: View {
         
         let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: profileInfo)
         
+        
+        
         AppIndexManager.singletonObject.loggedInUser = userFirebase
         login(currentUser: userFirebase)
     }
@@ -138,6 +140,13 @@ struct LoginView: View {
         
         let userOnline = UserOnlineFirebase(_id: currentUser.id, _username: currentUser.username, _isOnline: true)
         firestoreUserOnlineModel.updateOnlineUser(currentUserOnline: userOnline)
+        
+        let localData = LocalData()
+        
+        let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
+        let stoneType = localData.profileBackground[stoneIndex]
+        
+        AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
         
         AppIndexManager.singletonObject.loggedInUser = currentUser
         print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")

@@ -24,17 +24,18 @@ struct WorldChatView: View {
                 } label: {
                     Text("Show Users")
                 }.padding()
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 
                 Divider()
                     .frame(height: UIScreen.main.bounds.size.height * 0.03)
+                    .foregroundColor(.white)
                 
                 Button {
                     print("lobbies pressed - not in use")
                 } label: {
                     Text("Choose Lobby")
                 }.padding()
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 
             }
             
@@ -52,7 +53,7 @@ struct WorldChatView: View {
                 })
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("gradient_black_20"))
+            .background(Color("gradient_white_10"))
             .cornerRadius(30)
             .padding()
             
@@ -85,7 +86,12 @@ struct WorldChatView: View {
             .cornerRadius(30)
             .padding()
             
-        }
+        }.background(Image("star_heaven")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea())
+            .background(AppIndexManager.singletonObject.personalGradientBGColor)
+            
         .onAppear(perform: {
             firestoreWorldMsgModel.listenToWorldMessages()
         })

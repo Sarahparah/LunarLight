@@ -21,21 +21,39 @@ struct FriendsView: View {
     var body: some View {
         
         VStack{
-            NavigationView{
-                List{
+            Text("Friends")
+                .foregroundColor(.white)
+                .font(.title)
+                
+            //NavigationView{
+            ScrollView{
                     ForEach(firestoreUserModel.userFriends){ entry in
                         Button {
                             AppIndexManager.singletonObject.privateChatUser = entry
                             AppIndexManager.singletonObject.appIndex = AppIndex.privateChatView
                         } label: {
                             Text(entry.username)
+                                .foregroundColor(.white)
+                            Spacer()
                         }
 
-                    }
+                    }.padding()
                 }
-            }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("gradient_white_10"))
+                .cornerRadius(30)
+                .padding()
+                
+            //}
             Spacer()
-        }.onAppear(){
+        }
+        .background(Image("star_heaven")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea())
+        .background(AppIndexManager.singletonObject.personalGradientBGColor)
+            
+        .onAppear(){
             firestoreUserModel.listenToUserFriends()
         }
     }

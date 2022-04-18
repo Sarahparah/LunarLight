@@ -59,6 +59,8 @@ struct MessageView: View {
                     Text("\(msgPrefix)\(message)")
                         .padding([.top, .bottom], 20)
                         .padding(.trailing, 30)
+                        .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.8), radius: 2, x: 1, y: 1)
                     
                     //Spacer()
                 }

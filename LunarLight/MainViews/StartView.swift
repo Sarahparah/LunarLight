@@ -17,9 +17,6 @@ struct StartView: View {
     private var users: FetchedResults<UserCoreData>
     
     @State private var tabIndex = 0
-
-    
-    var bGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]), startPoint: .bottomTrailing, endPoint: .topLeading)
     
     var body: some View {
     
@@ -47,11 +44,10 @@ struct StartView: View {
         }.padding()
             .background(Image("star_heaven")
                     .resizable()
-                    .scaledToFill()
-                )
+                    .scaledToFill())
             
         }
-        .background(bGColor)
+        .background(AppIndexManager.singletonObject.mainGradientbGColor)
         
     }
     

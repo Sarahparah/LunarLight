@@ -76,6 +76,7 @@ struct OnlineUsersView: View {
                     .sheet(isPresented: $firestoreUserModel.profileUserActive){
                         ProfileView(_user: firestoreUserModel.profileUser!)
                     }
+                    
                 }
             }
         }.onAppear {

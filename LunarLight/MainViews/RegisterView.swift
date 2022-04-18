@@ -240,6 +240,8 @@ struct RegisterView: View {
         //Store local login data (id + username) and show welcome view
         AppIndexManager.singletonObject.loggedInUser = newUser
         print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
+        
+        AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .white]),startPoint: .bottomTrailing, endPoint: .topLeading)
         AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     

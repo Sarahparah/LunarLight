@@ -19,6 +19,7 @@ struct LobbyTabView: View {
             WorldChatView()
                 .tabItem{
                     Image(systemName: "house")
+                        .colorMultiply(.white)
                     Text("World Chat")
                 }
                 .tag(1)
@@ -27,6 +28,7 @@ struct LobbyTabView: View {
                 .tabItem{
                     Image(systemName: "bubble.left.fill")
                     Text("Friends")
+                        .foregroundColor(.white)
                 }
                 .tag(2)
             
@@ -34,6 +36,7 @@ struct LobbyTabView: View {
                 .tabItem{
                     Image(systemName: "person.circle")
                     Text("Profile")
+                        .foregroundColor(.white)
                 }
                 .tag(3)
         }
