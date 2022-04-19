@@ -9,6 +9,13 @@ import SwiftUI
 
 struct WorldChatView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \UserCoreData.username, ascending: true)],
+        animation: .default)
+    private var users: FetchedResults<UserCoreData>
+    
     @StateObject private var firestoreWorldMsgModel = FirestoreWorldMsgModel()
     
     @State private var messageInput: String = ""
@@ -16,7 +23,8 @@ struct WorldChatView: View {
     var body: some View {
         VStack{
             
-            HStack(alignment: .center){
+            HStack {
+                Spacer()
                 
                 Button {
                     AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
@@ -25,19 +33,36 @@ struct WorldChatView: View {
                     Text("Show Users")
                 }.padding()
                     .foregroundColor(.white)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.45)
+                
+                    Spacer()
                 
                 Divider()
-                    .frame(height: UIScreen.main.bounds.size.height * 0.03)
-                    .foregroundColor(.white)
+                    .frame(height: UIScreen.main.bounds.size.height * 0.05)
+                    .background(.white)
+                
+                
+                    Spacer()
                 
                 Button {
-                    print("lobbies pressed - not in use")
+                    let coredataUserModel = CoredataUserModel()
+                    for user in users {
+                        coredataUserModel.deleteUser(user: user)
+                    }
+                    
+                    AppIndexManager.singletonObject.logout()
                 } label: {
-                    Text("Choose Lobby")
-                }.padding()
-                    .foregroundColor(.white)
+                    Text("Logout")
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.size.width * 0.45)
+                }
                 
+                    Spacer()
             }
+            Divider()
+                .frame(width: UIScreen.main.bounds.size.width * 0.9)
+                .background(.white)
+            
             
             ScrollView{
                 Divider()
