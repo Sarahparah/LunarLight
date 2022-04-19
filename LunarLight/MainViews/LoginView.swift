@@ -158,9 +158,11 @@ struct LoginView: View {
         
         let users = firestoreUserModel.users
         
+        let token = Encryption().getToken(input: password)
+        
         for user in users {
             if (user.username.lowercased() == email.lowercased() ||
-                user.email.lowercased() == email.lowercased()) && user.password == password {
+                user.email.lowercased() == email.lowercased()) && user.password == token {
                 print("Login success =)")
                 currentUser = user
                 return true
