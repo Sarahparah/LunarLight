@@ -223,7 +223,11 @@ struct RegisterView: View {
         
         email = email.lowercased()
         
-        let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: "This is me dude")
+        let token = Encryption().getToken(input: password)
+        
+        print("DanneToken = \(token)")
+        
+        let newUser = UserFirebase(_id: userId, _username: username, _email: email, _password: token, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: "This is me dude")
         
         //1. create user document
         firestoreModel.createUser(newUser: newUser)
