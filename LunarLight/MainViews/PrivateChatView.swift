@@ -67,16 +67,18 @@ struct PrivateChatView: View {
                     
                     Spacer()
                 }
-                
+                ScrollViewReader{ proxy in
+                    
                 ScrollView{
                     
                     Divider()
                         .padding(2)
                         .opacity(0)
                     
-                    ForEach (messages) { message in
+                    ForEach (Array(messages.enumerated()), id: \.1) { index, message in
                         if message.sender_id == currentUser.id {
                             MessageView(_username: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day, _isPrivate: true )
+                                .id(index)
                         }
                         else{
                             MessageView(_username: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day, _isPrivate: true )
@@ -87,11 +89,19 @@ struct PrivateChatView: View {
                         SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                     })
                 }
+                    
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("gradient_black_20"))
                 .cornerRadius(30)
                 .padding()
-                
+                .onAppear {
+                               proxy.scrollTo(messages.count - 1, anchor: .top)
+                           }
+                .onChange(of: messages.count, perform: { value in
+                                proxy.scrollTo(messages.count - 1)
+                                
+                            })
+            }
                 HStack {
                     TextField("Enter message..", text: $newMessage)
                         .foregroundColor(.white)
