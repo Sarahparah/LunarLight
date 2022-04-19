@@ -31,7 +31,7 @@ class FirestoreWorldMsgModel: ObservableObject{
         //db.collection("tmp").getDocuments(completion: )
         
         //Add an async listener for database
-        dataBase.collection(LocalData.WORLD_MESSAGES_COLLECTION_KEY).order(by: "timestamp", descending: false).addSnapshotListener { snapshot, error in
+        dataBase.collection(LocalData.WORLD_MESSAGES_COLLECTION_KEY).order(by: LocalData.TIMESTAMP_DOCUMENT_KEY, descending: false).addSnapshotListener { snapshot, error in
             //print("Something was changed in database")
             guard let snapshot = snapshot else { return }
             

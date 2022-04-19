@@ -15,6 +15,11 @@ class LocalData {
     static let FRIENDS_COLLECTION_KEY = "friends"
     static let PRIVATE_MESSAGES_COLLECTION_KEY = "private_messages"
     
+    static let ID_DOCUMENT_KEY = "id"
+    static let TIMESTAMP_DOCUMENT_KEY = "timestamp"
+    static let AVATAR_DOCUMENT_KEY = "avatar"
+    static let PROFILE_INFO_DOCUMENT_KEY = "profile_info"
+    
     //let profileImages = ["Bengan", "Sloomie", "ssssLord", "BillyClown", "kringiLord"]
     
     let stoneArray = ["Garnet","Aquamarine","Turquoise","Coral", "Aventurine", "Tigers eye", "Carnelian", "Lapis Lazuli", "Rose Quartz", "Pink Turmalin" , "Malachite", "Citrine"]

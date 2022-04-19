@@ -35,7 +35,7 @@ class FirestoreUserModel: ObservableObject{
         
         let id = currentUser.id
         
-        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", isEqualTo: id)
+        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField(LocalData.ID_DOCUMENT_KEY, isEqualTo: id)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -44,8 +44,8 @@ class FirestoreUserModel: ObservableObject{
                 
                 guard let document = querySnapshot!.documents.first else { return }
                 document.reference.updateData([
-                    "avatar": currentUser.avatar,
-                    "profile_info": currentUser.profile_info
+                    LocalData.AVATAR_DOCUMENT_KEY: currentUser.avatar,
+                    LocalData.PROFILE_INFO_DOCUMENT_KEY: currentUser.profile_info
                 ])
             }
     }
@@ -53,7 +53,7 @@ class FirestoreUserModel: ObservableObject{
     func getProfileUser(profileId: String) {
         print("fetching user profile...")
         
-        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", isEqualTo: profileId)
+        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField(LocalData.ID_DOCUMENT_KEY, isEqualTo: profileId)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -119,7 +119,7 @@ class FirestoreUserModel: ObservableObject{
         if friendsIds.isEmpty { return }
         
         //Add an async listener for database
-        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField("id", in: friendsIds).addSnapshotListener { snapshot, error in
+        dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField(LocalData.ID_DOCUMENT_KEY, in: friendsIds).addSnapshotListener { snapshot, error in
             //print("Something was changed in database")
             guard let snapshot = snapshot else { return }
             
