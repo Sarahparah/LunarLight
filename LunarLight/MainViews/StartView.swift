@@ -42,7 +42,7 @@ struct StartView: View {
             Spacer()
             
         }.padding()
-            .background(Image("star_heaven")
+            .background(Image("star_bg_sky")
                     .resizable()
                     .scaledToFill())
             

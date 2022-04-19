@@ -51,6 +51,7 @@ struct PrivateChatView: View {
                     firestoreUserModel.getProfileUser(profileId: friend.id)
                 } label: {
                     Text(friend.username)
+                        .foregroundColor(.white)
                 }
                 .sheet(isPresented: $firestoreUserModel.profileUserActive){
                     ProfileView(_user: firestoreUserModel.profileUser!)
@@ -62,6 +63,7 @@ struct PrivateChatView: View {
                         AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                     } label: {
                         Text("< Back")
+                            .foregroundColor(.white)
                     }
                     .padding()
                     
@@ -121,7 +123,11 @@ struct PrivateChatView: View {
                 .cornerRadius(30)
                 .padding()
                 
-            }.onAppear(perform: {
+            }.background(Image("star_bg_sky")
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea())
+                .onAppear(perform: {
                 print("DANNE: 0, listen!")
                 firestorePrivateMsgModel.listenToUserMsgs()
                 firestorePrivateMsgModel.listenToFriendMsgs()

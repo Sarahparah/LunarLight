@@ -136,7 +136,7 @@ struct WelcomeView: View {
                 }
                 
             }.padding()
-                .background(Image("star_heaven")
+                .background(Image("star_bg_sky")
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea())

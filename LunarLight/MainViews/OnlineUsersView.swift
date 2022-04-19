@@ -25,13 +25,14 @@ struct OnlineUsersView: View {
     var body: some View {
         
         VStack {
-            Text("Test View")
+            Text("Online Users")
             
             HStack{
                 Button {
                     AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
                 } label: {
                     Text("< Lobby")
+                        .foregroundColor(.white)
                 }
                 
                 Spacer()
@@ -39,22 +40,34 @@ struct OnlineUsersView: View {
                                 
             }.padding()
             
-            List{
+            ScrollView{
                 ForEach (firestoreUserOnlineModel.usersOnline) { userOnline in
                     
                     
                     Button {
                         firestoreUserModel.getProfileUser(profileId: userOnline.id)
                     } label: {
+                        VStack{
                         HStack{
                             
                             Text(userOnline.username)
+                                .foregroundColor(.white)
                             Spacer()
                             Text("Online")
+                                .foregroundColor(.white)
                             Color.green
                                 .frame(width: 25, height: 25)
                                 .cornerRadius(100)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color.white, lineWidth: 1)
+                                )
+                                .padding(2)
                             
+                        }
+                            Divider()
+                                .frame(width: UIScreen.main.bounds.size.width * 0.9)
+                                .background(.white)
                         }
                     }
                     .sheet(isPresented: $firestoreUserModel.profileUserActive){
@@ -62,8 +75,13 @@ struct OnlineUsersView: View {
                     }
                     
                 }
-            }
-        }.onAppear {
+            }.padding()
+        }.background(Image("star_bg_sky")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea())
+            .background(AppIndexManager.singletonObject.personalGradientBGColor)
+            .onAppear {
             firestoreUserOnlineModel.listenToOnlineUsers()
         }
     }

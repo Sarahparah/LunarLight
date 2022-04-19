@@ -32,12 +32,23 @@ struct FriendsView: View {
                             AppIndexManager.singletonObject.privateChatUser = entry
                             AppIndexManager.singletonObject.appIndex = AppIndex.privateChatView
                         } label: {
-                            Text(entry.username)
+                            VStack{
+                                HStack{
+                                    Text("User: ")
+                                    Text(entry.username)
                                 .foregroundColor(.white)
+                                .padding(.trailing, 10)
                             Spacer()
+                                }
+                                
+                                Divider()
+                                    .frame(width: UIScreen.main.bounds.size.width * 0.8)
+                                    .background(.white)
                         }
-
-                    }.padding()
+                            .padding([.trailing, .leading, .top], 10)
+                    }
+                    }
+                
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("gradient_white_10"))
@@ -47,7 +58,7 @@ struct FriendsView: View {
             //}
             Spacer()
         }
-        .background(Image("star_heaven")
+        .background(Image("star_bg_sky")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea())
