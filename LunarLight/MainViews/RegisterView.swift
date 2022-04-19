@@ -232,12 +232,12 @@ struct RegisterView: View {
         let userOnline = UserOnlineFirebase(_id: newUser.id, _username: newUser.username, _isOnline: true)
         let firestoreUserOnlineModel = FirestoreUserOnlineModel()
         firestoreUserOnlineModel.createUserOnline(newUserOnline: userOnline)
+
+        //3. store user in coredata (local database) for auto-login
+        let coredataUserModel = CoredataUserModel()
+        coredataUserModel.createUser(currentUser: newUser)
         
-        //Temp code (save user to CoreData):
-        //let coredataUserModel = CoredataUserModel()
-        //coredataUserModel.saveUser(username: username, password: password, dateOfBirth: date, email: email)
-        
-        //Store local login data (id + username) and show welcome view
+        //4. Store login data (id + username) in variable and show welcome view
         AppIndexManager.singletonObject.loggedInUser = newUser
         print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
         
