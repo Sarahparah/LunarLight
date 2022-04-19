@@ -63,14 +63,15 @@ struct WorldChatView: View {
                 .frame(width: UIScreen.main.bounds.size.width * 0.9)
                 .background(.white)
             
-            
+            ScrollViewReader{ proxy in
             ScrollView{
                 Divider()
                     .padding(2)
                     .opacity(0)
                 
-                ForEach(firestoreWorldMsgModel.worldMessages) { worldMsg in
+                ForEach(Array(firestoreWorldMsgModel.worldMessages.enumerated()), id: \.1) { index, worldMsg in
                     MessageView(_username: worldMsg.username, _message: worldMsg.message, _avatar: worldMsg.avatar, _month: worldMsg.month, _day: worldMsg.day, _isPrivate: false )
+                        .id(index)
                 }
                 .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
                     print("*BLIPP*")
@@ -81,7 +82,14 @@ struct WorldChatView: View {
             .background(Color("gradient_white_10"))
             .cornerRadius(30)
             .padding()
-            
+            .onAppear {
+                           proxy.scrollTo(firestoreWorldMsgModel.worldMessages.count - 1, anchor: .bottom)
+                       }
+            .onChange(of: firestoreWorldMsgModel.worldMessages.count, perform: { value in
+                            proxy.scrollTo(firestoreWorldMsgModel.worldMessages.count - 1)
+                            
+                        })
+        }
             HStack {
                 TextField("Enter message..", text: $messageInput)
                     .foregroundColor(.white)

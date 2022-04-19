@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct PrivateMsgFirebase: Codable, Identifiable, Equatable{
+struct PrivateMsgFirebase: Codable, Identifiable, Equatable, Hashable{
     
     var id: String
     var sender_id: String
