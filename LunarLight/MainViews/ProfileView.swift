@@ -172,7 +172,7 @@ struct ProfileView: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("star_heaven")
+            .background(Image("star_bg_sky")
                             .resizable()
                             .scaledToFill()
                             .ignoresSafeArea())

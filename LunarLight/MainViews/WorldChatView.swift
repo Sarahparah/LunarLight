@@ -115,11 +115,11 @@ struct WorldChatView: View {
                 
             }
             .frame(maxWidth: .infinity, minHeight: 50)
-            .background(Color("gradient_black_20"))
+            .background(Color("gradient_white_10"))
             .cornerRadius(30)
             .padding()
             
-        }.background(Image("star_heaven")
+        }.background(Image("star_bg_sky")
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea())

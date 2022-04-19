@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+
 struct LobbyTabView: View {
     
     @StateObject var appIndexManager = AppIndexManager.singletonObject
@@ -19,7 +20,6 @@ struct LobbyTabView: View {
             WorldChatView()
                 .tabItem{
                     Image(systemName: "house")
-                        .colorMultiply(.white)
                     Text("World Chat")
                 }
                 .tag(1)
@@ -28,20 +28,21 @@ struct LobbyTabView: View {
                 .tabItem{
                     Image(systemName: "bubble.left.fill")
                     Text("Friends")
-                        .foregroundColor(.white)
                 }
                 .tag(2)
             
             ProfileView(_user: AppIndexManager.singletonObject.loggedInUser)
                 .tabItem{
-                    Image(systemName: "person.circle")
+                    Image(systemName: "person.circle").tint(.white)
                     Text("Profile")
-                        .foregroundColor(.white)
+                        
                 }
                 .tag(3)
         }
         .font(.headline)
+        .accentColor(.white)
         .onAppear(){
+                
             AppIndexManager.singletonObject.firestoreFriendModel.listenToFriends()
         }
     }
