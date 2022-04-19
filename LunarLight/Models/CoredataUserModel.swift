@@ -36,7 +36,7 @@ class CoredataUserModel {
         }
         
     }
-    //ta emot en user, och kör en viewContext save som gör att databasen uppdateras
+    //kör en viewContext save som gör att databasen uppdateras
     func updateUser(){
         
         let viewContext = PersistenceController.shared.container.viewContext
