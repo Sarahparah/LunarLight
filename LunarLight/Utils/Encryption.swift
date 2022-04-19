@@ -66,8 +66,6 @@ class Encryption {
             i += 1
         }
         
-        print("DanneToken = \(token)")
-        
         //finally return the encrypted string
         return token
     }
