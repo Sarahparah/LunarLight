@@ -197,6 +197,7 @@ struct ProfileView: View {
                 print("Detta är user: \(_user)")
                 
                 infoText[0] = user.profile_info
+        
             }
     }
     

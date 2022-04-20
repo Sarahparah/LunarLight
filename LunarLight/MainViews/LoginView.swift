@@ -138,8 +138,6 @@ struct LoginView: View {
         let userFirebase = UserFirebase(_id: id, _username: username, _email: email, _password: password, _year: year, _month: month, _day: day, _avatar: avatar, _profileInfo: profileInfo)
         
         
-        
-        AppIndexManager.singletonObject.loggedInUser = userFirebase
         login(currentUser: userFirebase)
     }
     
@@ -159,6 +157,7 @@ struct LoginView: View {
         AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
         
         AppIndexManager.singletonObject.loggedInUser = currentUser
+        AppIndexManager.singletonObject.profileUser = currentUser
         print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
         AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
         
