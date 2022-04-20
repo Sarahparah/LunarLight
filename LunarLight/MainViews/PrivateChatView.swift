@@ -54,7 +54,7 @@ struct PrivateChatView: View {
                         .foregroundColor(.white)
                 }
                 .sheet(isPresented: $firestoreUserModel.profileUserActive){
-                    ProfileView(_user: firestoreUserModel.profileUser!)
+                    ProfileView()
                 }
 
                 

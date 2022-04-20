@@ -31,7 +31,7 @@ struct LobbyTabView: View {
                 }
                 .tag(2)
             
-            ProfileView(_user: AppIndexManager.singletonObject.loggedInUser)
+            ProfileView()
                 .tabItem{
                     Image(systemName: "person.circle").tint(.white)
                     Text("Profile")
@@ -44,6 +44,7 @@ struct LobbyTabView: View {
         .onAppear(){
                 
             AppIndexManager.singletonObject.firestoreFriendModel.listenToFriends()
+            appIndexManager.profileUser = appIndexManager.loggedInUser
         }
     }
 }

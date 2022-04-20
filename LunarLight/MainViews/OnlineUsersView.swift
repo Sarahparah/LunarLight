@@ -71,7 +71,7 @@ struct OnlineUsersView: View {
                         }
                     }
                     .sheet(isPresented: $firestoreUserModel.profileUserActive){
-                        ProfileView(_user: firestoreUserModel.profileUser!)
+                        ProfileView()
                     }
                     
                 }
@@ -82,7 +82,8 @@ struct OnlineUsersView: View {
                         .ignoresSafeArea())
             .background(AppIndexManager.singletonObject.personalGradientBGColor)
             .onAppear {
-            firestoreUserOnlineModel.listenToOnlineUsers()
+                firestoreUserOnlineModel.listenToOnlineUsers()
+                AppIndexManager.singletonObject.profileUser = nil
         }
     }
 }
