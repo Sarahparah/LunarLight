@@ -146,7 +146,7 @@ struct ProfileView: View {
                             Spacer ()
                             
                             Button {
-                                updateUser()
+                                updateInfoTextUser()
                                 
                                 
                             } label: {
@@ -199,7 +199,7 @@ struct ProfileView: View {
         
     }
     
-    private func updateUser(){
+    private func updateInfoTextUser(){
         
         user.profile_info = infoText[0]
         

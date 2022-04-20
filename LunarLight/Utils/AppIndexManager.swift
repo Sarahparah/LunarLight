@@ -48,9 +48,11 @@ class AppIndexManager: ObservableObject {
         let currentUserOnline = UserOnlineFirebase(_id: loggedInUser.id, _username: loggedInUser.username, _isOnline: false)
         let firebaseUserOnlineModel = FirestoreUserOnlineModel()
         firebaseUserOnlineModel.updateOnlineUser(currentUserOnline: currentUserOnline)
+        coreDataUser = nil
+        profileUser = nil
         
         loggedInUser = testUser
-        AppIndexManager.singletonObject.appIndex = AppIndex.startView
+        appIndex = AppIndex.startView
         print("Logged out!")
     }
     

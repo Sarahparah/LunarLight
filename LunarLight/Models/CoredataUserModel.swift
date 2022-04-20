@@ -65,17 +65,4 @@ class CoredataUserModel {
         }
     }
     
-    
-    
-    func updateUser(user: UserCoreData){
-
-        let viewContext = PersistenceController.shared.container.viewContext
-
-        do {
-            try viewContext.save()
-        } catch {
-            print("Failed to save your profile info")
-        }
-    }
-    
 }

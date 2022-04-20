@@ -153,6 +153,10 @@ struct WelcomeView: View {
         
         let firestoreUserModel = FirestoreUserModel()
         firestoreUserModel.updateUser(currentUser: currentUser)
+        
+        let coredataUserModel = CoredataUserModel()
+        AppIndexManager.singletonObject.coreDataUser!.avatar = imageString
+        coredataUserModel.updateUser()
     }
 }
 
