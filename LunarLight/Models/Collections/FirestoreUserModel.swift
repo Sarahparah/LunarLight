@@ -51,6 +51,7 @@ class FirestoreUserModel: ObservableObject{
     }
     
     func getProfileUser(profileId: String) {
+        
         print("fetching user profile...")
         
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).whereField(LocalData.ID_DOCUMENT_KEY, isEqualTo: profileId)
@@ -69,6 +70,7 @@ class FirestoreUserModel: ObservableObject{
                 case .success(let item):
                     self.profileUser = item
                     self.profileUserActive = true
+                    AppIndexManager.singletonObject.profileUser = item
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }

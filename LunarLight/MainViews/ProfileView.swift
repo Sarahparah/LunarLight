@@ -182,11 +182,14 @@ struct ProfileView: View {
                 user.id == AppIndexManager.singletonObject.loggedInUser.id ? AppIndexManager.singletonObject.personalGradientBGColor : LinearGradient(gradient: Gradient(colors: [Color(bGColorOfPressedUser), .black]),startPoint: .bottomTrailing, endPoint: .topLeading))
             .onAppear {
                 
+                if AppIndexManager.singletonObject.profileUser == nil {
+                    AppIndexManager.singletonObject.profileUser = AppIndexManager.singletonObject.testUser
+                }
                 
                 let localData = LocalData()
                 
-                user = AppIndexManager.singletonObject.profileUser ?? AppIndexManager.singletonObject.testUser
-                readOnly = AppIndexManager.singletonObject.loggedInUser.id == user.id ? false : true
+                user = AppIndexManager.singletonObject.profileUser!
+                readOnly = AppIndexManager.singletonObject.loggedInUser.id == AppIndexManager.singletonObject.profileUser!.id ? false : true
                 
                 let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
                 
