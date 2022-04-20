@@ -98,25 +98,15 @@ struct LoginView: View {
         }.padding(.top, 20)
             .frame(width: UIScreen.main.bounds.size.width * 0.9)
 
-        Button {
-            let coredataUserModel = CoredataUserModel()
-            for user in users {
-                coredataUserModel.deleteUser(user: user)
-                
-            }
-        } label: {
-            Text("delete all")
-        }
-
         
         ForEach(users){ user in
             if let username = user.username {
                 Text(username)
                     .onAppear(){
                         
-//                        AppIndexManager.singletonObject.coreDataUser = user
-//                        performAutoLogin(user: user)
-//
+                        AppIndexManager.singletonObject.coreDataUser = user
+                        performAutoLogin(user: user)
+
                     }
             }
         }
