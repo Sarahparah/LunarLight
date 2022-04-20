@@ -224,6 +224,8 @@ struct ProfileView: View {
         let firestoreUserModel = FirestoreUserModel()
         firestoreUserModel.updateUser(currentUser: AppIndexManager.singletonObject.loggedInUser)
         
+        AppIndexManager.singletonObject.profileUser!.profile_info = infoText[0]
+        
         AppIndexManager.singletonObject.coreDataUser?.profile_info = infoText[0]
         let coreDataUserModel = CoredataUserModel()
         coreDataUserModel.updateUser()
