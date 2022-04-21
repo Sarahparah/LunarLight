@@ -50,33 +50,14 @@ struct ProfileView: View {
                         .foregroundColor(.white)
                 }
             }
-                
-            //knappen för settings sheet
-            HStack{
-                
-                Button {
-                    showingSheet.toggle()
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                    
-                }.sheet(isPresented: $showingSheet){
-                    SheetView()
-                }
-                
-                .background(Color.white)
-                .foregroundColor(.black)
-                .cornerRadius(5)
-                .opacity(readOnly ? 0 : 1)
-                .disabled(readOnly ? true : false)
-                
-            }
-            .padding()
+
                 
             //Namn och profilbild
             Image(user.avatar)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 150, height: 150)
+                .padding(.top, 50)
             
             Text(user.username)
                 .font(.title).bold()
@@ -141,8 +122,11 @@ struct ProfileView: View {
                             .foregroundColor(.white)
                     }
                     else {
-                        TextField(user.profile_info, text: $infoText[0])
+                        TextEditor(text: $infoText[0])
+                            .padding()
+                            .frame(minHeight: UIScreen.main.bounds.height * 0.2)
                             .background(Color("gradient_white_10"))
+                            .cornerRadius(30)
                             .foregroundColor(.white)
                         
                         Spacer ()
@@ -201,6 +185,9 @@ struct ProfileView: View {
                 print("Detta är user: \(_user)")
                 
                 infoText[0] = user.profile_info
+                
+                UITextView.appearance()
+                    .backgroundColor = .clear
         
             }
     }
