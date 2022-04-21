@@ -138,6 +138,7 @@ struct ProfileView: View {
                 if index == 0 {
                     if readOnly {
                         Text(infoText[0])
+                            .foregroundColor(.white)
                     }
                     else {
                         TextField(user.profile_info, text: $infoText[0])

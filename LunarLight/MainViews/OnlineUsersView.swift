@@ -26,6 +26,8 @@ struct OnlineUsersView: View {
         
         VStack {
             Text("Online Users")
+                .foregroundColor(.white)
+                .font(.title)
             
             HStack{
                 Button {
