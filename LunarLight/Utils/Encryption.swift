@@ -11,14 +11,14 @@ class Encryption {
     
     //Get encrypted password (token) by http get request from PHP API
     func getTokenByHttpRequest(input: String) async throws -> String {
-        guard let url = URL(string: "https://lunarlightkyh.000webhostapp.com/?password=\(input)") else { fatalError("error") }
+        guard let url = URL(string: "https://lunarlightkyh.000webhostapp.com/?password=\(input)") else { return "error" }
         let urlRequest = URLRequest(url: url)
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        guard let responseCode = (response as? HTTPURLResponse)?.statusCode else { fatalError("error") }
+        guard let responseCode = (response as? HTTPURLResponse)?.statusCode else { return "error" }
         
         if responseCode < 200 || responseCode > 299 {
-            fatalError("error")
+            return "error"
         }
 
         let token = String(data: data, encoding: .utf8)!

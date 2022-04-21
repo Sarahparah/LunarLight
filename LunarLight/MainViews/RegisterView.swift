@@ -234,6 +234,9 @@ struct RegisterView: View {
         do {
             
             token = try await encryption.getTokenByHttpRequest(input: password)
+            if token == "error" {
+                return
+            }
         } catch {
                 print("Error", error)
                 return

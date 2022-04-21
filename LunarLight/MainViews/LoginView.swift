@@ -170,6 +170,10 @@ struct LoginView: View {
         do {
             
             token = try await encryption.getTokenByHttpRequest(input: password)
+            
+            if token == "error" {
+                return false
+            }
         } catch {
                 print("Error", error)
                 return false
