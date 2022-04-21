@@ -9,6 +9,26 @@ import Foundation
 
 class Encryption {
     
+    //Get encrypted password (token) by http get request from PHP API
+    func getTokenByHttpRequest(input: String) async throws -> String {
+        guard let url = URL(string: "https://lunarlightkyh.000webhostapp.com/?password=\(input)") else { fatalError("error") }
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard let responseCode = (response as? HTTPURLResponse)?.statusCode else { fatalError("error") }
+        
+        if responseCode < 200 || responseCode > 299 {
+            fatalError("error")
+        }
+
+        let token = String(data: data, encoding: .utf8)!
+        
+        print("DanneToken = \(token)")
+        
+        return token
+    }
+    
+    //Self written encryption: Currently not used (replaced by getTokenByHttpRequest()-method)
     //function to generate a token (encrypted string) from user input
     func getToken(input: String) -> String {
         

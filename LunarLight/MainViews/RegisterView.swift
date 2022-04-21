@@ -186,7 +186,9 @@ struct RegisterView: View {
             
             Button {
                 if isValidInput() {
-                    processRegister()
+                    Task {
+                        let _ = await processRegister()
+                    }
                 }
             } label: {
                 Text("Register")
@@ -195,7 +197,7 @@ struct RegisterView: View {
         }
     }
     
-    private func processRegister() {
+    private func processRegister() async {
         
         let userId: String = UUID().uuidString
         let year: UInt64 = UInt64(Calendar.current.dateComponents([.year], from: date).year ?? 0)
@@ -223,7 +225,23 @@ struct RegisterView: View {
         
         email = email.lowercased()
         
-        let token = Encryption().getToken(input: password)
+        //let token = Encryption().getToken(input: password)
+        
+        var token = "error"
+        
+        let encryption = Encryption()
+        
+        do {
+            
+            token = try await encryption.getTokenByHttpRequest(input: password)
+        } catch {
+                print("Error", error)
+                return
+        }
+        
+        if token == "error" {
+            return
+        }
         
         print("DanneToken = \(token)")
         

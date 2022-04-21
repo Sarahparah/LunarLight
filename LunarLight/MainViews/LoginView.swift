@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import UIKit
 
 struct LoginView: View {
     
@@ -82,15 +83,20 @@ struct LoginView: View {
             
             Button {
                 print("login?")
-                if loginCheck() {
-                    guard let currentUser = currentUser else {
-                        print("Error: Current user is nil")
-                        return
+                
+                Task {
+                    let result = await loginCheck()
+                    
+                    if (result) {
+                        guard let currentUser = currentUser else {
+                            print("Error: Current user is nil")
+                            return
+                        }
+                        
+                        login(currentUser: currentUser)
                     }
-                    
-                    login(currentUser: currentUser)
-                    
                 }
+            
             } label: {
                 Text("Login")
                     .foregroundColor(.white)
@@ -153,11 +159,23 @@ struct LoginView: View {
         
     }
     
-    private func loginCheck() -> Bool {
+    private func loginCheck() async -> Bool {
         
         let users = firestoreUserModel.users
         
-        let token = Encryption().getToken(input: password)
+        var token = "error"
+        
+        let encryption = Encryption()
+        
+        do {
+            
+            token = try await encryption.getTokenByHttpRequest(input: password)
+        } catch {
+                print("Error", error)
+                return false
+        }
+        
+        //let token = Encryption().getToken(input: password)
         
         for user in users {
             if (user.username.lowercased() == email.lowercased() ||
