@@ -65,7 +65,7 @@ class FirestoreUserOnlineModel: ObservableObject{
                 
                 switch result {
                 case .success(let item):
-                    if item.id == AppIndexManager.singletonObject.loggedInUser.id {
+                    if item.id == AppManager.singletonObject.loggedInUser.id {
                         continue
                     }
                     if item.is_online {

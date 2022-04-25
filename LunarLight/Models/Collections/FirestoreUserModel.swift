@@ -70,7 +70,7 @@ class FirestoreUserModel: ObservableObject{
                 case .success(let item):
                     self.profileUser = item
                     self.profileUserActive = true
-                    AppIndexManager.singletonObject.profileUser = item
+                    AppManager.singletonObject.profileUser = item
                 case .failure(let error):
                     print("User decode error: \(error)")
                 }
@@ -114,7 +114,7 @@ class FirestoreUserModel: ObservableObject{
         
         var friendsIds = [String]()
         
-        for friend in AppIndexManager.singletonObject.firestoreFriendModel.friends {
+        for friend in AppManager.singletonObject.firestoreFriendModel.friends {
             friendsIds.append(friend.id)
         }
         

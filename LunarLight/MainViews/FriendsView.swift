@@ -15,7 +15,7 @@ struct FriendsView: View {
     let friends: [FriendFirebase]
     
     init() {
-        friends = AppIndexManager.singletonObject.firestoreFriendModel.friends
+        friends = AppManager.singletonObject.firestoreFriendModel.friends
     }
     
     var body: some View {
@@ -29,8 +29,8 @@ struct FriendsView: View {
             ScrollView{
                     ForEach(firestoreUserModel.userFriends){ entry in
                         Button {
-                            AppIndexManager.singletonObject.privateChatUser = entry
-                            AppIndexManager.singletonObject.appIndex = AppIndex.privateChatView
+                            AppManager.singletonObject.privateChatUser = entry
+                            AppManager.singletonObject.appIndex = AppIndex.privateChatView
                         } label: {
                             VStack{
                                 HStack{
@@ -62,7 +62,7 @@ struct FriendsView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea())
-        .background(AppIndexManager.singletonObject.personalGradientBGColor)
+        .background(AppManager.singletonObject.personalGradientBGColor)
             
         .onAppear(){
             firestoreUserModel.listenToUserFriends()

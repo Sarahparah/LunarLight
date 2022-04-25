@@ -31,7 +31,7 @@ struct OnlineUsersView: View {
             
             HStack{
                 Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                    AppManager.singletonObject.appIndex = AppIndex.lobbyView
                 } label: {
                     Text("< Lobby")
                         .foregroundColor(.white)
@@ -82,10 +82,10 @@ struct OnlineUsersView: View {
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea())
-            .background(AppIndexManager.singletonObject.personalGradientBGColor)
+            .background(AppManager.singletonObject.personalGradientBGColor)
             .onAppear {
                 firestoreUserOnlineModel.listenToOnlineUsers()
-                AppIndexManager.singletonObject.profileUser = nil
+                AppManager.singletonObject.profileUser = nil
         }
     }
 }

@@ -26,6 +26,7 @@ struct RegisterView: View {
     var currentYear: Int = -1
     var minimumYear: Date = Date()
     var maximumYear: Date = Date()
+    var startYear: Date = Date()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -44,6 +45,8 @@ struct RegisterView: View {
                                                 DateComponents(year: currentYear-12)) ?? Date()
         maximumYear = Calendar.current.date(from:
                                                 DateComponents(year: currentYear-120)) ?? Date()
+        startYear = Calendar.current.date(from:
+                                        DateComponents(year: currentYear-18)) ?? Date()
         
         firestoreModel.listenToUsers()
         
@@ -52,7 +55,7 @@ struct RegisterView: View {
     var body: some View {
         
         VStack{
-        
+            
             ScrollView {
                 
                 VStack{
@@ -93,7 +96,6 @@ struct RegisterView: View {
                         if showDatePicker {
                             DatePicker("", selection: $date,
                                        in: maximumYear...minimumYear, displayedComponents: [.date])
-                                .accentColor(Color.red)
                                 .datePickerStyle(WheelDatePickerStyle())
                                 .frame(width: UIScreen.main.bounds.width * 0.8)
                                 .background(.white)
@@ -176,13 +178,13 @@ struct RegisterView: View {
                         .cornerRadius(5)
                     
                     
-                
+                    
                 }
-                    .frame(width: UIScreen.main.bounds.size.width * 0.9)
-                    .padding(10)
-                    .onAppear(perform: {
-                date = minimumYear
-            })
+                .frame(width: UIScreen.main.bounds.size.width * 0.9)
+                .padding(10)
+                .onAppear(perform: {
+                    date = startYear
+                })
                 
                 Spacer()
                 
@@ -238,7 +240,7 @@ struct RegisterView: View {
         let stoneArray = localData.stoneImages[stoneType]
         let avatar: String = stoneArray![0]
         
-        AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
+        AppManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
         
         email = email.lowercased()
         
@@ -255,8 +257,8 @@ struct RegisterView: View {
                 return
             }
         } catch {
-                print("Error", error)
-                return
+            print("Error", error)
+            return
         }
         
         if token == "error" {
@@ -274,16 +276,16 @@ struct RegisterView: View {
         let userOnline = UserOnlineFirebase(_id: newUser.id, _username: newUser.username, _isOnline: true)
         let firestoreUserOnlineModel = FirestoreUserOnlineModel()
         firestoreUserOnlineModel.createUserOnline(newUserOnline: userOnline)
-
+        
         //3. store user in coredata (local database) for auto-login
         let coredataUserModel = CoredataUserModel()
         coredataUserModel.createUser(currentUser: newUser)
         
         //4. Store login data (id + username) in variable and show welcome view
-        AppIndexManager.singletonObject.loggedInUser = newUser
-        print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
+        AppManager.singletonObject.loggedInUser = newUser
+        print("username: \(AppManager.singletonObject.loggedInUser.username)")
         
-        AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
+        AppManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     
     private func isUsernameAndEmailUnique() -> Bool {

@@ -29,7 +29,7 @@ struct WelcomeView: View {
     
     init (){
         let localData = LocalData()
-        var currentUser = AppIndexManager.singletonObject.loggedInUser
+        var currentUser = AppManager.singletonObject.loggedInUser
         
         let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let stoneType = localData.profileBackground[stoneIndex]
@@ -118,7 +118,7 @@ struct WelcomeView: View {
                 Spacer()
                 
                 Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                    AppManager.singletonObject.appIndex = AppIndex.lobbyView
                 } label: {
                     Text("Enter the world of Lunar Light")
                         .font(Font.subheadline.weight(.bold))
@@ -137,7 +137,7 @@ struct WelcomeView: View {
                             .resizable()
                             .scaledToFill()
                             .ignoresSafeArea())
-                .background(AppIndexManager.singletonObject.personalGradientBGColor)
+                .background(AppManager.singletonObject.personalGradientBGColor)
         
 
         
@@ -146,18 +146,18 @@ struct WelcomeView: View {
     private func updateAvatar(_ imageString: String) {
         selectedImage = imageString
         
-        AppIndexManager.singletonObject.loggedInUser.avatar = imageString
+        AppManager.singletonObject.loggedInUser.avatar = imageString
         
-        let currentUser = AppIndexManager.singletonObject.loggedInUser
+        let currentUser = AppManager.singletonObject.loggedInUser
         
         let firestoreUserModel = FirestoreUserModel()
         firestoreUserModel.updateUser(currentUser: currentUser)
         
         let coredataUserModel = CoredataUserModel()
-        AppIndexManager.singletonObject.coreDataUser!.avatar = imageString
+        AppManager.singletonObject.coreDataUser!.avatar = imageString
         coredataUserModel.updateUser()
         
-        AppIndexManager.singletonObject.profileUser = currentUser
+        AppManager.singletonObject.profileUser = currentUser
     }
 }
 

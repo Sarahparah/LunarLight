@@ -26,8 +26,8 @@ struct PrivateChatView: View {
     init() {
         let localData = LocalData()
         
-        currentUser = AppIndexManager.singletonObject.loggedInUser
-        friend = AppIndexManager.singletonObject.privateChatUser ?? AppIndexManager.singletonObject.testUser
+        currentUser = AppManager.singletonObject.loggedInUser
+        friend = AppManager.singletonObject.privateChatUser ?? AppManager.singletonObject.testUser
         
         let userStoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let userStoneType = localData.profileBackground[userStoneIndex]
@@ -60,7 +60,7 @@ struct PrivateChatView: View {
                 
                 HStack {
                     Button {
-                        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+                        AppManager.singletonObject.appIndex = AppIndex.lobbyView
                     } label: {
                         Text("< Back")
                             .foregroundColor(.white)
@@ -162,7 +162,7 @@ struct PrivateChatView: View {
     
     func newPrivateMsg () {
         
-        let currentUserId = AppIndexManager.singletonObject.loggedInUser.id
+        let currentUserId = AppManager.singletonObject.loggedInUser.id
         let friendId = friend.id
         
         let newPrivateMsg = PrivateMsgFirebase(_message: newMessage, _senderId: currentUserId, _receiverId: friendId)

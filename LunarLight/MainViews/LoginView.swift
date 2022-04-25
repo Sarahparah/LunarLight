@@ -118,7 +118,7 @@ struct LoginView: View {
                     Text(username)
                         .onAppear(){
                             
-                            AppIndexManager.singletonObject.coreDataUser = user
+                            AppManager.singletonObject.coreDataUser = user
                             performAutoLogin(user: user)
 
                         }
@@ -137,7 +137,6 @@ struct LoginView: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(20)
         }
-            
     }
     
     private func performAutoLogin(user: UserCoreData) {
@@ -171,12 +170,12 @@ struct LoginView: View {
         let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let stoneType = localData.profileBackground[stoneIndex]
         
-        AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
+        AppManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
         
-        AppIndexManager.singletonObject.loggedInUser = currentUser
-        AppIndexManager.singletonObject.profileUser = currentUser
-        print("username: \(AppIndexManager.singletonObject.loggedInUser.username)")
-        AppIndexManager.singletonObject.appIndex = AppIndex.lobbyView
+        AppManager.singletonObject.loggedInUser = currentUser
+        AppManager.singletonObject.profileUser = currentUser
+        print("username: \(AppManager.singletonObject.loggedInUser.username)")
+        AppManager.singletonObject.appIndex = AppIndex.lobbyView
         
     }
     

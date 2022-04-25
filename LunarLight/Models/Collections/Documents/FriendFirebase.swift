@@ -10,6 +10,8 @@ import FirebaseFirestoreSwift
 
 struct FriendFirebase: Codable, Identifiable, Equatable{
     
+    // codable använder vi för att konvertera vår swiftdata till databasDATA
+    
     var id: String
     
     init(_userId: String){

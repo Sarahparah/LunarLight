@@ -10,23 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var appIndexManager: AppIndexManager
+    @ObservedObject var appManager: AppManager
     
     init() {
-        appIndexManager = AppIndexManager.singletonObject
+        appManager = AppManager.singletonObject
         
-        let preferences = UserDefaults.standard
-        let currentUserIdKey = "currentUserId"
-        if preferences.object(forKey: currentUserIdKey) == nil {
-            initiateCurrentUserId()
-        }
     }
     
     var body: some View {
         
         VStack{
             
-            switch appIndexManager.appIndex {
+            //navigerar vilken View som ska visas upp.
+            
+            switch appManager.appIndex {
                 
             case AppIndex.startView:
                 StartView()
@@ -42,25 +39,7 @@ struct ContentView: View {
                 PrivateChatView().transition(.move(edge: .leading))
                 
             }
-        }.animation(.easeIn, value: appIndexManager.appIndex)
-            
-    }
-    
-    private func initiateCurrentUserId() {
-        
-        let preferences = UserDefaults.standard
-        
-        let currentUserIdKey = "currentUserId"
-        
-        let currentUserId = 1
-        preferences.set(currentUserId, forKey: currentUserIdKey)
-        
-        //  Save to disk
-        let didSave = preferences.synchronize()
-        
-        if !didSave {
-            //  Couldn't save (I've never seen this happen in real world testing)
-        }
+        }.animation(.easeIn, value: appManager.appIndex)
     }
 }
 

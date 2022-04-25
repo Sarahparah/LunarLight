@@ -11,7 +11,7 @@ import CoreData
 
 struct LobbyTabView: View {
     
-    @StateObject var appIndexManager = AppIndexManager.singletonObject
+    @StateObject var appIndexManager = AppManager.singletonObject
     
     var body: some View {
         
@@ -43,7 +43,7 @@ struct LobbyTabView: View {
         .accentColor(.white)
         .onAppear(){
                 
-            AppIndexManager.singletonObject.firestoreFriendModel.listenToFriends()
+            AppManager.singletonObject.firestoreFriendModel.listenToFriends()
             appIndexManager.profileUser = appIndexManager.loggedInUser
         }
     }

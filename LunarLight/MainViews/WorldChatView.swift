@@ -27,7 +27,7 @@ struct WorldChatView: View {
                 Spacer()
                 
                 Button {
-                    AppIndexManager.singletonObject.appIndex = AppIndex.onlineUsersView
+                    AppManager.singletonObject.appIndex = AppIndex.onlineUsersView
                     
                 } label: {
                     Text("Show Users")
@@ -50,7 +50,7 @@ struct WorldChatView: View {
                         coredataUserModel.deleteUser(user: user)
                     }
                     
-                    AppIndexManager.singletonObject.logout()
+                    AppManager.singletonObject.logout()
                 } label: {
                     Text("Logout")
                         .foregroundColor(.white)
@@ -123,7 +123,7 @@ struct WorldChatView: View {
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea())
-            .background(AppIndexManager.singletonObject.personalGradientBGColor)
+            .background(AppManager.singletonObject.personalGradientBGColor)
             
         .onAppear(perform: {
             firestoreWorldMsgModel.listenToWorldMessages()
@@ -137,7 +137,7 @@ struct WorldChatView: View {
         
         print(messageInput)
         
-        let currentUser = AppIndexManager.singletonObject.loggedInUser
+        let currentUser = AppManager.singletonObject.loggedInUser
         let newMessage = WorldMsgFirebase(_userId: currentUser.id, _username: currentUser.username, _message: messageInput, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day)
         
         firestoreWorldMsgModel.createMessage(newMessage: newMessage)

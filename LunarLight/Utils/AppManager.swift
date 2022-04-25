@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-class AppIndexManager: ObservableObject {
+class AppManager: ObservableObject {
     
-    static let singletonObject = AppIndexManager()
+    static let singletonObject = AppManager()
     
     let firestoreFriendModel = FirestoreFriendModel()
     
@@ -35,7 +35,7 @@ class AppIndexManager: ObservableObject {
     @Published var appIndex = AppIndex.startView
     @Published var currentLobbyTab = 1
     
-    @Published var personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .white]),startPoint: .bottomTrailing, endPoint: .topLeading)
+    @Published var personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
     
     private init() {
         //SINGLETON. PRIVATE INIT.

@@ -12,7 +12,7 @@ struct ProfileView: View {
     @State private var showingSheet = false
     @State var index = 0
     
-    @State var user: UserFirebase = AppIndexManager.singletonObject.loggedInUser
+    @State var user: UserFirebase = AppManager.singletonObject.loggedInUser
     @State var readOnly: Bool = true
     @State var stone: String = ""
     @State var bGColorOfPressedUser: String = ""
@@ -23,7 +23,7 @@ struct ProfileView: View {
     init() {
         let localData = LocalData()
         
-        user = AppIndexManager.singletonObject.testUser
+        user = AppManager.singletonObject.testUser
         readOnly = true
         
         let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
@@ -162,18 +162,18 @@ struct ProfileView: View {
                             .ignoresSafeArea())
         
             .background(
-                user.id == AppIndexManager.singletonObject.loggedInUser.id ? AppIndexManager.singletonObject.personalGradientBGColor : LinearGradient(gradient: Gradient(colors: [Color(bGColorOfPressedUser), .black]),startPoint: .bottomTrailing, endPoint: .topLeading))
+                user.id == AppManager.singletonObject.loggedInUser.id ? AppManager.singletonObject.personalGradientBGColor : LinearGradient(gradient: Gradient(colors: [Color(bGColorOfPressedUser), .black]),startPoint: .bottomTrailing, endPoint: .topLeading))
             .onAppear {
                 
-                if AppIndexManager.singletonObject.profileUser == nil {
-                    AppIndexManager.singletonObject.profileUser = AppIndexManager.singletonObject.loggedInUser
+                if AppManager.singletonObject.profileUser == nil {
+                    AppManager.singletonObject.profileUser = AppManager.singletonObject.loggedInUser
                 }
                 
                 let localData = LocalData()
                 
-                user = AppIndexManager.singletonObject.profileUser!
+                user = AppManager.singletonObject.profileUser!
                 
-                readOnly = AppIndexManager.singletonObject.loggedInUser.id == AppIndexManager.singletonObject.profileUser!.id ? false : true
+                readOnly = AppManager.singletonObject.loggedInUser.id == AppManager.singletonObject.profileUser!.id ? false : true
                 
                 let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
                 
@@ -205,13 +205,13 @@ struct ProfileView: View {
         
         user.profile_info = infoText[0]
         
-        AppIndexManager.singletonObject.loggedInUser.profile_info = infoText[0]
+        AppManager.singletonObject.loggedInUser.profile_info = infoText[0]
         let firestoreUserModel = FirestoreUserModel()
-        firestoreUserModel.updateUser(currentUser: AppIndexManager.singletonObject.loggedInUser)
+        firestoreUserModel.updateUser(currentUser: AppManager.singletonObject.loggedInUser)
         
-        AppIndexManager.singletonObject.profileUser!.profile_info = infoText[0]
+        AppManager.singletonObject.profileUser!.profile_info = infoText[0]
         
-        AppIndexManager.singletonObject.coreDataUser?.profile_info = infoText[0]
+        AppManager.singletonObject.coreDataUser?.profile_info = infoText[0]
         let coreDataUserModel = CoredataUserModel()
         coreDataUserModel.updateUser()
         

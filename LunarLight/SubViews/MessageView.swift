@@ -42,7 +42,7 @@ struct MessageView: View {
     
     var body: some View {
         
-        VStack(alignment: AppIndexManager.singletonObject.loggedInUser.username == username ? .trailing : .leading) {
+        VStack(alignment: AppManager.singletonObject.loggedInUser.username == username ? .trailing : .leading) {
             
             HStack{
                 
@@ -71,10 +71,10 @@ struct MessageView: View {
                 
                 //Spacer()
             }
-            .frame(maxWidth: 300, alignment: AppIndexManager.singletonObject.loggedInUser.username == username ? .trailing : .leading)
+            .frame(maxWidth: 300, alignment: AppManager.singletonObject.loggedInUser.username == username ? .trailing : .leading)
             
         }
-        .frame(maxWidth: .infinity, alignment: AppIndexManager.singletonObject.loggedInUser.username == username ? .trailing : .leading)
+        .frame(maxWidth: .infinity, alignment: AppManager.singletonObject.loggedInUser.username == username ? .trailing : .leading)
         //.padding(AppIndexManager.singletonObject.currentUser.username == user ? .trailing : .leading)
     }
 }

@@ -34,9 +34,9 @@ class FirestorePrivateMsgModel: ObservableObject {
         //Read data once (example):
         //db.collection("tmp").getDocuments(completion: )
         
-        guard let friendId = AppIndexManager.singletonObject.privateChatUser?.id else { return }
+        guard let friendId = AppManager.singletonObject.privateChatUser?.id else { return }
         
-        let userId = AppIndexManager.singletonObject.loggedInUser.id
+        let userId = AppManager.singletonObject.loggedInUser.id
         
         //Add an async listener for database
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(userId)
@@ -76,9 +76,9 @@ class FirestorePrivateMsgModel: ObservableObject {
         //Read data once (example):
         //db.collection("tmp").getDocuments(completion: )
         
-        guard let friendId = AppIndexManager.singletonObject.privateChatUser?.id else { return }
+        guard let friendId = AppManager.singletonObject.privateChatUser?.id else { return }
         
-        let userId = AppIndexManager.singletonObject.loggedInUser.id
+        let userId = AppManager.singletonObject.loggedInUser.id
         
         //Add an async listener for database
         dataBase.collection(LocalData.USERS_COLLECTION_KEY).document(friendId)

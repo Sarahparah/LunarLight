@@ -29,7 +29,7 @@ class CoredataUserModel {
         
         do {
             try viewContext.save()
-            AppIndexManager.singletonObject.coreDataUser = userCoreData
+            AppManager.singletonObject.coreDataUser = userCoreData
             print("Du är inloggad: \(userCoreData)")
         } catch {
             print("Failed to save CoreData user")
@@ -43,7 +43,7 @@ class CoredataUserModel {
         
         do{
             try viewContext.save()
-            print("KOLLA OM DET SPARAS:  \(AppIndexManager.singletonObject.coreDataUser?.profile_info)")
+            print("KOLLA OM DET SPARAS:  \(AppManager.singletonObject.coreDataUser?.profile_info)")
             
         }catch{
             print("Failed to update user")
