@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SimpleToast
 
 struct RegisterView: View {
     
@@ -32,6 +33,10 @@ struct RegisterView: View {
         return formatter
     }
     
+    @State private var showToast = false
+    private let toastOption = SimpleToastOptions(alignment: .bottom, hideAfter: 2.0, backdrop: Color.white.opacity(0), animation: .default, modifierType: .slide)
+    @State private var toastErrorMsg = ""
+    
     init(){
         
         currentYear = Calendar.current.component(.year, from: Date())
@@ -48,141 +53,141 @@ struct RegisterView: View {
         
         VStack{
         
-        ScrollView {
-            
-            VStack{
+            ScrollView {
+                
                 VStack{
-                    Text("Username:")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
-                    
-                    TextField("Ex.. BillPrill", text: $username)
-                        .autocapitalization(.none)
-                        .multilineTextAlignment(.center)
+                    VStack{
+                        Text("Username:")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                        
+                        TextField("Ex.. BillPrill", text: $username)
+                            .autocapitalization(.none)
+                            .multilineTextAlignment(.center)
+                            .padding(10)
+                            .background(.white)
+                            .cornerRadius(5)
+                            .disableAutocorrection(true)
+                    }
+                    VStack{
+                        
+                        Text("Date of birth:")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                        
+                        Button {
+                            showDatePicker.toggle()
+                        } label: {
+                            
+                            Text(dateFormatter.string(from: date))
+                                .accentColor(showDatePicker ? Color.blue : Color.black)
+                        }
+                        .frame(maxWidth: .infinity)
                         .padding(10)
+                        .padding(.top, 0.1)
                         .background(.white)
                         .cornerRadius(5)
-                        .disableAutocorrection(true)
-                }
-                VStack{
-                    
-                    Text("Date of birth:")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
-                    
-                    Button {
-                        showDatePicker.toggle()
-                    } label: {
                         
-                        Text(dateFormatter.string(from: date))
-                            .accentColor(showDatePicker ? Color.blue : Color.black)
+                        if showDatePicker {
+                            DatePicker("", selection: $date,
+                                       in: maximumYear...minimumYear, displayedComponents: [.date])
+                                .accentColor(Color.red)
+                                .datePickerStyle(WheelDatePickerStyle())
+                                .frame(width: UIScreen.main.bounds.width * 0.8)
+                                .background(.white)
+                                .cornerRadius(5)
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(10)
-                    .padding(.top, 0.1)
-                    .background(.white)
-                    .cornerRadius(5)
+                    .padding(.top, 10)
                     
-                    if showDatePicker {
-                        DatePicker("", selection: $date,
-                                   in: maximumYear...minimumYear, displayedComponents: [.date])
-                            .accentColor(Color.red)
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .frame(width: UIScreen.main.bounds.width * 0.8)
+                    VStack{
+                        Text("Email:")
+                            .frame(maxWidth: .infinity,alignment: .leading)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                        
+                        
+                        TextField("Ex.. bill@email.se", text: $email)
+                            .keyboardType(.URL)
+                            .autocapitalization(.none)
+                            .multilineTextAlignment(.center)
+                            .padding(10)
+                            .disableAutocorrection(true)
                             .background(.white)
                             .cornerRadius(5)
                     }
-                }
-                .padding(.top, 10)
-                
-                VStack{
-                    Text("Email:")
-                        .frame(maxWidth: .infinity,alignment: .leading)
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
+                    .padding(.top, 10)
                     
+                    VStack{
+                        
+                        Text("Password:")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                        
+                        HStack{
+                            
+                            if secured {
+                                SecureField("Password", text: $password)
+                                    .autocapitalization(.none)
+                                    .multilineTextAlignment(.center)
+                                    .padding(10)
+                                    .disableAutocorrection(true)
+                                    .background(.white)
+                                    .cornerRadius(5)
+                                //.id(1)
+                            } else {
+                                
+                                // 3
+                                
+                                TextField("Password", text: $password)
+                                    .autocapitalization(.none)
+                                    .multilineTextAlignment(.center)
+                                    .padding(10)
+                                    .background(.white)
+                                    .cornerRadius(5)
+                                    .disableAutocorrection(true)
+                                //.id(1)
+                            }
+                            
+                            Button(action: {
+                                self.secured.toggle()
+                            }) {
+                                if secured {
+                                    Image(systemName: "eye.slash")
+                                        .foregroundColor(.white)
+                                } else {
+                                    Image(systemName: "eye")
+                                        .foregroundColor(.white)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.top, 10)
                     
-                    TextField("Ex.. bill@email.se", text: $email)
-                        .keyboardType(.URL)
+                    SecureField("Reenter password", text: $passwordTwo)
                         .autocapitalization(.none)
                         .multilineTextAlignment(.center)
                         .padding(10)
                         .disableAutocorrection(true)
                         .background(.white)
                         .cornerRadius(5)
-                }
-                .padding(.top, 10)
-                
-                VStack{
                     
-                    Text("Password:")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
                     
-                    HStack{
-                        
-                        if secured {
-                            SecureField("Password", text: $password)
-                                .autocapitalization(.none)
-                                .multilineTextAlignment(.center)
-                                .padding(10)
-                                .disableAutocorrection(true)
-                                .background(.white)
-                                .cornerRadius(5)
-                            //.id(1)
-                        } else {
-                            
-                            // 3
-                            
-                            TextField("Password", text: $password)
-                                .autocapitalization(.none)
-                                .multilineTextAlignment(.center)
-                                .padding(10)
-                                .background(.white)
-                                .cornerRadius(5)
-                                .disableAutocorrection(true)
-                            //.id(1)
-                        }
-                        
-                        Button(action: {
-                            self.secured.toggle()
-                        }) {
-                            if secured {
-                                Image(systemName: "eye.slash")
-                                    .foregroundColor(.white)
-                            } else {
-                                Image(systemName: "eye")
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-                }
-                .padding(.top, 10)
                 
-                SecureField("Reenter password", text: $passwordTwo)
-                    .autocapitalization(.none)
-                    .multilineTextAlignment(.center)
+                }
+                    .frame(width: UIScreen.main.bounds.size.width * 0.9)
                     .padding(10)
-                    .disableAutocorrection(true)
-                    .background(.white)
-                    .cornerRadius(5)
+                    .onAppear(perform: {
+                date = minimumYear
+            })
+                
+                Spacer()
                 
                 
-            
             }
-                .frame(width: UIScreen.main.bounds.size.width * 0.9)
-                .padding(10)
-                .onAppear(perform: {
-            date = minimumYear
-        })
-            
-            Spacer()
-            
-            
-        }
             
             Button {
                 if isValidInput() {
@@ -194,6 +199,16 @@ struct RegisterView: View {
                 Text("Register")
                     .foregroundColor(.white)
             }
+        }
+        .simpleToast(isPresented: $showToast, options: toastOption) {
+            //
+        } content: {
+            HStack{
+                Text("\(toastErrorMsg)")
+                    .padding()
+            }.background(Color.black.opacity(0.5))
+                .foregroundColor(Color.white)
+                .cornerRadius(20)
         }
     }
     
@@ -271,7 +286,7 @@ struct RegisterView: View {
         AppIndexManager.singletonObject.appIndex = AppIndex.welcomeView
     }
     
-    private func isUsernameAndPasswordUnique() -> Bool {
+    private func isUsernameAndEmailUnique() -> Bool {
         let users = firestoreModel.users
         
         print(users)
@@ -289,32 +304,38 @@ struct RegisterView: View {
     private func isValidInput() -> Bool {
         
         if username.count < 3 || username.count > 12 {
-            print("Username needs to be between 3 and 12 chars")
+            toastErrorMsg = "Username needs to be between 3 and 12 chars."
+            showToast = true
             return false
         }
         
         if !inputValidator.isValidUsername(username) {
-            print("Username cannot contain special chars")
-            return false
-        }
-        
-        if password != passwordTwo {
-            print("Password not the same buga buga")
-            return false
-        }
-        
-        if password.count < 5 {
-            print("Password must be at least 5 chars")
+            toastErrorMsg = "Username cannot contain special chars."
+            showToast = true
             return false
         }
         
         if !inputValidator.isValidEmail(email) {
-            print("Email wrong format")
+            toastErrorMsg = "Email wrong format."
+            showToast = true
             return false
         }
         
-        if !isUsernameAndPasswordUnique() {
-            print("Username/Email not unique")
+        if !isUsernameAndEmailUnique() {
+            toastErrorMsg = "Username/Email not unique."
+            showToast = true
+            return false
+        }
+        
+        if password.count < 5 {
+            toastErrorMsg = "Password must be at least 5 chars."
+            showToast = true
+            return false
+        }
+        
+        if password != passwordTwo {
+            toastErrorMsg = "Passwords do not match."
+            showToast = true
             return false
         }
         
