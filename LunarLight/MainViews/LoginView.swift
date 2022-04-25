@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import UIKit
+import SimpleToast
 
 struct LoginView: View {
     
@@ -27,96 +28,116 @@ struct LoginView: View {
     
     @State private var currentUser: UserFirebase?
     
+    @State private var showToast = false
+    private let toastOption = SimpleToastOptions(alignment: .bottom, hideAfter: 2.0, backdrop: Color.white.opacity(0), animation: .default, modifierType: .slide)
+    
     init() {
         firestoreUserModel.listenToUsers()
     }
     
     var body: some View {
-        VStack {
-            
-            TextField("Email / Username", text: $email)
-                .autocapitalization(.none)
-                .padding(10)
-                .disableAutocorrection(true)
-                .background(.white)
-                .cornerRadius(5)
-            
-            
-            HStack{
+        
+        VStack{
+        
+            VStack {
                 
-                if secured {
-                    
-                    SecureField("Password", text: $password)
-                        .autocapitalization(.none)
-                        .padding(10)
-                        .disableAutocorrection(true)
-                        .background(.white)
-                        .cornerRadius(5)
-                    
-                } else {
-                    
-                    // 3
-                    TextField("Password", text: $password)
-                        .autocapitalization(.none)
-                        .padding(10)
-                        .disableAutocorrection(true)
-                        .background(.white)
-                        .cornerRadius(5)
-                }
+                TextField("Email / Username", text: $email)
+                    .autocapitalization(.none)
+                    .padding(10)
+                    .disableAutocorrection(true)
+                    .background(.white)
+                    .cornerRadius(5)
                 
-                Button(action: {
-                    self.secured.toggle()
-                }) {
-                    
+                
+                HStack{
                     
                     if secured {
-                        Image(systemName: "eye.slash")
-                            .foregroundColor(.white)
+                        
+                        SecureField("Password", text: $password)
+                            .autocapitalization(.none)
+                            .padding(10)
+                            .disableAutocorrection(true)
+                            .background(.white)
+                            .cornerRadius(5)
+                        
                     } else {
-                        Image(systemName: "eye")
-                            .foregroundColor(.white)
+                        
+                        // 3
+                        TextField("Password", text: $password)
+                            .autocapitalization(.none)
+                            .padding(10)
+                            .disableAutocorrection(true)
+                            .background(.white)
+                            .cornerRadius(5)
                     }
-                }
-            }.padding(.top, 10)
-            
-            Spacer()
-            
-            Button {
-                print("login?")
-                
-                Task {
-                    let result = await loginCheck()
                     
-                    if (result) {
-                        guard let currentUser = currentUser else {
-                            print("Error: Current user is nil")
-                            return
+                    Button(action: {
+                        self.secured.toggle()
+                    }) {
+                        
+                        
+                        if secured {
+                            Image(systemName: "eye.slash")
+                                .foregroundColor(.white)
+                        } else {
+                            Image(systemName: "eye")
+                                .foregroundColor(.white)
                         }
-                        
-                        login(currentUser: currentUser)
                     }
+                }.padding(.top, 10)
+                
+                Spacer()
+                
+                Button {
+                    print("login?")
+                    
+                    Task {
+                        let result = await loginCheck()
+                        
+                        if (result) {
+                            guard let currentUser = currentUser else {
+                                print("Error: Current user is nil")
+                                return
+                            }
+                            
+                            login(currentUser: currentUser)
+                        }
+                    }
+                
+                } label: {
+                    Text("Login")
+                        .foregroundColor(.white)
                 }
+                
+            }.padding(.top, 20)
+                .frame(width: UIScreen.main.bounds.size.width * 0.9)
+
+
+            ForEach(users){ user in
+                if let username = user.username {
+                    Text(username)
+                        .onAppear(){
+                            
+                            AppIndexManager.singletonObject.coreDataUser = user
+                            performAutoLogin(user: user)
+
+                        }
+                }
+            }
             
-            } label: {
-                Text("Login")
-                    .foregroundColor(.white)
-            }
-        }.padding(.top, 20)
-            .frame(width: UIScreen.main.bounds.size.width * 0.9)
-
         
-        ForEach(users){ user in
-            if let username = user.username {
-                Text(username)
-                    .onAppear(){
-                        
-                        AppIndexManager.singletonObject.coreDataUser = user
-                        performAutoLogin(user: user)
-
-                    }
-            }
         }
-        
+        .simpleToast(isPresented: $showToast, options: toastOption) {
+            //
+        } content: {
+            HStack{
+                Text("Login failed. Please check username/password.")
+                    .padding()
+            }.background(Color.black.opacity(0.5))
+                .foregroundColor(Color.white)
+                .cornerRadius(20)
+        }
+            
     }
     
     private func performAutoLogin(user: UserCoreData) {
@@ -191,6 +212,7 @@ struct LoginView: View {
         }
         
         print("Login failed =(")
+        showToast = true
         return false
     }
 }

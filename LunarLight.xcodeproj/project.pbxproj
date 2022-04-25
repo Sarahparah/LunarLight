@@ -26,6 +26,7 @@
 		33AE6E1027F5A63E00EEC7E3 /* LunarLight.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE6E0E27F5A63E00EEC7E3 /* LunarLight.xcdatamodeld */; };
 		33D386EF27F6EF7600D338B2 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386EE27F6EF7600D338B2 /* InputValidator.swift */; };
 		33D386F127F6F23C00D338B2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D386F027F6F23C00D338B2 /* WelcomeView.swift */; };
+		33E7082828169C7800A5C63F /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 33E7082728169C7800A5C63F /* SimpleToast */; };
 		33E7A90427F6FFF70091502E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90327F6FFF70091502E /* ContentView.swift */; };
 		33E7A90627F703340091502E /* AppIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7A90527F703340091502E /* AppIndexManager.swift */; };
 		41B977D127F5B44500455E86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B977D027F5B44500455E86 /* LoginView.swift */; };
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E7082828169C7800A5C63F /* SimpleToast in Frameworks */,
 				41B977F227FDC08600455E86 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				41B977EE27FDC08600455E86 /* FirebaseAuth in Frameworks */,
 				41B977F027FDC08600455E86 /* FirebaseFirestore in Frameworks */,
@@ -250,6 +252,7 @@
 				41B977ED27FDC08600455E86 /* FirebaseAuth */,
 				41B977EF27FDC08600455E86 /* FirebaseFirestore */,
 				41B977F127FDC08600455E86 /* FirebaseFirestoreSwift-Beta */,
+				33E7082728169C7800A5C63F /* SimpleToast */,
 			);
 			productName = LunarLight;
 			productReference = 33AE6E0027F5A63C00EEC7E3 /* LunarLight.app */;
@@ -281,6 +284,7 @@
 			mainGroup = 33AE6DF727F5A63C00EEC7E3;
 			packageReferences = (
 				41B977EC27FDC08600455E86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				33E7082628169C7800A5C63F /* XCRemoteSwiftPackageReference "SimpleToast" */,
 			);
 			productRefGroup = 33AE6E0127F5A63C00EEC7E3 /* Products */;
 			projectDirPath = "";
@@ -551,6 +555,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		33E7082628169C7800A5C63F /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.2;
+			};
+		};
 		41B977EC27FDC08600455E86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -562,6 +574,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		33E7082728169C7800A5C63F /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33E7082628169C7800A5C63F /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
 		41B977ED27FDC08600455E86 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 41B977EC27FDC08600455E86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
