@@ -148,8 +148,9 @@ struct WelcomeView: View {
     private func updateAvatar(_ imageString: String) {
         selectedImage = imageString
         
-        var currentUser = AppIndexManager.singletonObject.loggedInUser
-        currentUser.avatar = imageString
+        AppIndexManager.singletonObject.loggedInUser.avatar = imageString
+        
+        let currentUser = AppIndexManager.singletonObject.loggedInUser
         
         let firestoreUserModel = FirestoreUserModel()
         firestoreUserModel.updateUser(currentUser: currentUser)
@@ -157,6 +158,8 @@ struct WelcomeView: View {
         let coredataUserModel = CoredataUserModel()
         AppIndexManager.singletonObject.coreDataUser!.avatar = imageString
         coredataUserModel.updateUser()
+        
+        AppIndexManager.singletonObject.profileUser = currentUser
     }
 }
 

@@ -32,8 +32,6 @@ struct ProfileView: View {
   
         stone = localData.stoneArray[stoneIndex]
         
-        print("Detta är user: \(_user)")
-        
         infoText[0] = user.profile_info
     }
     
@@ -168,12 +166,13 @@ struct ProfileView: View {
             .onAppear {
                 
                 if AppIndexManager.singletonObject.profileUser == nil {
-                    AppIndexManager.singletonObject.profileUser = AppIndexManager.singletonObject.testUser
+                    AppIndexManager.singletonObject.profileUser = AppIndexManager.singletonObject.loggedInUser
                 }
                 
                 let localData = LocalData()
                 
                 user = AppIndexManager.singletonObject.profileUser!
+                
                 readOnly = AppIndexManager.singletonObject.loggedInUser.id == AppIndexManager.singletonObject.profileUser!.id ? false : true
                 
                 let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
@@ -181,8 +180,6 @@ struct ProfileView: View {
                 bGColorOfPressedUser = localData.profileBackground[stoneIndex]
           
                 stone = localData.stoneArray[stoneIndex]
-                
-                print("Detta är user: \(_user)")
                 
                 infoText[0] = user.profile_info
                 
