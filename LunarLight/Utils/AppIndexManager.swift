@@ -34,7 +34,6 @@ class AppIndexManager: ObservableObject {
     
     @Published var appIndex = AppIndex.startView
     @Published var currentLobbyTab = 1
-    @Published var mainGradientbGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
     
     @Published var personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .white]),startPoint: .bottomTrailing, endPoint: .topLeading)
     

@@ -223,6 +223,8 @@ struct RegisterView: View {
         let stoneArray = localData.stoneImages[stoneType]
         let avatar: String = stoneArray![0]
         
+        AppIndexManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
+        
         email = email.lowercased()
         
         //let token = Encryption().getToken(input: password)
@@ -312,7 +314,7 @@ struct RegisterView: View {
         }
         
         if !isUsernameAndPasswordUnique() {
-            print("Username/Password not unique")
+            print("Username/Email not unique")
             return false
         }
         

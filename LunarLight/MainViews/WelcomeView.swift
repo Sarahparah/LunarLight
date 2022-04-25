@@ -47,13 +47,10 @@ struct WelcomeView: View {
     
     var body: some View {
         
-        ZStack {
+
             
             //Background (first z-index)
             //Color(backgroundColor)
-            
-            LinearGradient(gradient: Gradient(colors: [Color(backgroundColor), .black]), startPoint: .bottomTrailing, endPoint: .topLeading)
-                .ignoresSafeArea()
             
             //Foreground (second z-index)
             VStack{
@@ -137,12 +134,13 @@ struct WelcomeView: View {
                 
             }.padding()
                 .background(Image("star_bg_sky")
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea())
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea())
+                .background(AppIndexManager.singletonObject.personalGradientBGColor)
         
 
-        }
+        
     }
     
     private func updateAvatar(_ imageString: String) {

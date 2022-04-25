@@ -47,7 +47,7 @@ struct StartView: View {
                     .scaledToFill())
             
         }
-        .background(AppIndexManager.singletonObject.mainGradientbGColor)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]),startPoint: .bottomTrailing, endPoint: .topLeading))
         
     }
     
