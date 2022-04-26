@@ -78,16 +78,17 @@ struct PrivateChatView: View {
                         .opacity(0)
                     
                     ForEach (Array(messages.enumerated()), id: \.1) { index, message in
+                        //Check if its yours or your friends message (alignment (left or right side) is decided in MessageView-struct file)
                         if message.sender_id == currentUser.id {
                             MessageView(_username: currentUser.username, _message: message.my_message, _avatar: currentUser.avatar, _month: currentUser.month, _day: currentUser.day, _isPrivate: true )
                                 .id(index)
                         }
                         else{
                             MessageView(_username: friend.username, _message: message.my_message, _avatar: friend.avatar, _month: friend.month, _day: friend.day, _isPrivate: true )
+                                .id(index)
                         }
                     }
                     .onChange(of: messages, perform: { newValue in
-                        print("*BLIPP*")
                         SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                     })
                 }
@@ -138,7 +139,6 @@ struct PrivateChatView: View {
                             .scaledToFill()
                             .ignoresSafeArea())
                 .onAppear(perform: {
-                print("DANNE: 0, listen!")
                 firestorePrivateMsgModel.listenToUserMsgs()
                 firestorePrivateMsgModel.listenToFriendMsgs()
             })
