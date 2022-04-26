@@ -12,12 +12,6 @@ struct FriendsView: View {
     @StateObject var firestoreUserModel = FirestoreUserModel()
     @State var showInfo : Bool = false
     
-    let friends: [FriendFirebase]
-    
-    init() {
-        friends = AppManager.singletonObject.firestoreFriendModel.friends
-    }
-    
     var body: some View {
         
         VStack{
@@ -27,15 +21,14 @@ struct FriendsView: View {
                 
             //NavigationView{
             ScrollView{
-                    ForEach(firestoreUserModel.userFriends){ entry in
+                    ForEach(firestoreUserModel.userFriends){ friend in
                         Button {
-                            AppManager.singletonObject.privateChatUser = entry
+                            AppManager.singletonObject.privateChatUser = friend
                             AppManager.singletonObject.appIndex = AppIndex.privateChatView
                         } label: {
                             VStack{
                                 HStack{
-                                    Text("User: ")
-                                    Text(entry.username)
+                                    Text(friend.username)
                                 .foregroundColor(.white)
                                 .padding(.trailing, 10)
                             Spacer()

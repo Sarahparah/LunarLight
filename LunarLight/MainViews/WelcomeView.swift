@@ -14,18 +14,19 @@ struct WelcomeView: View {
     
     let backgroundColor: String
     
-    let layout = [
-        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
-        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
-        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2)),
-        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.2))
+    //Number of columns and column width
+    let gridLayout = [
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.20)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.20)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.20)),
+        GridItem(.flexible(minimum: UIScreen.main.bounds.width * 0.20))
     ]
     
     let profileImages: [String]
     @State var selectedImage: String
     
     @State var randomQuoteIndex = 0
-    @State private var quotes = ["temp Quote"]
+    @State private var quotes = ["Carpe diem! /Sarah the great Philosopher"]
     
     init (){
         let localData = LocalData()
@@ -37,7 +38,6 @@ struct WelcomeView: View {
         backgroundColor = stoneType
         profileImages = localData.stoneImages[stoneType] ?? []
         selectedImage = profileImages[0]
-        print("Selected image: \(selectedImage)")
         
         currentUser.avatar = profileImages[0]
         firestoreModel.updateUser(currentUser: currentUser)
@@ -63,17 +63,8 @@ struct WelcomeView: View {
                     .font(Font.subheadline.weight(.bold))
                     .padding()
                     .foregroundColor(.white)
-                //                    .background(Color("gradient_black_20"))
-                //                    .foregroundColor(Color.black)
-                //                    .cornerRadius(30)
-                //
                 
-                
-                //ScrollView(.vertical){
-                
-                //}.frame(height: UIScreen.main.bounds.height * 0.4)
-                
-                LazyVGrid(columns: layout, alignment: .center, content: {
+                LazyVGrid(columns: gridLayout, alignment: .center, content: {
                     ForEach(profileImages, id: \.self) { imageString in
                         Button {
                             updateAvatar(imageString)
@@ -84,7 +75,6 @@ struct WelcomeView: View {
                                 .padding()
                             
                         }
-                        //.frame(width: 100, height: 100)
                         .background(imageString == selectedImage ? Color(.white) : Color("gradient_white_30"))
                         .cornerRadius(65)
                     }
@@ -143,6 +133,7 @@ struct WelcomeView: View {
         
     }
     
+    //Stores the new selected avatar image in Firestore, CoreData, and singleton-variable
     private func updateAvatar(_ imageString: String) {
         selectedImage = imageString
         
