@@ -29,12 +29,12 @@ struct PrivateChatView: View {
         currentUser = AppManager.singletonObject.loggedInUser
         friend = AppManager.singletonObject.privateChatUser ?? AppManager.singletonObject.testUser
         
-        let userStoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
+        let userStoneIndex = LocalData.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let userStoneType = localData.profileBackground[userStoneIndex]
         
         userBackground = userStoneType
         
-        let friendStoneIndex = UserFirebase.getStoneIndex(month: friend.month, day: friend.day)
+        let friendStoneIndex = LocalData.getStoneIndex(month: friend.month, day: friend.day)
         let friendStoneType = localData.profileBackground[friendStoneIndex]
         
         friendBackground = friendStoneType

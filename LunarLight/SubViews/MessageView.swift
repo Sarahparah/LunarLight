@@ -27,7 +27,7 @@ struct MessageView: View {
         avatar = _avatar
         month = _month
         day = _day
-        let stoneIndex = UserFirebase.getStoneIndex(month: _month, day: _day)
+        let stoneIndex = LocalData.getStoneIndex(month: _month, day: _day)
         let stoneType = localData.profileBackground[stoneIndex]
         backround = stoneType
         

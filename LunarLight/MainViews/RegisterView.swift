@@ -235,7 +235,7 @@ struct RegisterView: View {
         
         let localData = LocalData()
         
-        let stoneIndex = UserFirebase.getStoneIndex(month: month, day: day)
+        let stoneIndex = LocalData.getStoneIndex(month: month, day: day)
         let stoneType = localData.profileBackground[stoneIndex]
         let stoneArray = localData.stoneImages[stoneType]
         let avatar: String = stoneArray![0]

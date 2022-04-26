@@ -167,7 +167,7 @@ struct LoginView: View {
         
         let localData = LocalData()
         
-        let stoneIndex = UserFirebase.getStoneIndex(month: currentUser.month, day: currentUser.day)
+        let stoneIndex = LocalData.getStoneIndex(month: currentUser.month, day: currentUser.day)
         let stoneType = localData.profileBackground[stoneIndex]
         
         AppManager.singletonObject.personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color(stoneType), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)

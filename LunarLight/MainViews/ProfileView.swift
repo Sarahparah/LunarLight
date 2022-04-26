@@ -19,13 +19,13 @@ struct ProfileView: View {
     @State var infoText = ["profileInfo",
                            "stoneInfo"]
     
+    //initiates with test data that is replaced when onAppear() is called
     init() {
         let localData = LocalData()
         
-        user = AppManager.singletonObject.testUser
         readOnly = true
         
-        let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
+        let stoneIndex = LocalData.getStoneIndex(month: user.month, day: user.day)
         
         bGColorOfPressedUser = localData.profileBackground[stoneIndex]
   
@@ -174,7 +174,7 @@ struct ProfileView: View {
                 
                 readOnly = AppManager.singletonObject.loggedInUser.id == AppManager.singletonObject.profileUser!.id ? false : true
                 
-                let stoneIndex = UserFirebase.getStoneIndex(month: user.month, day: user.day)
+                let stoneIndex = LocalData.getStoneIndex(month: user.month, day: user.day)
                 
                 bGColorOfPressedUser = localData.profileBackground[stoneIndex]
           
