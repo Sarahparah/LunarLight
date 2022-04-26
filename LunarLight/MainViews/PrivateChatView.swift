@@ -138,21 +138,22 @@ struct PrivateChatView: View {
                             .resizable()
                             .scaledToFill()
                             .ignoresSafeArea())
-                .onAppear(perform: {
-                firestorePrivateMsgModel.listenToUserMsgs()
-                firestorePrivateMsgModel.listenToFriendMsgs()
+            .onAppear(perform: {
+                firestorePrivateMsgModel.listenToUserMsgs() //listen to msgs that you have sent to your friend
+                firestorePrivateMsgModel.listenToFriendMsgs()   //listen to msgs that your friend has sent to you
             })
-                .onChange(of: firestorePrivateMsgModel.userMsgs, perform: {newValue in
-                    updateMessagesArray()
-                })
-                .onChange(of: firestorePrivateMsgModel.friendMsgs, perform: {newValue in
-                    updateMessagesArray()
-                })
+            .onChange(of: firestorePrivateMsgModel.userMsgs, perform: {newValue in
+                updateMessagesArray()
+            })
+            .onChange(of: firestorePrivateMsgModel.friendMsgs, perform: {newValue in
+                updateMessagesArray()
+            })
             
         }
     
     }
     
+    //combines private messages from you and your friend into one array and sort by timestamp
     func updateMessagesArray() {
         self.messages.removeAll()
         self.messages.append(contentsOf: firestorePrivateMsgModel.userMsgs)
@@ -162,11 +163,16 @@ struct PrivateChatView: View {
     
     func newPrivateMsg () {
         
+        //return if input field is empty
+        if (newMessage.isEmpty) {
+            return
+        }
+        
         let currentUserId = AppManager.singletonObject.loggedInUser.id
         let friendId = friend.id
         
         let newPrivateMsg = PrivateMsgFirebase(_message: newMessage, _senderId: currentUserId, _receiverId: friendId)
-        newMessage = ""
+        newMessage = "" //clear the input field
         
         firestorePrivateMsgModel.createPrivateMsg(newPrivateMsg: newPrivateMsg, currentUserId: currentUserId, friendId: friendId)
         
