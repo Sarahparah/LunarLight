@@ -218,32 +218,3 @@ struct ProfileView: View {
     }
     
 }
-
-struct SheetView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    @State var resetPassword: String = ""
-    
-    var body: some View {
-        
-        
-        Button {
-            print("dismiss")
-            dismiss()
-        } label: {
-            Text("dismiss")
-                .foregroundColor(.white)
-                .font(.title)
-                .padding()
-                .background(Color.black)
-        }
-        
-        VStack{
-            
-            HStack{
-                Text("Reset password")
-                TextField("Reset password", text: $resetPassword)
-            }
-        }
-    }
-}
