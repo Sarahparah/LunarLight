@@ -48,9 +48,11 @@ class AppManager: ObservableObject {
         coreDataUser = nil
         profileUser = nil
         
+        let logoutUser = loggedInUser
+        
         loggedInUser = testUser
         appIndex = AppIndex.startView
-        print("Logged out!")
+        print("Logged out user \(logoutUser.username)")
     }
     
 }

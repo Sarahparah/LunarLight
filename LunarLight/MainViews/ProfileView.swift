@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State private var showingSheet = false
     @State var index = 0
     
     @State var user: UserFirebase = AppManager.singletonObject.loggedInUser

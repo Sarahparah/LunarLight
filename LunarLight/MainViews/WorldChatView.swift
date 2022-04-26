@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorldChatView: View {
     
+    //fetch request from CoreData for logout-feature
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -73,8 +74,7 @@ struct WorldChatView: View {
                     MessageView(_username: worldMsg.username, _message: worldMsg.message, _avatar: worldMsg.avatar, _month: worldMsg.month, _day: worldMsg.day, _isPrivate: false )
                         .id(index)
                 }
-                .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { newValue in
-                    print("*BLIPP*")
+                .onChange(of: firestoreWorldMsgModel.worldMessages, perform: { index in
                     SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                 })
             }
@@ -85,7 +85,7 @@ struct WorldChatView: View {
             .onAppear {
                            proxy.scrollTo(firestoreWorldMsgModel.worldMessages.count - 1, anchor: .bottom)
                        }
-            .onChange(of: firestoreWorldMsgModel.worldMessages.count, perform: { value in
+            .onChange(of: firestoreWorldMsgModel.worldMessages.count, perform: { index in
                             proxy.scrollTo(firestoreWorldMsgModel.worldMessages.count - 1)
                             
                         })

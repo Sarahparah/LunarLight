@@ -88,7 +88,7 @@ struct PrivateChatView: View {
                                 .id(index)
                         }
                     }
-                    .onChange(of: messages, perform: { newValue in
+                    .onChange(of: messages, perform: { index in
                         SoundPlayer.playSound(sound: SoundPlayer.NEW_MSG_SFX)
                     })
                 }
@@ -100,7 +100,7 @@ struct PrivateChatView: View {
                 .onAppear {
                                proxy.scrollTo(messages.count - 1, anchor: .top)
                            }
-                .onChange(of: messages.count, perform: { value in
+                .onChange(of: messages.count, perform: { index in
                                 proxy.scrollTo(messages.count - 1)
                                 
                             })
