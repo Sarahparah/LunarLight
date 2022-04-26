@@ -17,7 +17,7 @@ struct MessageView: View {
     
     let msgPrefix: String
     
-    @State var backround: String
+    @State var background: String
     
     init(_username: String, _message: String, _avatar: String, _month: UInt64, _day: UInt64, _isPrivate: Bool){
         
@@ -29,7 +29,7 @@ struct MessageView: View {
         day = _day
         let stoneIndex = LocalData.getStoneIndex(month: _month, day: _day)
         let stoneType = localData.profileBackground[stoneIndex]
-        backround = stoneType
+        background = stoneType
         
         if _isPrivate {
             msgPrefix = ""
@@ -65,7 +65,7 @@ struct MessageView: View {
                     //Spacer()
                 }
                 //.frame(width: UIScreen.main.bounds.size.width * 0.7)
-                .background(Color(backround))
+                .background(Color(background))
                 .cornerRadius(30)
                 .padding(5)
                 

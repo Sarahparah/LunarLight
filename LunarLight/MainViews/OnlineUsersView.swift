@@ -9,8 +9,6 @@ import SwiftUI
 
 struct OnlineUsersView: View {
     
-    
-    
     @StateObject var firestoreUserModel = FirestoreUserModel()
     @StateObject var firestoreUserOnlineModel = FirestoreUserOnlineModel()
     
@@ -85,7 +83,7 @@ struct OnlineUsersView: View {
             .background(AppManager.singletonObject.personalGradientBGColor)
             .onAppear {
                 firestoreUserOnlineModel.listenToOnlineUsers()
-                AppManager.singletonObject.profileUser = nil
+                AppManager.singletonObject.profileUser = nil //fail safe
         }
     }
 }

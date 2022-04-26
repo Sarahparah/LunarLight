@@ -42,7 +42,8 @@ struct LobbyTabView: View {
         .font(.headline)
         .accentColor(.white)
         .onAppear(){
-                
+            
+            //Listen to friends before user has pressed Friends tab to easier get friends usernames when needed
             AppManager.singletonObject.firestoreFriendModel.listenToFriends()
             appIndexManager.profileUser = appIndexManager.loggedInUser
         }
