@@ -14,8 +14,6 @@ class AppManager: ObservableObject {
     
     let firestoreFriendModel = FirestoreFriendModel()
     
-    var timerWorkItem: DispatchWorkItem?
-    
     let testUser = UserFirebase(
         _id: "490FA39D-0752-4649-B222-E2ABEABC6ECC",
         _username: "test",
@@ -35,7 +33,7 @@ class AppManager: ObservableObject {
     @Published var appIndex = AppIndex.startView
     @Published var currentLobbyTab = 1
     
-    @Published var personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]),startPoint: .bottomTrailing, endPoint: .topLeading)
+    @Published var personalGradientBGColor = LinearGradient(gradient: Gradient(colors: [Color("bg_color"), .black]), startPoint: .bottomTrailing, endPoint: .topLeading)
     
     private init() {
         //SINGLETON. PRIVATE INIT.
@@ -55,16 +53,6 @@ class AppManager: ObservableObject {
         print("Logged out!")
     }
     
-    func resetTimer() {
-        print("timeout: in process")
-                        
-        // set timer
-        timerWorkItem = DispatchWorkItem {
-            //AppIndexManager.singletonObject.logout()
-            print("timed out!")
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: timerWorkItem!)
-    }
 }
 
 enum AppIndex : Int {

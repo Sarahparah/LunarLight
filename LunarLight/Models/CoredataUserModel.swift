@@ -43,7 +43,6 @@ class CoredataUserModel {
         
         do{
             try viewContext.save()
-            print("KOLLA OM DET SPARAS:  \(AppManager.singletonObject.coreDataUser?.profile_info)")
             
         }catch{
             print("Failed to update user")
